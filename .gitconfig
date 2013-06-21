@@ -1,0 +1,55 @@
+[user]
+	name = Édouard Lopez
+	email = dev+git@edouard-lopez.com
+[credential]
+	helper = cache --timeout=3600
+
+[alias]
+	pl = pull
+	ps = push
+	st = status
+	ci = commit
+	br = branch
+	co = checkout
+	df = diff
+	lg = log -p
+	pretty-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	meld = !/mnt/data/apps/git-meld/git-meld.pl
+	who = shortlog -s --
+        gitkconflict = !gitk --left-right HEAD...MERGE_HEAD
+        changes=diff --name-status -r
+        diffstat=diff --stat -r
+	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
+	mt = mergetool
+	dfw = diff --ignore-space-change
+
+[giggle]
+	main-window-maximized = true
+	main-window-geometry = 421x197+278+0
+	file-view-hpane-position = 184
+	main-window-view = HistoryView
+	history-view-vpane-position = 445
+	file-view-vpane-position = 664
+[color]
+	ui = auto
+	branch = auto
+	diff = auto
+	interactive = auto
+	status = auto
+[apply]
+	whitespace = nowarn
+[core]
+	edit = sublime-text-2
+	excludes = ~/.gitexcludes
+	excludesfile = ~/.gitignore
+	autocrlf = input
+[merge]
+	tool = meld
+[gui]
+	diffcontext = 4
+	recentrepo = /home/ed8/Probe
+	recentrepo = /mnt/data/projects/website-probe
+[guitool "meld"]
+	cmd = /mnt/data/apps/gitguidifftool/git_gui_difftool.py $FILENAME
+	noconsole = yes
+	needsfile = yes
