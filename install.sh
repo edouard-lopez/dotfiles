@@ -1,4 +1,10 @@
 #!/usr/bin/env bash
+# DESCRIPTION
+#	link all config files to the user $HOME directory.
+#
+# USAGE
+#	./home/install.sh
+#
 
 scriptDir="$(dirname "$0")"
 
