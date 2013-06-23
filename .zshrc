@@ -46,6 +46,10 @@ source "$HOME/.merc"
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 
-# EOF
-
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
+
+# Solve: RVM is not a function, selecting rubies with 'rvm use ...' will not work.
+# see http://stackoverflow.com/a/8664090/802365
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads rvm
+
+# EOF 
