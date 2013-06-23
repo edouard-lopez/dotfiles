@@ -1,6 +1,9 @@
 #!/usr/bin/env bash
 
-. "$HOME"/stylerc # get some style
+stylerc="$HOME/stylerc"
+if [[ -f "$stylerc" || -h "$stylerc" ]]; then
+	. "$stylerc" # get some style
+fi
 
 if [[ $SHELL = *bash ]]; then
     shopt -s dotglob
@@ -123,6 +126,9 @@ function translate() {
     echo $raw
 }
 
-. "$HOME/.nrc" # o2n
+nrc="$HOME/.nrc"
+if [[ -f "$nrc" || -h "$nrc" ]]; then
+        . "$nrc" # o2n
+fi
 
 #EOF
