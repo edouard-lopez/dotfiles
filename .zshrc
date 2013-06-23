@@ -47,3 +47,5 @@ export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/u
 
 
 # EOF
+
+PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
