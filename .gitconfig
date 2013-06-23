@@ -43,6 +43,7 @@
 	excludes = ~/.gitexcludes
 	excludesfile = ~/.gitignore
 	autocrlf = input
+	editor = vim
 [merge]
 	tool = meld
 [gui]
