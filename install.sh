@@ -9,13 +9,14 @@ for f in "$scriptDir"/{*,.*}; do
 	[[ "$f" == *"install.sh" || "$f" == *.swp ]] && continue # ignore install.sh and *.swp
 
 	nf="$HOME/$(basename "$f")"
+	printf "%s\n" "$f"
 	if [[ -f "$nf" || -h "$nf" ]]; then
 		# backup existing file
-		printf "\t%s -> %s\n" "$nf"{,.bak}
+		printf "\tBackup to: %s\n" "$nf".bak
 		mv "$nf"{,.bak}
 	fi
 
 	# symlink to file
-	printf "%s -> %s\n" "$f" "$nf"
+	printf "\tLinking to: %s\n" "$nf"
 	ln -s "$f" "$nf"
 done
