@@ -95,7 +95,7 @@ alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | c
 
 
 # DEBIAN/UBUNTU/LINUX MINT
-alias pkg-search="sudo aptitude search "
+alias pkg-search="aptitude search "
 #alias pkg-install="sudo apt-get install "
 alias pkg-remove="sudo apt-get remove "
 alias pkg-clean="sudo apt-get clean"
