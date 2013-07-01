@@ -10,7 +10,7 @@ if [[ $SHELL = *bash ]]; then
     shopt -s dirspell
 fi
 
-export PATH=PATH:$HOME/apps/:/usr/local/bin/
+export PATH=$PATH:$HOME/apps/:/usr/local/bin/
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
 
