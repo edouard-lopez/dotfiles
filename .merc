@@ -31,6 +31,21 @@ zstyle ':completion:*' group-name
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JAVA_HOME
 
+# ZSH aliases
+# @description Filter given pass by given string
+# @param    $1|path  path to list
+# @param    $2|filter  string used to filter directory listing
+# @return    string
+function lg() {
+  dir="$1"
+  filter="$2"
+  if [[ -n "$filter" ]]; then
+    ls -lah "$dir" | grep -i "$filter"
+  else
+    ls -lah | grep -i "$filter"
+  fi
+}
+
 # SSH
 #alias ssh-manu='gnome-terminal --window-with-profile=gentoo -x bash -c "ssh Gentoo"; exit'
 # GIT
