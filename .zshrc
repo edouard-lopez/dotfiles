@@ -38,14 +38,11 @@ ZSH_THEME="jreese"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(command-not-found composer cp gpg-agent git git-extras gitfast github heroku mvn npm sprunge ssh-agent yeoman history-substring-search )
 
+export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.merc"
 #source $HOME/.bashrc
-
-# Customize to your needs...
-export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
-
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 
