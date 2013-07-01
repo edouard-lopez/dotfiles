@@ -13,25 +13,9 @@ fi
 export PATH=$PATH:$HOME/apps/:/usr/local/bin/
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
-
-# ZSH
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(command-not-found composer cp debian gpg-agent git git-extras gitfast github heroku npm sprunge ssh-agent yo )
-
-zstyle ':completion:*' verbose yes
-zstyle ':completion:*:descriptions' format '%B%d%b'
-zstyle ':completion:*:messages' format '%d'
-zstyle ':completion:*:warnings' format 'No matches for: %d'
-zstyle ':completion:*' group-name
-
 # JAVA
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JAVA_HOME
-
-# ZSH aliases
-alias -g gpi="| grep -i "
 
 # @description Filter given pass by given string
 # @param    $1|path  path to list
