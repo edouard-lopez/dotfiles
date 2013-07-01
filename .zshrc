@@ -36,7 +36,8 @@ ZSH_THEME="jreese"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(command-not-found composer cp debian gpg-agent git git-extras gitfast github heroku mvn npm sprunge ssh-agent yeoman )
+plugins=(command-not-found composer cp gpg-agent git git-extras gitfast github heroku mvn npm sprunge ssh-agent yeoman history-substring-search )
+
 
 source $ZSH/oh-my-zsh.sh
 source "$HOME/.merc"

@@ -25,7 +25,6 @@ zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name
-#zstyle ':omz:module:history-substring-search' case-sensitive 'yes'
 
 # JAVA
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
