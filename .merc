@@ -91,6 +91,8 @@ alias refresh=". $HOME/.zshrc"
 
 alias irc="irssi "
 alias pdf2djvu-ocr=$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh
+alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1"
+
 
 # DEBIAN/UBUNTU/LINUX MINT
 alias pkg-search="sudo aptitude search "
