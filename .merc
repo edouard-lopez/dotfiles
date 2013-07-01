@@ -70,7 +70,7 @@ function git-new() {
 }
 
 
-alias refresh=". $HOME/.zshrc"
+alias refresh=". $HOME/.${SHELL}rc"
 
 alias irc="irssi "
 alias pdf2djvu-ocr=$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh
