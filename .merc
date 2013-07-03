@@ -13,6 +13,9 @@ fi
 export PATH=$PATH:$HOME/apps/:/usr/local/bin/
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
+# Yeoman: Yo/Bower/Grunt
+eval "$(grunt --completion=bash)"
+
 # JAVA
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JAVA_HOME
