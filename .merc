@@ -5,9 +5,14 @@ if [[ -f "$stylerc" || -h "$stylerc" ]]; then
 	. "$stylerc" # get some style
 fi
 
-if [[ $SHELL = *bash ]]; then
+if [[ $BASH = *bash ]]; then
     shopt -s dotglob
     shopt -s dirspell
+    alias refresh=". $HOME/.bashrc"
+elif [[ $ZSH_NAME = zsh ]]; then
+    alias refresh=". $HOME/.zshrc"
+else
+    echo -n "" # shell
 fi
 
 export PATH=$PATH:$HOME/apps/:/usr/local/bin/
@@ -72,8 +77,6 @@ function git-new() {
     git push origin master
 }
 
-
-alias refresh=". $HOME/.$(basename $SHELL)rc"
 
 alias pdf2djvu-ocr=$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh
 alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1"
