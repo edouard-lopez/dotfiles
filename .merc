@@ -152,5 +152,5 @@ if [[ -f "$nrc" || -h "$nrc" ]]; then
 fi
 
 # Serveur deployment
-alias sync-irsii='scp -r -P 822 /mnt/data/system/home/.irssi ed8@vm-ed:/home/ed8/'
+alias sync-irsii@manu='scp -r -P 822 /mnt/data/system/home/.irssi ed8@vm-ed:/home/ed8/'
 #EOF
