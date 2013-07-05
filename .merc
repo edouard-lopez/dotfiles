@@ -75,7 +75,6 @@ function git-new() {
 
 alias refresh=". $HOME/.$(basename $SHELL)rc"
 
-alias irc="irssi "
 alias pdf2djvu-ocr=$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh
 alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1"
 
@@ -153,4 +152,5 @@ fi
 
 # Serveur deployment
 alias sync-irsii@manu='scp -r -P 822 /mnt/data/system/home/.irssi ed8@vm-ed:/home/ed8/'
+alias irc="ssh ed8@vm-ed -p 822 -t 'screen -r irc'"
 #EOF
