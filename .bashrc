@@ -3,11 +3,11 @@ shopt -s cmdhist
 shopt -s direxpand
 shopt -s dirspell
 shopt -s dotglob # include .files
-shopt -s failglob # print message on failed glob
+# shopt -s failglob # print message on failed glob
 shopt -s globstar # **
-#shopt -s hostcomplete # complete hostname
+shopt -s hostcomplete # complete hostname
 shopt -s lithist # store multiline command with '\n' instead of ';'
-#shopt -s 
+#shopt -s
 
 . "$HOME/.merc"
 
