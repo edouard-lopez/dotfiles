@@ -164,3 +164,18 @@ alias irc="ssh ed8@vm-ed -p 822 -t 'screen -r irc'"
 #	ssh ed8@"$host" -p "$port" -t 'screen -r irc'
 #}
 #EOF
+
+
+# @description Display commit convention used by angularJS
+# @return    string
+function ccv() {
+	printf "Commit convention:
+	- feat (feature)
+	- fix (bug fix)
+	- docs (documentation)
+	- style (formatting, missing semi colons, ...)
+	- refactor
+	- test (when adding missing tests)
+	- chore (maintain)\n"
+}
+
