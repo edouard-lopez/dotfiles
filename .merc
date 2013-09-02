@@ -157,4 +157,10 @@ fi
 alias sync-irsii@manu='scp -r -P 822 /mnt/data/system/home/.irssi ed8@vm-ed:/home/ed8/'
 alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'
 alias irc="ssh ed8@vm-ed -p 822 -t 'screen -r irc'"
+
+#functoin irc() {
+#	host="vm-ed"
+#	port=822
+#	ssh ed8@"$host" -p "$port" -t 'screen -r irc'
+#}
 #EOF
