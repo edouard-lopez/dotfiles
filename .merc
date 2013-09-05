@@ -179,3 +179,13 @@ function ccv() {
 	- chore (maintain)\n"
 }
 
+
+# @description Add existing remote branch to the remote 'all' so you can:
+#               git push all
+# @return    void
+function git-add-push-all() {
+    while read -r name url method; do
+      git config --add remote.all.url "$url"
+    done < <(git remote -v | awk '!/all/ && /push/')
+}
+
