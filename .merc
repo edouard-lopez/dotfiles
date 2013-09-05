@@ -52,6 +52,8 @@ alias gcl="git clone "
 alias gu="git rm --cached "
 # unstage files to commit
 alias guc="git reset HEAD "
+alias push="git push "
+alias push-all="push all"
 
 
 # GITHUB
