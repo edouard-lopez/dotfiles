@@ -18,6 +18,32 @@ fi
 export PATH=$PATH:$HOME/apps/:/usr/local/bin/
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
+###########################################################################
+#                          UTILITAIRES SYSTEMES                           #
+###########################################################################
+# vim stuff
+export EDITOR=vim
+export VISUAL=vim
+alias vi=vim
+
+alias sudo='sudo '
+alias df='df -h'            # human-readable sizes
+alias free='free -m'                      # show sizes in MB
+
+alias decrypt="gpg --decrypt "
+GPG_TTY=`tty`
+export GPG_TTY
+
+
+psgrep() {
+  ps aux | { \
+    read -r; # reads the first line of input \
+    printf '%s\n' "$REPLY"; # print the first line of input (=the header) \
+    grep "$@"; # then grep gets to grep the remaining lines. \
+  }
+}
+
+
 # Yeoman: Yo/Bower/Grunt
 eval "$(grunt --completion=bash)"
 
