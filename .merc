@@ -86,12 +86,15 @@ function lg() {
 # SSH
 #alias ssh-manu='gnome-terminal --window-with-profile=gentoo -x bash -c "ssh Gentoo"; exit'
 # GIT
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias go='git checkout '
+alias gd='git diff'
 alias gg="git gui &"
 alias gpl="git pull"
 alias gps="git push"
 alias gs="git status "
-alias go="git checkout "
-alias gc="git commit "
 alias gcl="git clone "
 alias gu="git rm --cached "
 # unstage files to commit
