@@ -102,6 +102,19 @@ alias guc="git reset HEAD "
 alias push="git push "
 alias push-all="push all"
 
+alias gar="git remote -vv"
+alias gra="git-add-remote "
+# @description Add and attach a remote branch to current one
+# @param    $1|remoteUrl     remote Url adress
+# @param    $2|remoteBranch  remote branch name (default: manu)
+# @return    void
+function git-add-remote() {
+  remoteUrl="${1:-ssh://git@git.edouard-lopez.com:822/root/$remoteBranch.git}"
+  remoteBranch="${2:-manu}"
+  currentBranch="$(git rev-parse --abbrev-ref HEAD)"
+  git remote add "$remoteBranch" "$remoteUrl"
+  git push -u "$remoteBranch" "$currentBranch"
+}
 
 # GITHUB
 # @description create a repo on github and connect it to local repo
