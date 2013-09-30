@@ -327,3 +327,6 @@ now() {
 }
 
 
+# Development Firefox
+alias cfx="cfx -p $HOME/.mozilla/firefox/esie98ly.dev/ "
+# eof
