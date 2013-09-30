@@ -251,3 +251,41 @@ function git-add-push-all() {
     done < <(git remote -v | awk '!/all/ && /push/')
 }
 
+###########################################################################
+#                          UTILITAIRES FICHIERS                           #
+###########################################################################
+alias up='cd ..'
+
+# @description Change case from lower case to upper case
+# @param     $@  String to upper
+# @return    string
+l2u() {
+  echo "$@" |tr '[:lower:]' '[:upper:]';
+}
+
+# @description Change case from upper case to lower case
+# @param     $@  String to lower
+# @return    string
+u2l() {
+  echo "$@" |tr '[:upper:]' '[:lower:]' ;
+}
+
+# @description Capitalize a string
+# @param    $@  string to capitalize
+# @return   String
+capitalize() {
+  input=$(u2l "$@"); for i in "$input"; do cap=$(echo -n "${i:0:1}" | tr "[:lower:]" "[:upper:]"); echo -n "${cap}${i:1} "; done; printf "\n";
+}
+
+
+# @description: prepend text to a file
+# param, $1 : text to prepend
+# param, $2 : file to edit
+prependText() {
+  # how to use with grep :
+  # grep -LZ charset ~/pleade-*/**/theme/css/**/*.css | while IFS= read -rd '' file; do printf "%s\n" "$file"; prependText '@charset "UTF-8";' "$file"; done
+  printf '%s\n' H 1i "$1" . w | ed -s "$2"
+}
+
+
+
