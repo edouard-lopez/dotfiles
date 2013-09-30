@@ -44,6 +44,24 @@ psgrep() {
 }
 
 
+###########################################################################
+#                                  XML                                    #
+###########################################################################
+formatXML() {
+  export XMLLINT_INDENT=" "
+  if [[ -e "$1" ]]
+  then
+    xmllint --format "$1" --output "$1" --nsclean --nonet # --encode UTF-8
+    printf "Conversion de %s\n" $1
+  else
+    printf "[!] File Not found: %s.\n Aborting..." "$1"
+  fi
+}
+alias xmlFormat=formatXML
+alias testXSLT1="echo 'xalan -in ./input.xml -xsl ./stylesheet.xsl -out ./output.xyz' "
+alias testXSLT2="echo 'java -jar ~/apps/saxon/saxon.jar ./input.xml ./stylesheet.xsl' "
+
+
 # Yeoman: Yo/Bower/Grunt
 eval "$(grunt --completion=bash)"
 
