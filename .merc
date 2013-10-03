@@ -22,9 +22,9 @@ export STYLERC="$HOME/projects/stylerc/stylerc"
 #                          UTILITAIRES SYSTEMES                           #
 ###########################################################################
 # vim stuff
-export EDITOR=vim
-export VISUAL=vim
-alias vi=vim
+alias e="vim "
+export EDITOR=e
+export VISUAL=e
 
 alias sudo='sudo '
 alias df='df -h'            # human-readable sizes
