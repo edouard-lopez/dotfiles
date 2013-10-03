@@ -219,9 +219,8 @@ if [[ -f "$nrc" || -h "$nrc" ]]; then
 fi
 
 # Serveur deployment
-alias sync-irsii@manu='scp -r -P 822 /mnt/data/system/home/.irssi ed8@vm-ed:/home/ed8/'
-alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'
-alias irc="ssh ed8@vm-ed -p 822 -t 'screen -r irc'"
+#alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
+alias irc="ssh ed8@vm-ed -p 822 -t 'tmux attach -t irc'"
 
 #functoin irc() {
 #	host="vm-ed"
