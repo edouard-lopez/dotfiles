@@ -15,7 +15,7 @@ else
     echo -n "" # shell
 fi
 
-export PATH=$PATH:$HOME/apps/:/usr/local/bin/
+export PATH=$PATH:$HOME/apps/:/usr/local/bin/:$HOME/bin/
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
 ###########################################################################
