@@ -66,7 +66,7 @@ alias testXSLT2="echo 'java -jar ~/apps/saxon/saxon.jar ./input.xml ./stylesheet
 
 
 # Yeoman: Yo/Bower/Grunt
-eval "$(grunt --completion=bash)"
+#eval "$(grunt --completion=bash)"
 
 # JAVA
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
