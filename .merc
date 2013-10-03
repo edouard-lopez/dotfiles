@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# support 256 color palette
+export TERM=screen-256color
+
 stylerc="$HOME/stylerc"
 if [[ -f "$stylerc" || -h "$stylerc" ]]; then
 	. "$stylerc" # get some style
