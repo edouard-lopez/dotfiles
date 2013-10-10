@@ -22,6 +22,13 @@ export PATH=$PATH:$HOME/apps/:/usr/local/bin/:$HOME/bin/
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
 ###########################################################################
+###########################################################################
+#                         CONTEXT/APP UTILITIES                           #
+###########################################################################
+
+export OCTOPRESS_THEME='carillon'
+
+
 #                          UTILITAIRES SYSTEMES                           #
 ###########################################################################
 # 'jump' to place 'mark'ed (require ohmyzsh 'jump' plugin)
