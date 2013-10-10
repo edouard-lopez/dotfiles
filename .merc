@@ -117,7 +117,8 @@ alias gra="git-add-remote "
 # @param    $2|remoteBranch  remote branch name (default: manu)
 # @return    void
 function git-add-remote() {
-  remoteUrl="${1:-ssh://git@git.edouard-lopez.com:822/root/$remoteBranch.git}"
+  project="$(basename $(pwd))"
+  remoteUrl="${1:-ssh://git@git.edouard-lopez.com:822/root/$project.git}"
   remoteBranch="${2:-manu}"
   currentBranch="$(git rev-parse --abbrev-ref HEAD)"
   git remote add "$remoteBranch" "$remoteUrl"
