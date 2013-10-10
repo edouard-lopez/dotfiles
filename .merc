@@ -26,6 +26,8 @@ export STYLERC="$HOME/projects/stylerc/stylerc"
 ###########################################################################
 # 'jump' to place 'mark'ed (require ohmyzsh 'jump' plugin)
 alias j="jump "
+alias @="j "
+alias →="j "
 alias m="mark "
 # vim stuff
 alias e="vim "
