@@ -22,6 +22,11 @@ export PATH=$PATH:$HOME/apps/:/usr/local/bin/:$HOME/bin/
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
 ###########################################################################
+#                          PYTHON / DJANGO                                #
+###########################################################################
+export WORKON_HOME=$HOME/.virtualenvs
+source /usr/local/bin/virtualenvwrapper.sh
+
 ###########################################################################
 #                         CONTEXT/APP UTILITIES                           #
 ###########################################################################
@@ -29,6 +34,7 @@ export STYLERC="$HOME/projects/stylerc/stylerc"
 export OCTOPRESS_THEME='carillon'
 
 
+###########################################################################
 #                          UTILITAIRES SYSTEMES                           #
 ###########################################################################
 # 'jump' to place 'mark'ed (require ohmyzsh 'jump' plugin)
