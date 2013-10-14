@@ -42,10 +42,28 @@ alias j="jump "
 alias @="j "
 alias →="j "
 alias m="mark "
-# vim stuff
-alias e="vim "
-export EDITOR=e
-export VISUAL=e
+
+export EDITOR=vim
+export VISUAL=vim
+
+# @description Open given file with adequate rights (sudo/user)
+# @param    $@|$f  file(s) name
+# @return    void
+function e() {
+  f="$1"
+
+  owner="$(stat -c '%G:%U' $f)"
+  ownerUser="${owner%%:*}"
+  ownerGroup="${owner##*:}"
+
+  if [[ $ownerUser = 'root' || $ownerGroup = 'root' ]]
+  then
+    sudo $EDITOR "$f"
+  else
+    $EDITOR "$f"
+  fi
+}
+
 
 alias sudo='sudo '
 alias df='df -h'            # human-readable sizes
