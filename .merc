@@ -302,6 +302,7 @@ ex ()
 #                          UTILITAIRES FICHIERS                           #
 ###########################################################################
 alias up='cd ..'
+alias back='cd -'
 
 # @description Change case from lower case to upper case
 # @param     $@  String to upper
