@@ -11,7 +11,6 @@ scriptDir="$(dirname "$0")"
 #printf "repo: %s; cur: %s" "$repoDir" "$curDir"
 
 for f in "$scriptDir"/{*,.*}; do 
-	[[ -f "$f" || -h "$f" ]] || continue # only files or symlinks
 	[[ "$f" == *"install.sh" || "$f" == *.swp ]] && continue # ignore install.sh and *.swp
 
 	nf="$HOME/$(basename "$f")"
@@ -22,7 +21,13 @@ for f in "$scriptDir"/{*,.*}; do
 		mv "$nf"{,.bak}
 	fi
 
-	# symlink to file
-	printf "\tLinking to: %s\n" "$nf"
-	ln -s "$f" "$nf"
+	if [[ -f "$f" || -h "$f" ]]
+	then
+		# symlink to file
+		printf "\tLinking to: %s\n" "$nf"
+		ln -s "$f" "$nf"
+	else
+		printf "\tOverriding to: %s\n" "$nf"
+		cp -R "$f" "$nf"
+	fi
 done
