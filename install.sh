@@ -11,6 +11,7 @@ scriptDir="$(dirname "$0")"
 #printf "repo: %s; cur: %s" "$repoDir" "$curDir"
 
 for f in "$scriptDir"/{*,.*}; do 
+  [[ "$f" == "*.git" ]] && continue
 	[[ "$f" == *"install.sh" || "$f" == *.swp ]] && continue # ignore install.sh and *.swp
 
 	nf="$HOME/$(basename "$f")"
