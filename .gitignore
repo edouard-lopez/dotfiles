@@ -8,3 +8,4 @@ stylesheets/
 .buildpath
 .project
 .directory
+.vim/.netrwhist
