@@ -104,6 +104,9 @@ alias testXSLT2="echo 'java -jar ~/apps/saxon/saxon.jar ./input.xml ./stylesheet
 # Yeoman: Yo/Bower/Grunt
 #eval "$(grunt --completion=bash)"
 
+# allow #version syntax
+alias bower='noglob bower'
+
 # JAVA
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JAVA_HOME
