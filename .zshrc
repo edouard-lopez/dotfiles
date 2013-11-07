@@ -8,8 +8,7 @@ export HISTCONTROL=ignoreboth
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="jreese"
-ZSH_THEME="tomorrow"
+ZSH_THEME="ed8"
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -55,6 +54,7 @@ zstyle ':completion:*:messages' format '%d'
 zstyle ':completion:*:warnings' format 'No matches for: %d'
 zstyle ':completion:*' group-name
 zstyle :omz:plugins:ssh-agent agent-forwarding on
+zstyle ':completion:*' use-cache yes
 
 # ZSH aliases
 alias -g gpi="| grep -i "
