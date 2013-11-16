@@ -64,6 +64,15 @@ function e() {
   fi
 }
 
+# @description  A quicker Mkdir
+# @param    $1|directory  directory create and switch to
+# @return    void
+# @author:   Shrayas Rajagopal
+# @see: https://coderwall.com/p/p1sd5a
+function md() {
+  mkdir $1 && cd $1
+}
+
 
 alias sudo='sudo '
 alias df='df -h'            # human-readable sizes
