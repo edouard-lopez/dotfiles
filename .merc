@@ -42,6 +42,18 @@ alias j="jump "
 alias @="j "
 alias →="j "
 alias m="mark "
+# @description Send a notification to desktop
+# @param    $1|msg   notification message
+# @param    $2|ttl   time to live
+# @param    $3|icon  notification icon
+# @return    void
+function alert() {
+  msg="$1"
+  ttl=${2:-$((${#msg}*40))} # duration depends on message length (40ms/char)
+  icon="${3:-/usr/share/icons/gnome/32x32/apps/gnome-terminal.png}"
+
+  notify-send -i "$icon" -t "$ttl" "$msg"
+}
 
 export EDITOR=vim
 export VISUAL=vim
