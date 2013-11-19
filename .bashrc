@@ -9,6 +9,7 @@ shopt -s globstar # **
 shopt -s hostcomplete # complete hostname
 shopt -s lithist # store multiline command with '\n' instead of ';'
 #shopt -s
+complete -cf sudo #tab complete for sudo
 
 . "$HOME/.merc"
 
