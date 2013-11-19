@@ -52,15 +52,15 @@ export VISUAL=vim
 function e() {
   f="$1"
 
-  owner="$(stat -c '%G:%U' $f)"
-  ownerUser="${owner%%:*}"
-  ownerGroup="${owner##*:}"
+#  owner="$(stat -c '%G:%U' $f)" # file ownership's information
+#  ownerUser="${owner%%:*}"
+#  ownerGroup="${owner##*:}"
 
-  if [[ $ownerUser = 'root' || $ownerGroup = 'root' ]]
-  then
-    sudo $EDITOR "$f"
+#  if [[ $ownerUser = 'root' || $ownerGroup = 'root' ]]
+  if [[ -w "$f" ]]; then
+    "$EDITOR" -- "$f"
   else
-    $EDITOR "$f"
+    sudo -e -- "$f"
   fi
 }
 
