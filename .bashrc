@@ -1,5 +1,6 @@
 # see: http://wiki.bash-hackers.org/internals/shell_options#globstar
 shopt -s cmdhist
+shopt -s cdspell # Correct minor spelling errors in directories
 shopt -s direxpand
 shopt -s dirspell
 shopt -s dotglob # include .files
