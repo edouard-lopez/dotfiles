@@ -64,6 +64,7 @@ function e() {
   fi
 }
 
+unalias md
 # @description  A quicker Mkdir
 # @param    $1|directory  directory create and switch to
 # @return    void
