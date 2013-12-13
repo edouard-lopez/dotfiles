@@ -301,7 +301,7 @@ function ccv() {
 	- style (formatting, missing semi colons, ...)
 	- refactor
 	- test (when adding missing tests)
-	- chore (ignore,maintain)\n"
+	- chore (git,ignore,maintain,submodule)\n"
 }
 
 
