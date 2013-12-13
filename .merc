@@ -423,6 +423,9 @@ function md5check() {
 today() {
   echo "$(u2l "$(date '+%Y-%b-%d')")"
 }
+today-num() {
+  echo "$(u2l "$(date '+%Y-%m-%d')")"
+}
 now() {
   echo "$(u2l "$(date '+%Y-%b-%d-%H:%M')")"
 }
