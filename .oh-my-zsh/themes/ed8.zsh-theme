@@ -81,7 +81,7 @@ cpwd() {
   pwd="$(pwd)"
   cpwd="$(dirname "$pwd")"
   cwd="$(basename "$pwd")"
-  echo "%{$RESET_COLOR%}$cwd %{$WHITE%}$cpwd/"
+  echo "%{$RESET_COLOR%}$cwd %{$WHITE%}$pwd/"
 }
 
 
