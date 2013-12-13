@@ -369,6 +369,18 @@ capitalize() {
 alias cap="capitalize "
 
 
+replaceText() {
+  text="$1"
+  sep="${2:- }" # space
+  newsep="${3:--}"
+  [[ -z "$text" ]] && exit
+  echo "${text//$sep/$newsep}"
+}
+
+dashify() {
+  replaceText "$1" ' ' '-'
+}
+
 # @description: prepend text to a file
 # param, $1 : text to prepend
 # param, $2 : file to edit
