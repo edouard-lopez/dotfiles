@@ -1,7 +1,7 @@
 # ZSH Theme - Preview: http://dl.dropbox.com/u/1552408/Screenshots/2010-04-08-oh-my-zsh.png
 
 local default_username='ed8'
-local default_host='laptop8'
+local default_host='laptop'
 
 # Color shortcuts
 RED=$fg[red]
