@@ -57,6 +57,7 @@ function alert() {
 
 export EDITOR=vim
 export VISUAL=vim
+export BROWSER='$HOME/bin/firefox' # Default web browser
 
 # @description Open given file with adequate rights (sudo/user)
 # @param    $@|$f  file(s) name
