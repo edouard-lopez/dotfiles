@@ -278,7 +278,7 @@ fi
 # Serveur deployment
 #alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
 alias irc="ssh ed8@vm-ed -p 822 -t 'tmux attach -t irc'"
-alias ssh:vm@vm-u-srv="ssh -p 3022 vm@vm-ubuntu"
+alias ssh:vm@vm-u-srv="ssh vm@vm-ubuntu"
 alias ssh:ed8@vm-manu="ssh ed8@vm-ed -p 822 "
 alias ssh:ed@manu="ssh ed@manu"
 
