@@ -18,7 +18,7 @@ else
     echo -n "" # shell
 fi
 
-export PATH=$PATH:$HOME/apps/:/usr/local/bin/:$HOME/bin/
+export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:$PATH
 export STYLERC="$HOME/projects/stylerc/stylerc"
 
 ###########################################################################
@@ -42,6 +42,8 @@ alias j="jump "
 alias @="j "
 alias →="j "
 alias m="mark "
+alias tree="tree --charset utf-8 "
+
 # @description Send a notification to desktop
 # @param    $1|msg   notification message
 # @param    $2|ttl   time to live
@@ -213,8 +215,10 @@ alias pkg-clean="sudo apt-get clean"
 alias pkg-autoclean="sudo apt-get autoclean"
 alias pkg-update="sudo apt-get update "
 alias pkg-upgrade="sudo apt-get upgrade "
+alias pkg-upgrade-all="sudo apt-get dist-upgrade "
 alias pkg-show="aptitude show "
 alias pkg-sync="sudo apt-get update && sudo apt-get upgrade -y"
+alias pkg-sync-all="sudo apt-get update && sudo apt-get dist-upgrade "
 alias pkg-autoremove="sudo apt-get autoremove "
 alias pkg-clean-all="sudo apt-get clean; sudo apt-get autoclean; sudo apt-get autoremove "
 # @description  try to install package if fail, search for it
@@ -433,4 +437,16 @@ now() {
 
 # Development Firefox
 alias cfx="cfx -p $HOME/.mozilla/firefox/esie98ly.dev/ "
+
+
+# if [[ ! $TERM =~ screen ]]; then
+#   tmux new-session -d 'irc'
+
+# # Create a bunch of windows in /var/log
+# cd /var/log
+# for i in {1..4}; do
+#     tmux new-window -t "$USER:$i" -n "tab:$i"
+# done
+# fi
+
 # eof
