@@ -25,7 +25,8 @@ export STYLERC="$HOME/projects/stylerc/stylerc"
 #                          PYTHON / DJANGO                                #
 ###########################################################################
 export WORKON_HOME=$HOME/.virtualenvs
-source /usr/local/bin/virtualenvwrapper.sh
+venvBin=/usr/local/bin/virtualenvwrapper.sh
+[[ -e "$venvBin" ]] && source "$venvBin"
 
 ###########################################################################
 #                         CONTEXT/APP UTILITIES                           #
