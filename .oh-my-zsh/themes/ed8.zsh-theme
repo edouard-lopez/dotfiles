@@ -46,8 +46,7 @@ min() {
 # @description Highlight root user
 # @return    string
 user_level() {
-  if [ $UID -eq 0 ]
-  then
+  if [ $UID -eq 0 ]; then
     level_color="%{$RED%}"
   else
     level_color="%{$GREEN%}"
@@ -59,8 +58,7 @@ user_level() {
 # @description Only show username if not default
 # @return    string
 username() {
-  if [[ $USER != $default_username ]]
-  then
+  if [[ $USER != $default_username ]]; then
     echo '%n@'
   fi
 }
@@ -69,8 +67,7 @@ username() {
 # @description Only show username if not default
 # @return    string
 hostname() {
-  if [[ $HOST != $default_host || -n "$SSH_CLIENT" ]]
-  then
+  if [[ $HOST != $default_host || -n "$SSH_CLIENT" ]]; then
     echo '@%m '
   fi
 }
@@ -87,8 +84,7 @@ cpwd() {
 
 # Set prompt char
 prompt_char() {
-  if [ $UID -eq 0 ]
-  then
+  if [ $UID -eq 0 ]; then
     color="%{$GREEN_BOLD%}"
   else
     color="%{$BLUE%}"
