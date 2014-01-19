@@ -68,7 +68,7 @@ username() {
 # @return    string
 hostname() {
   if [[ $HOST != $default_host || -n "$SSH_CLIENT" ]]; then
-    echo '@%m '
+    printf '%s%s' "%{$CYAN%}" '@%m '
   fi
 }
 
