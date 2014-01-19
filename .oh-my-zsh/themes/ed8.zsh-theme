@@ -59,7 +59,7 @@ user_level() {
 # @return    string
 username() {
   if [[ $USER != $default_username ]]; then
-    echo '%n@'
+    echo "$(%{$YELLOW%})"'%n'
   fi
 }
 
