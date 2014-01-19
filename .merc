@@ -33,7 +33,11 @@ venvBin=/usr/local/bin/virtualenvwrapper.sh
 ###########################################################################
 
 export OCTOPRESS_THEME='carillon'
-
+octopressTagList() {
+  WD="$HOME/blog/source/_posts/"
+  awk -F ':' '/^tags/ || /^categories/{print $2}' "$WD"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
+}
+alias tagList=octopressTagList
 
 ###########################################################################
 #                          UTILITAIRES SYSTEMES                           #
