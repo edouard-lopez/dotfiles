@@ -461,6 +461,19 @@ function md5check() {
 #                                  DATE                                   #
 ###########################################################################
 
+# Display date H:M (mon-day) for a list of predefined timezone
+# list of timezone available in: /usr/share/zoneinfo/
+#
+# @return string
+worldtime() {
+  places=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
+  for tz in ${places[@]};
+  do
+    time=$(TZ="$tz" date '+%H:%M (%b-%d)')
+    printf "%s: %s\n" "${tz##*/}" $time
+  done
+}
+
 today() {
   echo "$(u2l "$(date '+%Y-%b-%d')")"
 }
