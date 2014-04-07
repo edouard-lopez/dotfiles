@@ -41,8 +41,8 @@ switch-term-color() {
 hour() {
   hour="$(date '+%H')"
   color="%{$WHITE%}"
-  (($hour >= 17 && $hour <= 20 )) { switchToLight; color="%{$YELLOW%}" }
-  (($hour >= 23 || $hour <= 4 )) { switchToNight; color="%{$RED%}" }
+  (($hour >= 17 && $hour <= 20 )) && { switchToLight; color="%{$YELLOW%}" }
+  (($hour >= 23 || $hour <= 4 )) && { switchToNight; color="%{$RED%}" }
 
 
   echo "${color}$hour%{$RESET_COLOR%}"
