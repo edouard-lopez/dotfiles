@@ -124,6 +124,22 @@ psgrep() {
   }
 }
 
+# Konsole color changing
+switchToNight() {
+  # switch-term-color "colors=TomorrowNightBlue"
+}
+switchToLight() {
+  switch-term-color "colors=Tomorrow"
+}
+switch-term-color() {
+  arg="${1:-colors=Tomorrow}"
+  if [[ -z "$TMUX" ]]; then
+    konsoleprofile "$arg"
+  else
+    printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
+  fi
+}
+
 
 ###########################################################################
 #                                  XML                                    #
