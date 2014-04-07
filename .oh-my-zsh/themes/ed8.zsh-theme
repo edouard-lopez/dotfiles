@@ -20,14 +20,30 @@ CYAN_BOLD=$fg_bold[cyan]
 MAGENTA_BOLD=$fg_bold[magenta]
 RESET_COLOR=$reset_color
 
+# Konsole color changing
+switchToNight() {
+  # switch-term-color "colors=TomorrowNightBlue"
+}
+switchToLight() {
+  switch-term-color "colors=Tomorrow"
+}
+switch-term-color() {
+  arg="${1:-colors=Tomorrow}"
+  if [[ -z "$TMUX" ]]; then
+    konsoleprofile "$arg"
+  else
+    printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
+  fi
+}
 
 # @description Hour of prompt invocation
 # @return    string
 hour() {
   hour="$(date '+%H')"
   color="%{$WHITE%}"
-  (($hour >= 17 || $hour <= 19 )) && color="%{$YELLOW%}"
-  (($hour >= 23 || $hour <= 4 )) && color="%{$RED%}"
+  (($hour >= 17 && $hour <= 20 )) { switchToLight; color="%{$YELLOW%}" }
+  (($hour >= 23 || $hour <= 4 )) { switchToNight; color="%{$RED%}" }
+
 
   echo "${color}$hour%{$RESET_COLOR%}"
 }
