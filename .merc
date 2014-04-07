@@ -3,6 +3,13 @@
 # support 256 color palette
 export TERM=screen-256color
 
+
+# https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
+if which tmux 2>&1 >/dev/null; then
+    #if not inside a tmux session, and if no session is started, start a new session
+    test -z "$TMUX" && (tmux -2 attach || tmux -2 new-session)
+fi
+
 stylerc="$HOME/stylerc"
 if [[ -f "$stylerc" || -h "$stylerc" ]]; then
 	. "$stylerc" # get some style
