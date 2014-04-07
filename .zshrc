@@ -35,7 +35,11 @@ ZSH_THEME="ed8"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=( battery bower command-not-found composer history jump gpg-agent git git-extras grunt npm nvm pip python rvm sprunge ssh-agent yeoman history-substring-search )
+plugins=( 
+         bower command-not-found django history jump gpg-agent git git-extras 
+         grunt npm nvm pip python rvm ssh-agent yeoman history-substring-search 
+         virtualenvwrapper 
+        )
 
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
 
