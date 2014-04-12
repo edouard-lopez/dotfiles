@@ -22,12 +22,12 @@ RESET_COLOR=$reset_color
 
 # Konsole color changing
 switchToNight() {
-  # switch-term-color "colors=TomorrowNightBlue"
+  switch_term_color "colors=TomorrowNightBlue"
 }
 switchToLight() {
-  switch-term-color "colors=Tomorrow"
+  switch_term_color "colors=Tomorrow"
 }
-switch-term-color() {
+switch_term_color() {
   arg="${1:-colors=Tomorrow}"
   if [[ -z "$TMUX" ]]; then
     konsoleprofile "$arg"
