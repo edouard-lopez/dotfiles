@@ -29,7 +29,7 @@ switchToLight() {
 }
 switch_term_color() {
   arg="${1:-colors=Tomorrow}"
-  if [[ -z "$TMUX" && type konsoleprofile ]]; then
+  if [[ -z "$TMUX" ]] && type konsoleprofile; then
     konsoleprofile "$arg"
   else
     printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
