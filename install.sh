@@ -11,10 +11,11 @@ scriptDir="$(dirname "$0")"
 #printf "repo: %s; cur: %s" "$repoDir" "$curDir"
 
 for f in "$scriptDir"/{*,.*}; do 
-  [[ "$f" == "*.git" ]] && continue
-	[[ "$f" == *"install.sh" || "$f" == *.swp ]] && continue # ignore install.sh and *.swp
+	fn="$(basename "$f")"
+  	[[ "$fn" == "*.git" ]] && continue
+	[[ "$fn" == *"install.sh" || "$fn" == *.swp ]] && continue # ignore install.sh and *.swp
 
-	nf="$HOME/$(basename "$f")"
+	nf="$HOME/$fn"
 	printf "%s\n" "$f"
 	if [[ -f "$nf" || -h "$nf" ]]; then
 		# backup existing file
