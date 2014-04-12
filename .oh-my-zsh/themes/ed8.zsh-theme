@@ -29,7 +29,7 @@ switchToLight() {
 }
 switch_term_color() {
   arg="${1:-colors=Tomorrow}"
-  if [[ -z "$TMUX" ]]; then
+  if [[ -z "$TMUX" && command -v konsoleprofile ]]; then
     konsoleprofile "$arg"
   else
     printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
@@ -41,9 +41,9 @@ switch_term_color() {
 hour() {
   hour="$(date '+%H')"
   color="%{$WHITE%}"
+  
   (($hour >= 17 && $hour <= 20 )) && { switchToLight; color="%{$YELLOW%}" }
   (($hour >= 23 || $hour <= 4 )) && { switchToNight; color="%{$RED%}" }
-
 
   echo "${color}$hour%{$RESET_COLOR%}"
 }
