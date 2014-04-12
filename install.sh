@@ -14,6 +14,7 @@ for f in "$scriptDir"/{*,.*}; do
 	fn="$(basename "$f")"
   	[[ "$fn" == "*.git" ]] && continue
 	[[ "$fn" == *"install.sh" || "$fn" == *.swp ]] && continue # ignore install.sh and *.swp
+  	[[ "$fn" == "." ]] && continue
 
 	nf="$HOME/$fn"
 	printf "%s\n" "$f"
