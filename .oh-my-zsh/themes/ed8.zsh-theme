@@ -21,13 +21,13 @@ MAGENTA_BOLD=$fg_bold[magenta]
 RESET_COLOR=$reset_color
 
 # Konsole color changing
-switchToNight() {
-  switch_term_color "colors=TomorrowNightBlue"
+__switchToNight() {
+  __switch_term_color "colors=TomorrowNightBlue"
 }
-switchToLight() {
-  switch_term_color "colors=Tomorrow"
+__switchToLight() {
+  __switch_term_color "colors=Tomorrow"
 }
-switch_term_color() {
+__switch_term_color() {
   arg="${1:-colors=Tomorrow}"
   if [[ -z "$TMUX" ]] && type konsoleprofile; then
     konsoleprofile "$arg"
@@ -42,8 +42,14 @@ hour() {
   hour="$(date '+%H')"
   color="%{$WHITE%}"
 
-  (($hour >= 17 && $hour <= 20 )) && { switchToLight; color="%{$YELLOW%}" }
-  (($hour >= 23 || $hour <= 4 )) && { switchToNight; color="%{$RED%}" }
+  if (($hour >= 17 && $hour <= 20 )) then
+     __switchToLight
+     color="%{$YELLOW%}"
+  fi
+  if (($hour >= 23 || $hour <= 4 )) then
+    __switchToNight
+    color="%{$RED%}"
+  fi
 
   echo "${color}$hour%{$RESET_COLOR%}"
 }
