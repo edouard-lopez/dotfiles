@@ -38,7 +38,7 @@ __switch_term_color() {
 
 # @description Hour of prompt invocation
 # @return    string
-hour() {
+__hour() {
   hour="$(date '+%H')"
   color="%{$WHITE%}"
 
@@ -56,7 +56,7 @@ hour() {
 
 # @description minute of prompt invocation
 # @return    string
-min() {
+__min() {
   min="$(date '+%M')"
   color="%{$WHITE%}"
   (($min > 30)) && color="%{$YELLOW%}"
@@ -67,7 +67,7 @@ min() {
 
 # @description Highlight root user
 # @return    string
-user_level() {
+__user_level() {
   if [ $UID -eq 0 ]; then
     level_color="%{$RED%}"
   else
@@ -79,7 +79,7 @@ user_level() {
 
 # @description Only show username if not default
 # @return    string
-username() {
+__username() {
   if [[ $USER != $default_username ]]; then
     printf "%s%s" "%{$YELLOW%}" '%n'
   fi
@@ -88,7 +88,7 @@ username() {
 
 # @description Only show username if not default
 # @return    string
-hostname() {
+__hostname() {
   if [[ $HOST != $default_host || -n "$SSH_CLIENT" ]]; then
     printf '%s%s' "%{$CYAN%}" '@%m '
   fi
@@ -131,7 +131,7 @@ ZSH_THEME_GIT_PROMPT_UNTRACKED=" %{$WHITE%}⛀%{$RESET_COLOR%}"
 ZSH_THEME_GIT_PROMPT_AHEAD=" %{$BLUE%}↣%{$RESET_COLOR%}"
 
 PROMPT='
-$(user_level)$(username)$(hostname)$(cpwd)
+$(__user_level)$(__username)$(__hostname)$(cpwd)
 $(parse_git_dirty)$(git_prompt_ahead)$(prompt_char) '
 PROMPT2='%{$fg[red]%}\ %{$RESET_COLOR%}'
-RPROMPT='$(git_prompt_status)  %{$GREEN%}$(current_branch)%{$WHITE%} | $(hour)%{$WHITE%}:$(min)%{$RESET_COLOR%}'
+RPROMPT='$(git_prompt_status)  %{$GREEN%}$(current_branch)%{$WHITE%} | $(__hour)%{$WHITE%}:$(__min)%{$RESET_COLOR%}'
