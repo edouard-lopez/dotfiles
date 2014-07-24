@@ -267,7 +267,7 @@ function pkg-install() {
 
         for p in "$@"; do
             resultCount="$(pkg-search "$p" | wc -l)"
-            if (( $resultCount == 0 )); then
+            if (( resultCount == 0 )); then
                 printf "\t%s: %s\n" "$(_value "$p")" "$(_warning "not found")"
             fi
         done
