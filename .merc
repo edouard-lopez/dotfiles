@@ -352,11 +352,17 @@ function ccv() {
 # @return    void
 function git-add-push-all() {
     # Fields are: 'name', 'url' and 'method'
-    while read -r _ url _; do
+    while read -r name url method; do
       git config --add remote.all.url "$url"
     done < <(git remote -v | awk '!/^all/ && /push/')
 }
 
+# Pull and track all remote branches
+function git-pull-all() {
+  for branch in "$(git branch -a | grep remotes | grep -v HEAD | grep -v master)"; do
+     git branch --track "${branch#remotes/origin/}" "$branch"
+  done
+}
 
 # ex - archive extractor
 # usage: ex <file>
