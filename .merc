@@ -278,7 +278,7 @@ function pkg-install() {
 # @param    $@|$files  files list
 # @return    integer
 function getSizeInKilo() {
-    files="$@"
+    files="$*"
     echo "$(( $(stat -c "%s" "$files")/1024 ))"
 }
 
