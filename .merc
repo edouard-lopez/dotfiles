@@ -325,15 +325,6 @@ alias ssh:vm@vm-u-srv="ssh vm@vm-ubuntu"
 alias ssh:ed8@vm-manu="mosh --ssh='ssh -p 822' ed8@vm-ed"
 alias ssh:ed@manu="ssh ed@manu"
 
-
-#functoin irc() {
-#	host="vm-ed"
-#	port=822
-#	ssh ed8@"$host" -p "$port" -t 'screen -r irc'
-#}
-#EOF
-
-
 # Display commit convention used by angularJS
 # @return    string
 function ccv() {
@@ -508,16 +499,5 @@ now() {
 
 # Development Firefox
 alias cfx='cfx -p $HOME/.mozilla/firefox/esie98ly.dev/ '
-
-
-# if [[ ! $TERM =~ screen ]]; then
-#   tmux new-session -d 'irc'
-
-# # Create a bunch of windows in /var/log
-# cd /var/log
-# for i in {1..4}; do
-#     tmux new-window -t "$USER:$i" -n "tab:$i"
-# done
-# fi
 
 # eof
