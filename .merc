@@ -407,7 +407,12 @@ u2l() {
 # @param    $@  string to capitalize
 # @return   String
 capitalize() {
-  input=$(u2l "$@"); for i in "$input"; do cap=$(echo -n "${i:0:1}" | tr "[:lower:]" "[:upper:]"); echo -n "${cap}${i:1} "; done; printf "\n";
+	input="$(u2l "$@")"
+	for i in $input; do
+		cap=$(echo -n "${i:0:1}" | tr "[:lower:]" "[:upper:]")
+		echo -n "${cap}${i:1} "
+	done
+	echo
 }
 alias cap="capitalize "
 
