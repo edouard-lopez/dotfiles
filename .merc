@@ -8,13 +8,13 @@ alias konsole="TERMINAL_CONTEXT='konsole' konsole"
 
 # https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
 if type tmux &> /dev/null; then
-    #if not inside a tmux session, and if no session is started, start a new session
-    [[ $HOST == "laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]] && (tmux -2 attach || tmux -2 new-session)
-  fi
+	#if not inside a tmux session, and if no session is started, start a new session
+	[[ $HOST == "laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]] && (tmux -2 attach || tmux -2 new-session)
+fi
 
-  stylerc="$HOME/stylerc"
-  if [[ -f "$stylerc" || -h "$stylerc" ]]; then
-	. "$stylerc" # get some style
+stylerc="$HOME/stylerc"
+if [[ -f "$stylerc" || -h "$stylerc" ]]; then
+	source "$stylerc" # get some style
 fi
 
 if [[ $BASH = *bash ]]; then
@@ -24,11 +24,11 @@ if [[ $BASH = *bash ]]; then
 elif [[ $ZSH_NAME = zsh ]]; then
 	function refresh() { source $HOME/.zshrc; }
 else
-    echo -n "" # shell
-  fi
+	echo -n "" # shell
+fi
 
-  export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:$PATH
-  export STYLERC="$HOME/projects/dotfiles/stylerc/stylerc"
+export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:$PATH
+export STYLERC="$HOME/projects/dotfiles/stylerc/stylerc"
 #export LD_LIBRARY_PATH=/usr/local/qgis /lib
 
 ################################################
@@ -76,10 +76,10 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # @return    void
 function alert() {
 	msg="$1"
-  ttl=${2:-$((${#msg}*40))} # duration depends on message length (40ms/char)
-  icon="${3:-/usr/share/icons/gnome/32x32/apps/gnome-terminal.png}"
+	ttl=${2:-$((${#msg}*40))} # duration depends on message length (40ms/char)
+	icon="${3:-/usr/share/icons/gnome/32x32/apps/gnome-terminal.png}"
 
-  notify-send -i "$icon" -t "$ttl" "$msg"
+	notify-send -i "$icon" -t "$ttl" "$msg"
 }
 
 export EDITOR=vim
@@ -121,10 +121,10 @@ export GPG_TTY
 
 psgrep() {
 	ps aux | { \
-    read -r; # reads the first line of input \
-    printf '%s\n' "$REPLY"; # print the first line of input (=the header) \
-    grep "$@"; # then grep gets to grep the remaining lines. \
-  }
+		read -r; # reads the first line of input \
+		printf '%s\n' "$REPLY"; # print the first line of input (=the header) \
+		grep "$@"; # then grep gets to grep the remaining lines. \
+	}
 }
 
 # Konsole color changing
@@ -149,13 +149,12 @@ switch-term-color() {
 ################################################
 formatXML() {
 	export XMLLINT_INDENT=" "
-	if [[ -e "$1" ]]
-		then
-    xmllint --format "$1" --output "$1" --nsclean --nonet # --encode UTF-8
-    printf "Conversion de %s\n" "$1"
-  else
-  	printf "[!] File Not found: %s.\n Aborting..." "$1"
-  fi
+	if [[ -e "$1" ]]; then
+		xmllint --format "$1" --output "$1" --nsclean --nonet # --encode UTF-8
+		printf "Conversion de %s\n" "$1"
+	else
+		printf "[!] File Not found: %s.\n Aborting..." "$1"
+	fi
 }
 alias xmlFormat=formatXML
 alias testXSLT1="echo 'xalan -in ./input.xml -xsl ./stylesheet.xsl -out ./output.xyz' "
@@ -227,17 +226,17 @@ function git-new() {
 	local server="${2:-github.com}"
 	local user="${3:-edouard-lopez}"
 
-    # create directory if missing
-    [[ "$(basename "$(pwd)")" != "$project" ]] && mkdir "$project"
+	# create directory if missing
+	[[ "$(basename "$(pwd)")" != "$project" ]] && mkdir "$project"
 
-    # connnect to remote repo
-    git remote add origin https://"$server"/"$user"/"$project".git
+	# connnect to remote repo
+	git remote add origin https://"$server"/"$user"/"$project".git
 
-    # pull README and stuff like that
-    git pull origin master
-    # push local files
-    git push origin master
-  }
+	# pull README and stuff like that
+	git pull origin master
+	# push local files
+	git push origin master
+}
 
 
   alias pdf2djvu-ocr="$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh"
@@ -314,8 +313,8 @@ function appDiskUsage() {
 
 nrc="$HOME/.nrc"
 if [[ -f "$nrc" || -h "$nrc" ]]; then
-        . "$nrc" # o2n
-      fi
+	source "$nrc" # o2n
+fi
 
 # Serveur deployment
 #alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
@@ -343,11 +342,11 @@ function ccv() {
 #               git push all
 # @return    void
 function git-add-push-all() {
-    # Fields are: 'name', 'url' and 'method'
-    while read -r name url method; do
-    	git config --add remote.all.url "$url"
-    done < <(git remote -v | awk '!/^all/ && /push/')
-  }
+	# Fields are: 'name', 'url' and 'method'
+	while read -r name url method; do
+		git config --add remote.all.url "$url"
+	done < <(git remote -v | awk '!/^all/ && /push/')
+}
 
 # Pull and track all remote branches
 function git-pull-all() {
