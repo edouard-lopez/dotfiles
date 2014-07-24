@@ -179,11 +179,7 @@ export JAVA_HOME
 function lg() {
   dir="$1"
   filter="$2"
-  if [[ -n "$filter" ]]; then
-    ls -lah "$dir" | grep -i "$filter"
-  else
-    ls -lah | grep -i "$filter"
-  fi
+  ls -lah "$dir/$filter"
 }
 
 # SSH
