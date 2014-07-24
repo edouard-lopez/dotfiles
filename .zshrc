@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 export HISTSIZE=100000
