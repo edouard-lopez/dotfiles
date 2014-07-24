@@ -69,7 +69,7 @@ export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m'    # begin standout-mode - in
 export LESS_TERMCAP_ue=$'\E[0m'           # end underline
 export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 
-# @description Send a notification to desktop
+# Send a notification to desktop
 # @param    $1|msg   notification message
 # @param    $2|ttl   time to live
 # @param    $3|icon  notification icon
@@ -86,7 +86,7 @@ export EDITOR=vim
 export VISUAL=vim
 export BROWSER="$HOME/bin/firefox" # Default web browser
 
-# @description Open given file with adequate rights (sudo/user)
+# Open given file with adequate rights (sudo/user)
 # @param    $@|$f  file(s) name
 # @return    void
 function e() {
@@ -100,7 +100,7 @@ function e() {
 }
 
 if type md &> /dev/null; then unalias md &> /dev/null; fi
-# @description  A quicker Mkdir
+# A quicker Mkdir
 # @param    $1|directory  directory create and switch to
 # @return    void
 # @author:   Shrayas Rajagopal
@@ -172,7 +172,7 @@ alias bower='noglob bower'
 JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
 export JAVA_HOME
 
-# @description Filter given pass by given string
+# Filter given pass by given string
 # @param    $1|path  path to list
 # @param    $2|filter  string used to filter directory listing
 # @return    string
@@ -203,7 +203,7 @@ alias push-all="push all"
 
 alias gar="git remote -vv"
 alias gra="git-add-remote "
-# @description Add and attach a remote branch to current one
+# Add and attach a remote branch to current one
 # @param    $1|remoteUrl     remote Url adress
 # @param    $2|remoteBranch  remote branch name (default: manu)
 # @return    void
@@ -217,7 +217,7 @@ function git-add-remote() {
 }
 
 # GITHUB
-# @description create a repo on github and connect it to local repo
+# Create a repo on github and connect it to local repo
 # @param    $1|$project  project name
 # @param    $2|server  remote server
 # @param    $3|$user  remote user account
@@ -258,7 +258,7 @@ alias pkg-sync="sudo apt-get update && sudo apt-get upgrade -y"
 alias pkg-sync-all="sudo apt-get update && sudo apt-get dist-upgrade "
 alias pkg-autoremove="sudo apt-get autoremove "
 alias pkg-clean-all="sudo apt-get clean; sudo apt-get autoclean; sudo apt-get autoremove "
-# @description  try to install package if fail, search for it
+# Try to install package if fail, search for it
 # @param         $@  list of packages
 # @return          integer
 function pkg-install() {
@@ -274,7 +274,7 @@ function pkg-install() {
 	fi
 }
 
-# @description return the size in KiloByte for given files
+# Return the size in KiloByte for given files
 # @param    $@|$files  files list
 # @return    integer
 function getSizeInKilo() {
@@ -283,7 +283,7 @@ function getSizeInKilo() {
 }
 
 
-# @description  use the google API to translate text
+# Use the google API to translate text
 # @param    $1|$text               text to translate
 # @param    $2|$sourceLang   text to translate
 # @param    $3|$targetLang    text to translate
@@ -300,7 +300,7 @@ function translate() {
 }
 
 
-# @description list n-application using most space
+# List n-application using most space
 # @param    $1|size  number of biggest application to list
 # @return    void
 function appDiskUsage() {
@@ -334,7 +334,7 @@ alias ssh:ed@manu="ssh ed@manu"
 #EOF
 
 
-# @description Display commit convention used by angularJS
+# Display commit convention used by angularJS
 # @return    string
 function ccv() {
 	printf "Commit convention:
@@ -348,7 +348,7 @@ function ccv() {
 }
 
 
-# @description Add existing remote branch to the remote 'all' so you can:
+# Add existing remote branch to the remote 'all' so you can:
 #               git push all
 # @return    void
 function git-add-push-all() {
@@ -403,21 +403,21 @@ rsync2external-disk() {
 	crontab -l | grep 'rsync' | sed 's!@daily !!' | while read -r cmd; do bash -c "$cmd"; done
 }; alias backup2disk
 
-# @description Change case from lower case to upper case
+# Change case from lower case to upper case
 # @param     $@  String to upper
 # @return    string
 l2u() {
 	echo "$@" |tr '[:lower:]' '[:upper:]';
 }
 
-# @description Change case from upper case to lower case
+# Change case from upper case to lower case
 # @param     $@  String to lower
 # @return    string
 u2l() {
 	echo "$@" |tr '[:upper:]' '[:lower:]' ;
 }
 
-# @description Capitalize a string
+# Capitalize a string
 # @param    $@  string to capitalize
 # @return   String
 capitalize() {
@@ -443,7 +443,7 @@ dashify() {
 	replaceText "$1" ' ' '-'
 }
 
-# @description: prepend text to a file
+# Description: prepend text to a file
 # param, $1 : text to prepend
 # param, $2 : file to edit
 prependText() {
@@ -452,7 +452,7 @@ prependText() {
   printf '%s\n' H 1i "$1" . w | ed -s "$2"
 }
 
-# @description Compare a file computed md5sum against official checksum
+# Compare a file computed md5sum against official checksum
 # @param    $1|file  file to checksum
 # @param    $2|controlChecksum  official/valid checksum
 # @return    void
