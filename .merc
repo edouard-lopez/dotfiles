@@ -332,20 +332,6 @@ alias ssh:ed@manu="ssh ed@manu"
 #}
 #EOF
 
-# start a VM on manu's server
-qemu-ed() {
-  # variables
-  myVM="/mnt/data/ISO/vm-ubuntu-12.04.2-server-amd64"
-  myISO="/mnt/data/ISO/ubuntu-12.04.2-server-amd64.iso"
-  # lancement, use
-  # Bash: use nohup <cmd>
-  # Bash: <cmd> &
-  # Bash/Zsh (global): setopt nohup
-  # Zsh: <cmd> &!
-  # nohup qemu-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
-  qemu-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
-}
-
 
 # @description Display commit convention used by angularJS
 # @return    string
