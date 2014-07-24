@@ -129,7 +129,7 @@ psgrep() {
 
 # Konsole color changing
 switchToNight() {
-  # switch-term-color "colors=TomorrowNightBlue"
+  switch-term-color "colors=TomorrowNightBright"
 }
 switchToLight() {
   switch-term-color "colors=Tomorrow"
