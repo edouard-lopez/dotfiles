@@ -10,25 +10,25 @@ alias konsole="TERMINAL_CONTEXT='konsole' konsole"
 if type tmux &> /dev/null; then
     #if not inside a tmux session, and if no session is started, start a new session
     [[ $HOST == "laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]] && (tmux -2 attach || tmux -2 new-session)
-fi
+  fi
 
-stylerc="$HOME/stylerc"
-if [[ -f "$stylerc" || -h "$stylerc" ]]; then
+  stylerc="$HOME/stylerc"
+  if [[ -f "$stylerc" || -h "$stylerc" ]]; then
 	. "$stylerc" # get some style
 fi
 
 if [[ $BASH = *bash ]]; then
-    shopt -s dotglob
-    shopt -s dirspell
+	shopt -s dotglob
+	shopt -s dirspell
 	function refresh() { source $HOME/.bashrc; }
 elif [[ $ZSH_NAME = zsh ]]; then
 	function refresh() { source $HOME/.zshrc; }
 else
     echo -n "" # shell
-fi
+  fi
 
-export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:$PATH
-export STYLERC="$HOME/projects/dotfiles/stylerc/stylerc"
+  export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:$PATH
+  export STYLERC="$HOME/projects/dotfiles/stylerc/stylerc"
 #export LD_LIBRARY_PATH=/usr/local/qgis /lib
 
 ###########################################################################
@@ -44,8 +44,8 @@ venvBin=/usr/local/bin/virtualenvwrapper.sh
 
 export OCTOPRESS_THEME='carillon'
 octopressTagList() {
-  WD="$HOME/blog/source/_posts/"
-  awk -F ':' '/^tags/ || /^categories/{print $2}' "$WD"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
+	WD="$HOME/blog/source/_posts/"
+	awk -F ':' '/^tags/ || /^categories/{print $2}' "$WD"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
 }
 alias tagList=octopressTagList
 
@@ -75,7 +75,7 @@ export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
 # @param    $3|icon  notification icon
 # @return    void
 function alert() {
-  msg="$1"
+	msg="$1"
   ttl=${2:-$((${#msg}*40))} # duration depends on message length (40ms/char)
   icon="${3:-/usr/share/icons/gnome/32x32/apps/gnome-terminal.png}"
 
@@ -90,13 +90,13 @@ export BROWSER="$HOME/bin/firefox" # Default web browser
 # @param    $@|$f  file(s) name
 # @return    void
 function e() {
-  f="$1"
+	f="$1"
 
-  if [[ -w "$f" ]]; then
-    "$EDITOR" -- "$f"
-  else
-    sudo -e -- "$f"
-  fi
+	if [[ -w "$f" ]]; then
+		"$EDITOR" -- "$f"
+	else
+		sudo -e -- "$f"
+	fi
 }
 
 if type md &> /dev/null; then unalias md &> /dev/null; fi
@@ -106,7 +106,7 @@ if type md &> /dev/null; then unalias md &> /dev/null; fi
 # @author:   Shrayas Rajagopal
 # @see: https://coderwall.com/p/p1sd5a
 function md() {
-  mkdir "$1" && cd "$1"
+	mkdir "$1" && cd "$1"
 }
 
 
@@ -120,7 +120,7 @@ export GPG_TTY
 
 
 psgrep() {
-  ps aux | { \
+	ps aux | { \
     read -r; # reads the first line of input \
     printf '%s\n' "$REPLY"; # print the first line of input (=the header) \
     grep "$@"; # then grep gets to grep the remaining lines. \
@@ -129,18 +129,18 @@ psgrep() {
 
 # Konsole color changing
 switchToNight() {
-  switch-term-color "colors=TomorrowNightBright"
+	switch-term-color "colors=TomorrowNightBright"
 }
 switchToLight() {
-  switch-term-color "colors=Tomorrow"
+	switch-term-color "colors=Tomorrow"
 }
 switch-term-color() {
-  arg="${1:-colors=Tomorrow}"
-  if [[ -z "$TMUX" ]] && type konsoleprofile &> /dev/null; then
-    konsoleprofile "$arg"
-  else
-    printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
-  fi
+	arg="${1:-colors=Tomorrow}"
+	if [[ -z "$TMUX" ]] && type konsoleprofile &> /dev/null; then
+		konsoleprofile "$arg"
+	else
+		printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
+	fi
 }
 
 
@@ -148,13 +148,13 @@ switch-term-color() {
 #                                  XML                                    #
 ###########################################################################
 formatXML() {
-  export XMLLINT_INDENT=" "
-  if [[ -e "$1" ]]
-  then
+	export XMLLINT_INDENT=" "
+	if [[ -e "$1" ]]
+		then
     xmllint --format "$1" --output "$1" --nsclean --nonet # --encode UTF-8
     printf "Conversion de %s\n" "$1"
   else
-    printf "[!] File Not found: %s.\n Aborting..." "$1"
+  	printf "[!] File Not found: %s.\n Aborting..." "$1"
   fi
 }
 alias xmlFormat=formatXML
@@ -177,9 +177,9 @@ export JAVA_HOME
 # @param    $2|filter  string used to filter directory listing
 # @return    string
 function lg() {
-  dir="$1"
-  filter="$2"
-  ls -lah "$dir/$filter"
+	dir="$1"
+	filter="$2"
+	ls -lah "$dir/$filter"
 }
 
 # SSH
@@ -208,12 +208,12 @@ alias gra="git-add-remote "
 # @param    $2|remoteBranch  remote branch name (default: manu)
 # @return    void
 function git-add-remote() {
-  project="$(basename "$(pwd)")"
-  remoteUrl="${1:-ssh://git@git.edouard-lopez.com:822/root/$project.git}"
-  remoteBranch="${2:-me}"
-  currentBranch="$(git rev-parse --abbrev-ref HEAD)"
-  git remote add "$remoteBranch" "$remoteUrl"
-  git push -u "$remoteBranch" "$currentBranch"
+	project="$(basename "$(pwd)")"
+	remoteUrl="${1:-ssh://git@git.edouard-lopez.com:822/root/$project.git}"
+	remoteBranch="${2:-me}"
+	currentBranch="$(git rev-parse --abbrev-ref HEAD)"
+	git remote add "$remoteBranch" "$remoteUrl"
+	git push -u "$remoteBranch" "$currentBranch"
 }
 
 # GITHUB
@@ -223,9 +223,9 @@ function git-add-remote() {
 # @param    $3|$user  remote user account
 # @return    void
 function git-new() {
-    local project="${1:-git-$RANDOM}"
-    local server="${2:-github.com}"
-    local user="${3:-edouard-lopez}"
+	local project="${1:-git-$RANDOM}"
+	local server="${2:-github.com}"
+	local user="${3:-edouard-lopez}"
 
     # create directory if missing
     [[ "$(basename "$(pwd)")" != "$project" ]] && mkdir "$project"
@@ -237,11 +237,11 @@ function git-new() {
     git pull origin master
     # push local files
     git push origin master
-}
+  }
 
 
-alias pdf2djvu-ocr="$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh"
-alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1"
+  alias pdf2djvu-ocr="$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh"
+  alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1"
 
 
 # DEBIAN/UBUNTU/LINUX MINT
@@ -262,24 +262,24 @@ alias pkg-clean-all="sudo apt-get clean; sudo apt-get autoclean; sudo apt-get au
 # @param         $@  list of packages
 # @return          integer
 function pkg-install() {
-    if ! sudo apt-get install "$@"  ; then
-        printf "Install %s...\nSearching for package(s): %s\n" "$(_error "failed")" "$(_value "$*")"
+	if ! sudo apt-get install "$@"  ; then
+		printf "Install %s...\nSearching for package(s): %s\n" "$(_error "failed")" "$(_value "$*")"
 
-        for p in "$@"; do
-            resultCount="$(pkg-search "$p" | wc -l)"
-            if (( resultCount == 0 )); then
-                printf "\t%s: %s\n" "$(_value "$p")" "$(_warning "not found")"
-            fi
-        done
-    fi
+		for p in "$@"; do
+			resultCount="$(pkg-search "$p" | wc -l)"
+			if (( resultCount == 0 )); then
+				printf "\t%s: %s\n" "$(_value "$p")" "$(_warning "not found")"
+			fi
+		done
+	fi
 }
 
 # @description return the size in KiloByte for given files
 # @param    $@|$files  files list
 # @return    integer
 function getSizeInKilo() {
-    files="$*"
-    echo "$(( $(stat -c "%s" "$files")/1024 ))"
+	files="$*"
+	echo "$(( $(stat -c "%s" "$files")/1024 ))"
 }
 
 
@@ -289,14 +289,14 @@ function getSizeInKilo() {
 # @param    $3|$targetLang    text to translate
 # @reutrn    string
 function translate() {
-    text="$1"
-    sourceLang="${2:-en}"
-    targetLang="${3:-fr-FR}"
-    apiQueryString="$(printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")"
-    url="\'http://translate.google.com/translate_a/t?$apiQueryString\'"
-    raw="$(curl -A "Mozilla\/5.0" $url)"
+	text="$1"
+	sourceLang="${2:-en}"
+	targetLang="${3:-fr-FR}"
+	apiQueryString="$(printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")"
+	url="\'http://translate.google.com/translate_a/t?$apiQueryString\'"
+	raw="$(curl -A "Mozilla\/5.0" $url)"
 
-    echo "$raw"
+	echo "$raw"
 }
 
 
@@ -304,24 +304,25 @@ function translate() {
 # @param    $1|size  number of biggest application to list
 # @return    void
 function appDiskUsage() {
-    size="${1:-10}"
-    dpkg-query --show --showformat='${Package;-50}\t${Installed-Size}\n' \
-        | sort -k 2 -n \
-        | grep -v deinstall \
-        | awk '{printf "%.1f MB \t %s\n", $2/(1024), $1}' \
-        | tail -n "$size"
+	size="${1:-10}"
+	dpkg-query --show --showformat='${Package;-50}\t${Installed-Size}\n' \
+	| sort -k 2 -n \
+	| grep -v deinstall \
+	| awk '{printf "%.1f MB \t %s\n", $2/(1024), $1}' \
+	| tail -n "$size"
 }
 
 nrc="$HOME/.nrc"
 if [[ -f "$nrc" || -h "$nrc" ]]; then
         . "$nrc" # o2n
-fi
+      fi
 
 # Serveur deployment
 #alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
 alias irc='mosh --ssh="ssh -p 822" ed8@vm-ed -- tmux attach -t irc '
 alias ssh:vm@vm-u-srv="ssh vm@vm-ubuntu"
-alias ssh:ed8@vm-manu="ssh ed8@vm-ed -p 822 "
+#alias ssh:ed8@vm-manu="ssh ed8@vm-ed -p 822 "
+alias ssh:ed8@vm-manu="mosh --ssh='ssh -p 822' ed8@vm-ed"
 alias ssh:ed@manu="ssh ed@manu"
 
 
@@ -353,39 +354,39 @@ function ccv() {
 function git-add-push-all() {
     # Fields are: 'name', 'url' and 'method'
     while read -r name url method; do
-      git config --add remote.all.url "$url"
+    	git config --add remote.all.url "$url"
     done < <(git remote -v | awk '!/^all/ && /push/')
-}
+  }
 
 # Pull and track all remote branches
 function git-pull-all() {
-  for branch in "$(git branch -a | grep remotes | grep -v HEAD | grep -v master)"; do
-     git branch --track "${branch#remotes/origin/}" "$branch"
-  done
+	for branch in "$(git branch -a | grep remotes | grep -v HEAD | grep -v master)"; do
+		git branch --track "${branch#remotes/origin/}" "$branch"
+	done
 }
 
 # ex - archive extractor
 # usage: ex <file>
 ex ()
 {
-  if [[ -f "$1" ]] ; then
-    case $1 in
-      *.tar.bz2)   tar xjf "$1"   ;;
-      *.tar.gz)    tar xzf "$1"   ;;
-      *.bz2)       bunzip2 "$1"   ;;
-      *.rar)       unrar x "$1"     ;;
-      *.gz)        gunzip "$1"    ;;
-      *.tar)       tar xf "$1"    ;;
-      *.tbz2)      tar xjf "$1"   ;;
-      *.tgz)       tar xzf "$1"   ;;
-      *.zip)       unzip "$1"     ;;
-      *.Z)         uncompress "$1";;
-      *.7z)        7z x "$1"      ;;
-      *)           echo "'$1' cannot be extracted via ex()" ;;
-    esac
-  else
-    echo "'$1' is not a valid file"
-  fi
+	if [[ -f "$1" ]] ; then
+		case $1 in
+			*.tar.bz2)   tar xjf "$1"   ;;
+*.tar.gz)    tar xzf "$1"   ;;
+*.bz2)       bunzip2 "$1"   ;;
+*.rar)       unrar x "$1"     ;;
+*.gz)        gunzip "$1"    ;;
+*.tar)       tar xf "$1"    ;;
+*.tbz2)      tar xjf "$1"   ;;
+*.tgz)       tar xzf "$1"   ;;
+*.zip)       unzip "$1"     ;;
+*.Z)         uncompress "$1";;
+*.7z)        7z x "$1"      ;;
+*)           echo "'$1' cannot be extracted via ex()" ;;
+esac
+else
+	echo "'$1' is not a valid file"
+fi
 }
 
 
@@ -406,14 +407,14 @@ rsync2external-disk() {
 # @param     $@  String to upper
 # @return    string
 l2u() {
-  echo "$@" |tr '[:lower:]' '[:upper:]';
+	echo "$@" |tr '[:lower:]' '[:upper:]';
 }
 
 # @description Change case from upper case to lower case
 # @param     $@  String to lower
 # @return    string
 u2l() {
-  echo "$@" |tr '[:upper:]' '[:lower:]' ;
+	echo "$@" |tr '[:upper:]' '[:lower:]' ;
 }
 
 # @description Capitalize a string
@@ -431,7 +432,7 @@ alias cap="capitalize "
 
 
 replaceText() {
-  text="$1"
+	text="$1"
   sep="${2:- }" # space
   newsep="${3:--}"
   [[ -z "$text" ]] && exit
@@ -439,7 +440,7 @@ replaceText() {
 }
 
 dashify() {
-  replaceText "$1" ' ' '-'
+	replaceText "$1" ' ' '-'
 }
 
 # @description: prepend text to a file
@@ -456,24 +457,24 @@ prependText() {
 # @param    $2|controlChecksum  official/valid checksum
 # @return    void
 function md5check() {
-  controlChecksum="$2"
+	controlChecksum="$2"
 
-  if [[ ! -e "$1" || -z "$2" ]];
-  then
-    [[ ! -e "$1" ]] && printf "[!] File not found\n"
-    [[ -z "$2" ]] && printf "[!] Checksum is empty\n"
-    printf "Aborting…\n"
-    exit
-  fi
+	if [[ ! -e "$1" || -z "$2" ]];
+		then
+		[[ ! -e "$1" ]] && printf "[!] File not found\n"
+		[[ -z "$2" ]] && printf "[!] Checksum is empty\n"
+		printf "Aborting…\n"
+		exit
+	fi
 
-  fileChecksum="$(md5sum "$1" | cut -d ' ' -f 1 )"
+	fileChecksum="$(md5sum "$1" | cut -d ' ' -f 1 )"
 
-  if [[ "$fileChecksum" = "$controlChecksum" ]];
-  then
-    printf "[i] File is valid.\n"
-  else
-    printf "[!] Checksum does NOT match!\n"
-  fi
+	if [[ "$fileChecksum" = "$controlChecksum" ]];
+		then
+		printf "[i] File is valid.\n"
+	else
+		printf "[!] Checksum does NOT match!\n"
+	fi
 }
 
 
@@ -486,22 +487,22 @@ function md5check() {
 #
 # @return string
 worldtime() {
-  places=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
-  for tz in "${places[@]}";
-  do
-    time=$(TZ="$tz" date '+%H:%M (%b-%d)')
-    printf "%s: %s\n" "${tz##*/}" "$time"
-  done
+	places=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
+	for tz in "${places[@]}";
+	do
+		time=$(TZ="$tz" date '+%H:%M (%b-%d)')
+		printf "%s: %s\n" "${tz##*/}" "$time"
+	done
 }
 
 today() {
-  u2l "$(date '+%Y-%b-%d')"
+	u2l "$(date '+%Y-%b-%d')"
 }
 today-num() {
-  u2l "$(date '+%Y-%m-%d')"
+	u2l "$(date '+%Y-%m-%d')"
 }
 now() {
-  u2l "$(date '+%Y-%b-%d-%H:%M')"
+	u2l "$(date '+%Y-%b-%d-%H:%M')"
 }
 
 
