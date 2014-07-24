@@ -28,7 +28,7 @@ else
 fi
 
 export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:$PATH
-export STYLERC="$HOME/projects/stylerc/stylerc"
+export STYLERC="$HOME/projects/dotfiles/stylerc/stylerc"
 #export LD_LIBRARY_PATH=/usr/local/qgis /lib
 
 ###########################################################################
