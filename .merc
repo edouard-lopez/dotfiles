@@ -494,13 +494,13 @@ worldtime() {
 }
 
 today() {
-  echo "$(u2l "$(date '+%Y-%b-%d')")"
+  u2l "$(date '+%Y-%b-%d')"
 }
 today-num() {
-  echo "$(u2l "$(date '+%Y-%m-%d')")"
+  u2l "$(date '+%Y-%m-%d')"
 }
 now() {
-  echo "$(u2l "$(date '+%Y-%b-%d-%H:%M')")"
+  u2l "$(date '+%Y-%b-%d-%H:%M')"
 }
 
 
