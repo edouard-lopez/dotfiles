@@ -369,7 +369,8 @@ function ccv() {
 #               git push all
 # @return    void
 function git-add-push-all() {
-    while read -r name url method; do
+    # Fields are: 'name', 'url' and 'method'
+    while read -r _ url _; do
       git config --add remote.all.url "$url"
     done < <(git remote -v | awk '!/^all/ && /push/')
 }
