@@ -7,7 +7,7 @@ export TERM=screen-256color
 alias konsole="TERMINAL_CONTEXT='konsole' konsole"
 
 # https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
-if which tmux 2>&1 >/dev/null; then
+if type tmux &> /dev/null; then
     #if not inside a tmux session, and if no session is started, start a new session
     [[ $HOST == "laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]] && (tmux -2 attach || tmux -2 new-session)
 fi
@@ -99,7 +99,7 @@ function e() {
   fi
 }
 
-unalias md
+if type md &> /dev/null; then unalias md &> /dev/null; fi
 # @description  A quicker Mkdir
 # @param    $1|directory  directory create and switch to
 # @return    void
