@@ -54,3 +54,5 @@
 	cmd = /mnt/data/apps/gitguidifftool/git_gui_difftool.py $FILENAME
 	noconsole = yes
 	needsfile = yes
+[guitool "Meld"]
+	cmd = meld
