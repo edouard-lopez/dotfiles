@@ -20,9 +20,9 @@ fi
 if [[ $BASH = *bash ]]; then
     shopt -s dotglob
     shopt -s dirspell
-    alias refresh=". $HOME/.bashrc"
+	function refresh() { source $HOME/.bashrc; }
 elif [[ $ZSH_NAME = zsh ]]; then
-    alias refresh=". $HOME/.zshrc"
+	function refresh() { source $HOME/.zshrc; }
 else
     echo -n "" # shell
 fi
