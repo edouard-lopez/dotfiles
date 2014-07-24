@@ -84,7 +84,7 @@ function alert() {
 
 export EDITOR=vim
 export VISUAL=vim
-export BROWSER='$HOME/bin/firefox' # Default web browser
+export BROWSER="$HOME/bin/firefox" # Default web browser
 
 # @description Open given file with adequate rights (sudo/user)
 # @param    $@|$f  file(s) name
@@ -106,7 +106,7 @@ unalias md
 # @author:   Shrayas Rajagopal
 # @see: https://coderwall.com/p/p1sd5a
 function md() {
-  mkdir $1 && cd $1
+  mkdir "$1" && cd "$1"
 }
 
 
@@ -115,7 +115,7 @@ alias df='df -h'            # human-readable sizes
 alias free='free -m'                      # show sizes in MB
 
 alias decrypt="gpg --decrypt "
-GPG_TTY=`tty`
+GPG_TTY="$(tty)"
 export GPG_TTY
 
 
@@ -152,7 +152,7 @@ formatXML() {
   if [[ -e "$1" ]]
   then
     xmllint --format "$1" --output "$1" --nsclean --nonet # --encode UTF-8
-    printf "Conversion de %s\n" $1
+    printf "Conversion de %s\n" "$1"
   else
     printf "[!] File Not found: %s.\n Aborting..." "$1"
   fi
@@ -212,7 +212,7 @@ alias gra="git-add-remote "
 # @param    $2|remoteBranch  remote branch name (default: manu)
 # @return    void
 function git-add-remote() {
-  project="$(basename $(pwd))"
+  project="$(basename "$(pwd)")"
   remoteUrl="${1:-ssh://git@git.edouard-lopez.com:822/root/$project.git}"
   remoteBranch="${2:-manu}"
   currentBranch="$(git rev-parse --abbrev-ref HEAD)"
@@ -244,7 +244,7 @@ function git-new() {
 }
 
 
-alias pdf2djvu-ocr=$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh
+alias pdf2djvu-ocr="$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh"
 alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1"
 
 
@@ -297,10 +297,10 @@ function translate() {
     sourceLang="${2:-en}"
     targetLang="${3:-fr-FR}"
     apiQueryString="$(printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")"
-    url="'http://translate.google.com/translate_a/t?$apiQueryString'"
-    raw="$(curl -A "Mozilla/5.0" $url)"
+    url="\'http://translate.google.com/translate_a/t?$apiQueryString\'"
+    raw="$(curl -A "Mozilla\/5.0" $url)"
 
-    echo $raw
+    echo "$raw"
 }
 
 
@@ -313,7 +313,7 @@ function appDiskUsage() {
         | sort -k 2 -n \
         | grep -v deinstall \
         | awk '{printf "%.1f MB \t %s\n", $2/(1024), $1}' \
-        | tail -n $size
+        | tail -n "$size"
 }
 
 nrc="$HOME/.nrc"
@@ -486,10 +486,10 @@ function md5check() {
 # @return string
 worldtime() {
   places=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
-  for tz in ${places[@]};
+  for tz in "${places[@]}";
   do
     time=$(TZ="$tz" date '+%H:%M (%b-%d)')
-    printf "%s: %s\n" "${tz##*/}" $time
+    printf "%s: %s\n" "${tz##*/}" "$time"
   done
 }
 
@@ -505,7 +505,7 @@ now() {
 
 
 # Development Firefox
-alias cfx="cfx -p $HOME/.mozilla/firefox/esie98ly.dev/ "
+alias cfx='cfx -p $HOME/.mozilla/firefox/esie98ly.dev/ '
 
 
 # if [[ ! $TERM =~ screen ]]; then
