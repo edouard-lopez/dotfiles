@@ -1,3 +1,5 @@
+#!/usr/bin/env zsh
+
 # Path to your oh-my-zsh configuration.
 ZSH=$HOME/.oh-my-zsh
 export HISTSIZE=100000
@@ -35,10 +37,10 @@ ZSH_THEME="ed8"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=( 
-         bower command-not-found django history jump gpg-agent git git-extras 
-         grunt npm nvm pip python rvm ssh-agent yeoman history-substring-search 
-         virtualenvwrapper 
+plugins=(
+         bower command-not-found django history jump gpg-agent git git-extras
+         grunt npm pip python rvm ssh-agent yeoman history-substring-search
+         virtualenvwrapper
         )
 
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games
@@ -73,6 +75,21 @@ PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
 # see http://stackoverflow.com/a/8664090/802365
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads rvm
 alias rake="noglob rake"
+
+
+# start a VM on manu's server
+qemu-ed() {
+  # variables
+  myVM="/mnt/data/ISO/vm-ubuntu-12.04.2-server-amd64"
+  myISO="/mnt/data/ISO/ubuntu-12.04.2-server-amd64.iso"
+  # lancement, use
+  # Bash: use nohup <cmd>
+  # Bash: <cmd> &
+  # Bash/Zsh (global): setopt nohup
+  # Zsh: <cmd> &!
+  # nohup qemu-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
+  SHELL=/bin/zsh qemu-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
+}
 
 # EOF
 
