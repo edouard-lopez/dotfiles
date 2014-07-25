@@ -56,3 +56,5 @@
 	needsfile = yes
 [guitool "Meld"]
 	cmd = meld
+[push]
+	default = matching
