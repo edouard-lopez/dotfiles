@@ -48,8 +48,6 @@
 	tool = meld
 [gui]
 	diffcontext = 4
-	recentrepo = /home/ed8/Probe
-	recentrepo = /mnt/data/projects/website-probe
 [guitool "meld"]
 	cmd = /mnt/data/apps/gitguidifftool/git_gui_difftool.py $FILENAME
 	noconsole = yes
