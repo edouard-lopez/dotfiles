@@ -98,6 +98,8 @@ function e() {
 		sudo -e -- "$f"
 	fi
 }
+# We just want to view content with pager (default: less)
+alias v=$PAGER
 
 if type md &> /dev/null; then unalias md &> /dev/null; fi
 # A quicker Mkdir
@@ -319,10 +321,6 @@ fi
 # Serveur deployment
 #alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
 alias irc='mosh --ssh="ssh -p 822" ed8@vm-ed -- tmux attach -t irc '
-alias ssh:vm@vm-u-srv="ssh vm@vm-ubuntu"
-#alias ssh:ed8@vm-manu="ssh ed8@vm-ed -p 822 "
-alias ssh:ed8@vm-manu="mosh --ssh='ssh -p 822' ed8@vm-ed"
-alias ssh:ed@manu="ssh ed@manu"
 
 # Display commit convention used by angularJS
 # @return    string
