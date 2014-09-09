@@ -48,10 +48,13 @@
 	tool = meld
 [gui]
 	diffcontext = 4
-[guitool "meld"]
-	cmd = /mnt/data/apps/gitguidifftool/git_gui_difftool.py $FILENAME
-	noconsole = yes
-	needsfile = yes
+	recentrepo = /mnt/data/projects/website-probe
+
+[pager]
+    log = diff-highlight | less
+    show = diff-highlight | less
+    diff = diff-highlight | less
+[url "https://"]
 [guitool "Meld"]
 	cmd = meld
 [push]
