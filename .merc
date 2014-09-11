@@ -391,7 +391,7 @@ alias back='cd -'
 # @return: stdout
 rsync2external-disk() {
 	crontab -l | grep 'rsync' | sed 's!@daily !!' | while read -r cmd; do bash -c "$cmd"; done
-}; alias backup2disk
+}; alias backup2disk=rsync2external
 
 # Change case from lower case to upper case
 # @param     $@  String to upper
