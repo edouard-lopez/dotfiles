@@ -159,13 +159,6 @@ map <silent> <C-S-Up> :LargerFont<CR>
 map <silent> <C-S-Down> :SmallerFont<CR>
 
 
-if has('vim_starting')
-   set nocompatible               " Be iMproved
-
-   " Required:
-   set runtimepath+=~/.vim/bundle/neobundle.vim/
- endif
-
 call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
