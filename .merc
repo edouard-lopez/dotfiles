@@ -115,6 +115,7 @@ function md() {
 alias sudo='sudo '
 alias df='df -h'            # human-readable sizes
 alias free='free -m'                      # show sizes in MB
+alias ping='ping -c 2 '
 
 alias decrypt="gpg --decrypt "
 GPG_TTY="$(tty)"
