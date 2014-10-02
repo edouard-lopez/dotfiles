@@ -87,7 +87,10 @@ export VISUAL=vim
 export BROWSER="$HOME/bin/firefox" # Default web browser
 
 # re-run previous command as sudo
-fuck='sudo $(history -p \!\!)' 
+fuck='sudo $(history -p \!\!)'
+alias pls='fuck'
+alias please='fuck'
+
 # Open given file with adequate rights (sudo/user)
 # @param    $@|$f  file(s) name
 # @return    void
