@@ -40,6 +40,7 @@ ZSH_THEME="ed8"
 plugins=(
          bower command-not-found django history jump gpg-agent git git-extras
          grunt npm pip python rvm ssh-agent yeoman history-substring-search
+         zsh-syntax-highlighting 
          virtualenvwrapper
         )
 
