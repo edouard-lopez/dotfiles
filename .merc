@@ -20,9 +20,9 @@ fi
 if [[ $BASH = *bash ]]; then
 	shopt -s dotglob
 	shopt -s dirspell
-	function refresh() { source $HOME/.bashrc; }
+	function refresh() { source "$HOME"/.bashrc; }
 elif [[ $ZSH_NAME = zsh ]]; then
-	function refresh() { source $HOME/.zshrc; }
+	function refresh() { source "$HOME"/.zshrc; }
 else
 	echo -n "" # shell
 fi
@@ -101,7 +101,7 @@ function e() {
 	fi
 }
 # We just want to view content with pager (default: less)
-alias v=$PAGER
+alias v='$PAGER'
 
 if type md &> /dev/null; then unalias md &> /dev/null; fi
 # A quicker Mkdir
@@ -117,6 +117,7 @@ function md() {
 alias sudo='sudo '
 alias df='df -h'            # human-readable sizes
 alias free='free -m'                      # show sizes in MB
+alias ping='ping -c 2 '
 
 alias decrypt="gpg --decrypt "
 GPG_TTY="$(tty)"
@@ -243,7 +244,7 @@ function git-new() {
 }
 
 
-  alias pdf2djvu-ocr="$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh"
+  alias pdf2djvu-ocr='$HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh'
   alias myip="wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1"
 
 
@@ -296,8 +297,8 @@ function translate() {
 	sourceLang="${2:-en}"
 	targetLang="${3:-fr-FR}"
 	apiQueryString="$(printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")"
-	url="\'http://translate.google.com/translate_a/t?$apiQueryString\'"
-	raw="$(curl -A "Mozilla\/5.0" $url)"
+	url="http://translate.google.com/translate_a/t?$apiQueryString"
+	raw="$(curl -A "Mozilla\/5.0" \'"$url"\')"
 
 	echo "$raw"
 }
