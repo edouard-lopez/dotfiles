@@ -28,6 +28,7 @@ else
 fi
 
 export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:./node_modules/.bin/:$PATH
+export CDPATH="$CDPATH:$HOME/projects"
 export STYLERC="$HOME/projects/dotfiles/stylerc/stylerc"
 #export LD_LIBRARY_PATH=/usr/local/qgis /lib
 
