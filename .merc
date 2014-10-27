@@ -87,6 +87,11 @@ export EDITOR=vim
 export VISUAL=vim
 export BROWSER="$HOME/bin/firefox" # Default web browser
 
+# re-run previous command as sudo
+fuck='sudo $(history -p \!\!)'
+alias pls='fuck'
+alias please='fuck'
+
 # Open given file with adequate rights (sudo/user)
 # @param    $@|$f  file(s) name
 # @return    void
@@ -322,7 +327,13 @@ fi
 
 # Serveur deployment
 #alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
-alias irc='mosh --ssh="ssh -p 822" ed8@vm-ed -- tmux attach -t irc '
+functoin irc() {
+	if type mosh &> /dev/null; then
+		mosh --ssh="ssh -p 822" vm-ed -- 'tmux attach -t irc || tmux -2 new -s irc'
+	else
+		ssh -p 822 vm-ed -- 'tmux attach -t irc || tmux -2 new -s irc'
+	fi
+}
 
 # Display commit convention used by angularJS
 # @return    string
@@ -391,7 +402,7 @@ alias back='cd -'
 # @return: stdout
 rsync2external-disk() {
 	crontab -l | grep 'rsync' | sed 's!@daily !!' | while read -r cmd; do bash -c "$cmd"; done
-}; alias backup2disk
+}; alias backup2disk=rsync2external
 
 # Change case from lower case to upper case
 # @param     $@  String to upper
@@ -498,5 +509,20 @@ now() {
 
 # Development Firefox
 alias cfx='cfx -p $HOME/.mozilla/firefox/esie98ly.dev/ '
+
+
+# start a VM on manu's server
+qemu-ed() {
+  # variables
+  myVM="/mnt/data/ISO/vm-ubuntu-12.04.2-server-amd64"
+  myISO="/mnt/data/ISO/ubuntu-12.04.2-server-amd64.iso"
+  # lancement, use
+  # Bash: use nohup <cmd>
+  # Bash: <cmd> &
+  # Bash/Zsh (global): setopt nohup
+  # Zsh: <cmd> &!
+  # nohup qemu-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
+  qemu-system-x86_64 -enable-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
+}
 
 # eof
