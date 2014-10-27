@@ -47,7 +47,7 @@
 [merge]
 	tool = meld
 [gui]
-	diffcontext = 4
+	diffcontext = 2
 	recentrepo = /mnt/data/projects/website-probe
 
 [pager]
@@ -55,7 +55,5 @@
     show = diff-highlight | less
     diff = diff-highlight | less
 [url "https://"]
-[guitool "Meld"]
-	cmd = meld
 [push]
 	default = matching
