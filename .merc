@@ -49,6 +49,8 @@ octopressTagList() {
 	awk -F ':' '/^tags/ || /^categories/{print $2}' "$WD"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
 }
 alias tagList=octopressTagList
+# disable cowlay with ansible: http://docs.ansible.com/faq.html#how-do-i-disable-cowsay
+export ANSIBLE_NOCOWS=1
 
 ################################################
 #							UTILITAIRES SYSTEMES							 #
