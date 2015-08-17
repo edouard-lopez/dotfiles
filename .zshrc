@@ -38,10 +38,9 @@ ZSH_THEME="ed8"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-         bower command-not-found django history jump gpg-agent git git-extras
+         bower command-not-found django fabric history jump gpg-agent git git-extras
          grunt npm pip python rvm ssh-agent yeoman history-substring-search
          zsh-syntax-highlighting  zsh-completions
-         virtualenvwrapper
         )
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:./node_modules/.bin
 
