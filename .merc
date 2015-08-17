@@ -332,9 +332,9 @@ done
 
 # Serveur deployment
 #alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
-functoin irc() {
+function irc() {
 	if type mosh &> /dev/null; then
-		mosh --ssh="ssh -p 822" vm-ed -- 'tmux attach -t irc || tmux -2 new -s irc'
+		mosh --ssh="ssh -p 822" vm-ed -- tmux attach -t irc 
 	else
 		ssh -p 822 vm-ed -- 'tmux attach -t irc || tmux -2 new -s irc'
 	fi
