@@ -353,6 +353,12 @@ function ccv() {
 	- chore (git,ignore,maintain,submodule)\n"
 }
 
+# Return HTTP status code matching pattern
+# @return   string
+function http-status-code(){
+    GREP_COLORS="sl=01;34:ms=01;32" grep -i "$*" "$HOME"/cheatsheet.md
+}
+alias htc=http-status-code
 
 # Add existing remote branch to the remote 'all' so you can:
 #               git push all
