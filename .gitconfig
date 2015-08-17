@@ -57,4 +57,4 @@
     diff = diff-highlight | less
 [url "https://"]
 [push]
-	default = matching
+	default = simple
