@@ -322,10 +322,13 @@ function appDiskUsage() {
 	| tail -n "$size"
 }
 
-nrc="$HOME/.nrc"
-if [[ -f "$nrc" || -h "$nrc" ]]; then
-	source "$nrc" # o2n
-fi
+files=( 'n' 'akema' )  # rc files to load
+for file in "${files[@]}"; do
+	filerc="$HOME/.${file}rc"
+	if [[ -f "$filerc" || -h "$filerc" ]]; then
+		source "$filerc"
+	fi
+done
 
 # Serveur deployment
 #alias sync-weechat@manu='scp -r -P 822 "$HOME"/.weechat ed8@vm-ed:/home/ed8/'i
