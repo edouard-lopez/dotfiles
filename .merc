@@ -537,4 +537,6 @@ qemu-ed() {
   qemu-system-x86_64 -enable-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
 }
 
+export IBUS_ENABLE_SYNC_MODE=1  # IBUS+Pycharm bug (see https://youtrack.jetbrains.com/issue/IDEA-78860)
+
 # eof
