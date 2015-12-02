@@ -58,3 +58,8 @@
 [url "https://"]
 [push]
 	default = simple
+
+[guitool "Add to .gitignore"]
+	cmd = echo \"\n$FILENAME\" >> .gitignore & git add .gitignore
+	needsfile = yes
+	confirm = yes
