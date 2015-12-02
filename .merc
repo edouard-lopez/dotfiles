@@ -356,7 +356,7 @@ function ccv() {
 # Return HTTP status code matching pattern
 # @return   string
 function http-status-code(){
-    GREP_COLORS="sl=01;34:ms=01;32" grep -i "$*" "$HOME"/cheatsheet.md
+    GREP_COLORS="sl=01;34:ms=01;32" grep -i "$*" "$HOME"/.http-cheatsheet.md
 }
 alias htc=http-status-code
 
