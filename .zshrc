@@ -38,9 +38,17 @@ ZSH_THEME="pure"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
-         bower command-not-found django fabric history jump gpg-agent git git-extras
-         grunt npm pip python rvm ssh-agent yeoman history-substring-search
+        autojump
+         # bower 
+         command-not-found django fabric 
+         history 
+         # jump 
+         git git-extras
+         npm pip python 
+         ssh-agent history-substring-search
          zsh-syntax-highlighting  zsh-completions
+         k
+         # yeoman
         )
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:./node_modules/.bin
 
@@ -63,7 +71,7 @@ zstyle ':completion:*' use-cache yes
 
 # ZSH aliases
 alias -g gpi="| grep -i "
-
+alias ll="k -h "
 
 source "$HOME/.merc"
 #source $HOME/.bashrc
