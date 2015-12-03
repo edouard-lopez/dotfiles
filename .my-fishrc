@@ -1,6 +1,19 @@
 #!/usr/bin/env fish
 # Config for FISH
 
+# disable cowlay with ansible: http://docs.ansible.com/faq.html#how-do-i-disable-cowsay
+set -gx ANSIBLE_NOCOWS 1
+set -gx BROWSER firefox  # Default web browser
+set -gx CDPATH $CDPATH $HOME/projects
+set -gx EDITOR vim
+set -gx GPG_TTY (tty)
+set -gx JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
+set -gx PATH $HOME/bin/ $HOME/apps/ /usr/local/bin/ ./node_modules/.bin/ $PATH
+set -gx IBUS_ENABLE_SYNC_MODE 1  # IBUS+Pycharm bug (see https://youtrack.jetbrains.com/issue/IDEA-78860)
+set -gx TERM screen-256color  # support 256 color palette
+set -gx VISUAL vim
+
+
 function configure_shell
     if  test  -n $FISH_VERSION
         function refresh
