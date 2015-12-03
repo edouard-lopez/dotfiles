@@ -242,6 +242,15 @@ function configure_octopress() {
 }
 
 function configure_server_utilities() {
+    # SSH alias
+    function ssh() {
+           if type mosh &> /dev/null; then
+                   mosh "$@"
+           else
+                   ssh "$@"
+           fi
+    }
+
     # start a VM on manu's server
     qemu-ed() {
     # variables
