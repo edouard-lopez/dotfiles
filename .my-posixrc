@@ -399,6 +399,9 @@ function configure_utilities() {
         GREP_COLORS="sl=01;34:ms=01;32" grep -i "$*" "$HOME"/.http-cheatsheet.md
     }
 
+    # image viewer
+    function i() { feh "$@" }
+
     # Filter given pass by given string
     # @param    $1|path  path to list
     # @param    $2|filter  string used to filter directory listing
