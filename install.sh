@@ -3,34 +3,58 @@
 #	link all config files to the user $HOME directory.
 #
 # USAGE
-#	./home/install.sh
+#	bash ./dotfiles/install.sh
 #
 
-scriptDir="$(dirname "$0")"
+function backup() {
+    targetfile="$1"
+    
+    if [[ -f "$targetfile" || -h "$targetfile" ]]; then
+        # backup existing file
+        printf "\tBackup to: %s\n" "$targetfile".bak
+        mv "$targetfile"{,.bak}
+    fi
+}
 
-#printf "repo: %s; cur: %s" "$repoDir" "$curDir"
+function install_fish() {
+    sourcefile="$PWD/$1"
+    targetfile="$HOME/.config/fish/config.fish"
+    echo "$PWD" "$sourcefile" "$targetfile"
+    
+    rm "$targetfile"
+    ln -nfs "$sourcefile" "$targetfile"
+}
 
-for f in "$scriptDir"/{*,.*}; do 
-	fn="$(basename "$f")"
-  	[[ "$fn" == *.git ]] && continue
-	[[ "$fn" == install.sh || "$fn" == *.swp ]] && continue # ignore install.sh and *.swp
-  	[[ "$fn" == "." || "$fn" == ".." ]] && continue
-
-	nf="$HOME/$fn"
-	printf "%s\n" "$f"
-	if [[ -f "$nf" || -h "$nf" ]]; then
-		# backup existing file
-		printf "\tBackup to: %s\n" "$nf".bak
-		mv "$nf"{,.bak}
-	fi
-
-	if [[ -f "$f" || -h "$f" ]]
-	then
-		# symlink to file
-		printf "\tLinking to: %s\n" "$nf"
-		ln -s "$f" "$nf"
+function update() {
+    sourcefile="$1"
+    targetfile="$2"
+    
+	if [[ -f "$sourcefile" || -h "$sourcefile" ]]; then
+        # symlink to file
+        printf "\tLinking to: %s\n" "$targetfile"
+        ln -nfs "$sourcefile" "$targetfile"
 	else
-		printf "\tOverriding to: %s\n" "$nf"
-		cp -R "$f" "$nf"
+        printf "\tOverriding to: %s\n" "$targetfile"
+        cp -R "$sourcefile" "$targetfile"
 	fi
-done
+}
+
+function install() {
+    scriptDir="$1"
+    
+    for sourcefile in "$scriptDir"/{*,.*}; do 
+        filename="$(basename "$sourcefile")"
+        [[ "$filename" == *.git ]] && continue
+        [[ "$filename" == install.sh || "$filename" == *.swp ]] && continue # ignore install.sh and *.swp
+        [[ "$filename" == "." || "$filename" == ".." ]] && continue
+        [[ "$filename" == "config.fish" ]] && install_fish "$sourcefile"
+
+        targetfile="$HOME/$filename"
+        printf "%s\n" "$sourcefile"
+        backup "$targetfile"
+        update "$sourcefile" "$targetfile"
+    done
+}
+
+scriptDir="$(dirname "$0")"
+install "$scriptDir"
