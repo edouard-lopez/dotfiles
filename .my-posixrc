@@ -1,0 +1,470 @@
+#!/usr/bin/env bash
+# Config for POSIX-compatible
+
+# so we can distinguish between Yakuake and Konsole (no tmux)
+alias konsole="TERMINAL_CONTEXT='konsole' konsole"
+
+stylerc="$HOME/stylerc"
+if [[ -f "$stylerc" || -h "$stylerc" ]]; then
+	source "$stylerc" # get some style
+fi
+
+# disable cowlay with ansible: http://docs.ansible.com/faq.html#how-do-i-disable-cowsay
+export ANSIBLE_NOCOWS=1
+export BROWSER="firefox"  # Default web browser
+export CDPATH="$CDPATH:$HOME/projects"
+export EDITOR=vim
+GPG_TTY="$(tty)"
+export GPG_TTY
+JAVA_HOME=/usr/lib/jvm/java-7-openjdk-amd64
+export JAVA_HOME
+export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:./node_modules/.bin/:$PATH
+export IBUS_ENABLE_SYNC_MODE=1  # IBUS+Pycharm bug (see https://youtrack.jetbrains.com/issue/IDEA-78860)
+export TERM=screen-256color  # support 256 color palette
+export VISUAL=vim
+
+
+function configure_addition_config() {
+    files=('n' 'akema' )  # rc files to load
+    for file in "${files[@]}"; do
+        filerc="$HOME/.${file}rc"
+        if [[ -f "$filerc" || -h "$filerc" ]]; then
+            source "$filerc"
+        fi
+    done
+}
+
+change-terminal-color-mode() {
+    arg="${1:-colors=Tomorrow}"
+    if [[ -z "$TMUX" ]] && type konsoleprofile &> /dev/null; then
+        konsoleprofile "$arg"
+    else
+        printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
+    fi
+}
+
+function configure_backup_utilities() {
+    # Backup data to external disk using cron tab (added by 'restore')
+    # @param: void
+    # @return: stdout
+    rsync2external-disk() {
+        crontab -l | grep 'rsync' | sed 's!@daily !!' | while read -r cmd; do bash -c "$cmd"; done
+    }
+}
+
+function configure_date_utilities() {
+    # Display date H:M (mon-day) for a list of predefined timezone
+    # list of timezone available in: /usr/share/zoneinfo/
+    #
+    # @return string
+    worldtime() {
+        places=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
+        for tz in "${places[@]}";
+        do
+            time=$(TZ="$tz" date '+%H:%M (%b-%d)')
+            printf "%s: %s\n" "${tz##*/}" "$time"
+        done
+    }
+
+    today() {
+        to-lower "$(date '+%Y-%b-%d')"
+    }
+    today-num() {
+        to-lower "$(date '+%Y-%m-%d')"
+    }
+    now() {
+        to-lower "$(date '+%Y-%b-%d-%H:%M')"
+    }
+}
+
+# GIT
+function configure_git() {
+    function ga() { git add  "$@" }
+    function gb() { git branch  "$@" }
+    function gc() { git commit "$@" }
+    function go() { git checkout  "$@" }
+    function gd() { git diff --color-words  "$@" }
+    function gg() { git gui & }
+    function gpl() { git pull "$@" }
+    function gpu() { git push "$@" }
+    function gs() { git status  "$@" }
+    function gcl() { git clone  "$@" }
+    function gu() { git rm --cached  "$@" }
+    # unstage files to commit
+    function grh() { git reset HEAD  "$@" }
+    function push() { git push  "$@" }
+    function push-all() { push all "$@" }
+
+    function gar() { git remote -vv "$@" }
+    function gra() { git-add-remote  "$@" }
+    # Add and attach a remote branch to current one
+    # @param    $1|remoteUrl     remote Url adress
+    # @param    $2|remoteBranch  remote branch name (default: manu)
+    # @return    void
+    function git-add-remote() {
+        project="$(basename "$(pwd)")"
+        remoteUrl="${1:-ssh://git@git.edouard-lopez.com:822/root/$project.git}"
+        remoteBranch="${2:-me}"
+        currentBranch="$(git rev-parse --abbrev-ref HEAD)"
+        git remote add "$remoteBranch" "$remoteUrl"
+        git push -u "$remoteBranch" "$currentBranch"
+    }
+
+    # GITHUB
+    # Create a repo on github and connect it to local repo
+    # @param    $1|$project  project name
+    # @param    $2|server  remote server
+    # @param    $3|$user  remote user account
+    # @return    void
+    function git-new() {
+        local project="${1:-git-$RANDOM}"
+        local server="${2:-github.com}"
+        local user="${3:-edouard-lopez}"
+
+        # create directory if missing
+        [[ "$(basename "$(pwd)")" != "$project" ]] && mkdir "$project"
+
+        # connnect to remote repo
+        git remote add origin https://"$server"/"$user"/"$project".git
+
+        # pull README and stuff like that
+        git pull origin master
+        # push local files
+        git push origin master
+    }
+    
+    # Add existing remote branch to the remote 'all' so you can:
+    #  git push all
+    # @return    void
+    function git-add-to-push-all() {
+        # Fields are: 'name', 'url' and 'method'
+        while read -r name url method; do
+            git config --add remote.all.url "$url"
+        done < <(git remote -v | awk '!/^all/ && /push/')
+    }
+
+    # Pull and track all remote branches
+    function git-pull-all() {
+        for branch in "$(git branch -a | grep remotes | grep -v HEAD | grep -v master)"; do
+            git branch --track "${branch#remotes/origin/}" "$branch"
+        done
+    }
+
+}
+
+function configure_monitoring_utilities() {
+    # List n-application using most space
+    # @param    $1|size  number of biggest application to list
+    # @return    void
+    function du-app() {
+        size="${1:-10}"
+        dpkg-query --show --showformat='${Package;-50}\t${Installed-Size}\n' \
+        | sort -k 2 -n \
+        | grep -v deinstall \
+        | awk '{printf "%.1f MB \t %s\n", $2/(1024), $1}' \
+        | tail -n "$size"
+    }
+    
+    # human-readable sizes
+    function df() { df -h "$@" }
+ 
+     # show sizes in MB
+    function free() { free -m }
+    
+    function psgrep() {
+        ps aux | { \
+            read -r; # reads the first line of input \
+            printf '%s\n' "$REPLY"; # print the first line of input (=the header) \
+            grep "$@"; # then grep gets to grep the remaining lines. \
+        }
+    }
+}
+
+function configure_network_utilities() {
+    function irc() {
+        if type mosh &> /dev/null; then
+            mosh --ssh="ssh -p 822" vm-ed -- tmux attach -t irc 
+        else
+            ssh -p 822 vm-ed -- 'tmux attach -t irc || tmux -2 new -s irc'
+        fi
+    }
+
+    function myip() { wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1 "$@" }
+
+    function ping() { ping -c 10 "$@" }    
+}
+# APT / APTITUDE
+function configure_package_manager() {
+    # DEBIAN/UBUNTU/LINUX MINT
+    function pkg-search() { aptitude search  "$@" }
+    function pkg-install() { sudo apt-get install  "$@" }
+    function pkg-remove() { sudo apt-get remove  "$@" }
+    function pkg-clean() { sudo apt-get clean }
+    function pkg-autoclean() { sudo apt-get autoclean }
+    function pkg-update() { sudo apt-get update  "$@" }
+    function pkg-upgrade() { sudo apt-get upgrade  "$@" }
+    function pkg-upgrade-all() { sudo apt-get dist-upgrade  "$@" }
+    function pkg-show() { aptitude show  "$@" }
+    function pkg-sync() { sudo apt-get update && sudo apt-get upgrade -y }
+    function pkg-sync-all() { sudo apt-get update && sudo apt-get dist-upgrade  }
+    function pkg-autoremove() { sudo apt-get autoremove  }
+    function pkg-clean-all() { sudo apt-get clean; sudo apt-get autoclean; sudo apt-get autoremove  }
+}
+
+# PAGER / LESS
+configure_pager() {
+    # Colored man pages: http://linuxtidbits.wordpress.com/2009/03/23/less-colors-for-man-pages/
+    # Less Colors for Man Pages
+    export LESS_TERMCAP_mb=$'\E[01;31m'       # begin blinking
+    export LESS_TERMCAP_md=$'\E[01;38;5;74m'  # begin bold
+    export LESS_TERMCAP_me=$'\E[0m'           # end mode
+    export LESS_TERMCAP_se=$'\E[0m'           # end standout-mode
+    export LESS_TERMCAP_so=$'\E[38;5;016m\E[48;5;220m'    # begin standout-mode - info box
+    export LESS_TERMCAP_ue=$'\E[0m'           # end underline
+    export LESS_TERMCAP_us=$'\E[04;38;5;146m' # begin underline
+}
+
+# PYTHON
+function configure_python() {
+    export WORKON_HOME=$HOME/.env
+    venvBin=/usr/local/bin/virtualenvwrapper.sh
+    [[ -e "$venvBin" ]] && source "$venvBin"
+}
+
+# OCTOPRESS BLOG
+function configure_octopress() {
+    export OCTOPRESS_THEME='carillon'
+    octopressTagList() {
+        WD="$HOME/blog/source/_posts/"
+        awk -F ':' '/^tags/ || /^categories/{print $2}' "$WD"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
+    }
+    alias tagList=octopressTagList
+}
+
+function configure_server_utilities() {
+    # start a VM on manu's server
+    qemu-ed() {
+    # variables
+    myVM="/mnt/data/ISO/vm-ubuntu-12.04.2-server-amd64"
+    myISO="/mnt/data/ISO/ubuntu-12.04.2-server-amd64.iso"
+    # lancement, use
+    # Bash: use nohup <cmd>
+    # Bash: <cmd> &
+    # Bash/Zsh (global): setopt nohup
+    # Zsh: <cmd> &!
+    # nohup qemu-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
+    qemu-system-x86_64 -enable-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
+    }
+}
+
+function configure_shell() {
+    if [[ $BASH = *bash ]]; then
+        shopt -s dotglob
+        shopt -s dirspell
+        function refresh() { source "$HOME"/.bashrc; }
+    elif [[ $ZSH_NAME = zsh ]]; then
+        function refresh() { source "$HOME"/.zshrc; }
+    else
+        echo -n "" # shell
+    fi
+}
+
+function configure_string_utilities() {
+    # Change case from lower case to upper case
+    # @param     $@  String to upper
+    # @return    string
+    to-upper() { echo "$@" |tr '[:lower:]' '[:upper:]'; }
+    function l2u() { to-upper  "$@" }
+
+    # Change case from upper case to lower case
+    # @param     $@  String to lower
+    # @return    string
+    to-lower() { echo "$@" |tr '[:upper:]' '[:lower:]' ; }
+    function u2l() { to-lower  "$@" }
+
+    # Capitalize a string
+    # @param    $@  string to capitalize
+    # @return   String
+    capitalize() {
+        input="$(u2l "$@")"
+        for i in $input; do
+            cap=$(echo -n "${i:0:1}" | tr "[:lower:]" "[:upper:]")
+            echo -n "${cap}${i:1} "
+        done
+        echo
+    }
+    function cap() { capitalize  "$@" }
+
+    replaceText() {
+        text="$1"
+    sep="${2:- }" # space
+    newsep="${3:--}"
+    [[ -z "$text" ]] && exit
+    echo "${text//$sep/$newsep}"
+    }
+
+    dashify() {
+        replaceText "$1" ' ' '-'
+    }
+
+    # Description: prepend text to a file
+    # param, $1 : text to prepend
+    # param, $2 : file to edit
+    prependText() {
+    # how to use with grep :
+    # grep -LZ charset ~/pleade-*/**/theme/css/**/*.css | while IFS= read -rd '' file; do printf "%s\n" "$file"; prependText '@charset "UTF-8";' "$file"; done
+    printf '%s\n' H 1i "$1" . w | ed -s "$2"
+    }
+
+    # Compare a file computed md5sum against official checksum
+    # @param    $1|file  file to checksum
+    # @param    $2|controlChecksum  official/valid checksum
+    # @return    void
+    function md5check() {
+        controlChecksum="$2"
+
+        if [[ ! -e "$1" || -z "$2" ]];
+            then
+            [[ ! -e "$1" ]] && printf "[!] File not found\n"
+            [[ -z "$2" ]] && printf "[!] Checksum is empty\n"
+            printf "Aborting…\n"
+            exit
+        fi
+
+        fileChecksum="$(md5sum "$1" | cut -d ' ' -f 1 )"
+
+        if [[ "$fileChecksum" = "$controlChecksum" ]];
+            then
+            printf "[i] File is valid.\n"
+        else
+            printf "[!] Checksum does NOT match!\n"
+        fi
+    }
+}
+
+# ALIASES / FUNCITONS
+function configure_utilities() {
+    function up() { cd .. "$@" }
+    function back() { cd - "$@" }
+
+    # Konsole color changing
+    day-mode() { change-terminal-color-mode "colors=Tomorrow" }
+    night-mode() { change-terminal-color-mode "colors=TomorrowNightBright" }
+
+    function decryp() { gpg --decrypt "$@" }
+
+    # Open given file with adequate rights (sudo/user)
+    # @param    $@|$file  file(s) name
+    # @return    void
+    function e() {
+        file="$1"
+
+        if [[ -w "$file" ]]; then
+            "$EDITOR" -- "$file"
+        elif [[ ! -a "$file" ]]; then
+            touch "$file"
+            "$EDITOR" -- "$file"
+        else
+            sudo -e -- "$file"
+        fi
+    }
+
+    # ex - archive extractor
+    # usage: ex <file>
+    function ex () {
+        if [[ -f "$1" ]] ; then
+            case $1 in
+                *.tar.bz2)   tar xjf "$1"   ;;
+                *.tar.gz)    tar xzf "$1"   ;;
+                *.bz2)       bunzip2 "$1"   ;;
+                *.rar)       unrar x "$1"   ;;
+                *.gz)        gunzip "$1"    ;;
+                *.tar)       tar xf "$1"    ;;
+                *.tbz2)      tar xjf "$1"   ;;
+                *.tgz)       tar xzf "$1"   ;;
+                *.zip)       unzip "$1"     ;;
+                *.Z)         uncompress "$1";;
+                *.7z)        7z x "$1"      ;;
+                *.tar.xz)    tar xJf "$1"   ;;
+                *)           echo "'$1' cannot be extracted via ex()" ;;
+            esac
+        else
+            echo "'$1' is not a valid file"
+        fi
+    }
+
+    # Return HTTP status code matching pattern
+    # @return   string
+    function htc(){
+        GREP_COLORS="sl=01;34:ms=01;32" grep -i "$*" "$HOME"/.http-cheatsheet.md
+    }
+
+    # Filter given pass by given string
+    # @param    $1|path  path to list
+    # @param    $2|filter  string used to filter directory listing
+    # @return    string
+    function ls-grep() {
+        dir="$1"
+        filter="$2"
+        ls -lah "$dir/$filter"
+    }
+
+    if type md &> /dev/null; then unalias md &> /dev/null; fi
+    # A quicker Mkdir
+    # @param    $1|directory  directory create and switch to
+    # @return    void
+    # @author:   Shrayas Rajagopal
+    # @see: https://coderwall.com/p/p1sd5a
+    function md() { mkdir "$1" && cd "$1" }
+    
+    function pdf2djvu-ocr() { $HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh "$@" }
+
+    # Use the google API to translate text
+    # @param    $1|$text               text to translate
+    # @param    $2|$sourceLang   text to translate
+    # @param    $3|$targetLang    text to translate
+    # @reutrn    string
+    function translate() {
+        text="$1"
+        sourceLang="${2:-en}"
+        targetLang="${3:-fr-FR}"
+        apiQueryString="$(printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")"
+        url="http://translate.google.com/translate_a/t?$apiQueryString"
+        raw="$(curl -A "Mozilla\/5.0" \'"$url"\')"
+
+        echo "$raw"
+    }
+
+    function tree() { tree --charset utf-8 "$@" }
+    
+    # We just want to view content with pager (default: less)
+    function v() { $('$PAGER'  "$@") }
+}
+
+function start_tmux() {
+    # https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
+    if type tmux &> /dev/null; then
+        #if not inside a tmux session, and if no session is started, start a new session
+        if [[ $HOST == "laptop" && -z "$TMUX" && -z $TERMINAL_CONTEXT ]]; then
+            (tmux -2 attach || tmux -2 new-session)
+        fi
+    fi
+}
+
+start_tmux
+configure_backup_utilities
+configure_date_utilities
+configure_git
+configure_monitoring_utilities
+configure_network_utilities
+configure_package_manager
+configure_pager
+configure_python
+configure_octopress
+configure_server_utilities
+configure_shell
+configure_string_utilities
+configure_utilities
+configure_addition_config
+
+#EOF

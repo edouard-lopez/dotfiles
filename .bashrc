@@ -11,6 +11,4 @@ shopt -s lithist # store multiline command with '\n' instead of ';'
 #shopt -s
 complete -cf sudo #tab complete for sudo
 
-. "$HOME/.merc"
-
-PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source "$HOME/.my-posixrc"
