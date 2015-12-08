@@ -75,24 +75,24 @@ function configure_date_utilities() {
 
 # GIT
 function configure_git() {
-    function ga() { git add  "$@" }
-    function gb() { git branch  "$@" }
-    function gc() { git commit "$@" }
-    function go() { git checkout  "$@" }
-    function gd() { git diff --color-words  "$@" }
+    function ga() { git add  "$@"; }
+    function gb() { git branch  "$@"; }
+    function gc() { git commit "$@"; }
+    function go() { git checkout  "$@"; }
+    function gd() { git diff --color-words  "$@"; }
     function gg() { git gui & }
-    function gpl() { git pull "$@" }
-    function gpu() { git push "$@" }
-    function gs() { git status  "$@" }
-    function gcl() { git clone  "$@" }
-    function gu() { git rm --cached  "$@" }
+    function gpl() { git pull "$@"; }
+    function gpu() { git push "$@"; }
+    function gs() { git status  "$@"; }
+    function gcl() { git clone  "$@"; }
+    function gu() { git rm --cached  "$@"; }
     # unstage files to commit
-    function grh() { git reset HEAD  "$@" }
-    function push() { git push  "$@" }
-    function push-all() { push all "$@" }
+    function grh() { git reset HEAD  "$@"; }
+    function push() { git push  "$@"; }
+    function push-all() { push all "$@"; }
 
-    function gar() { git remote -vv "$@" }
-    function gra() { git-add-remote  "$@" }
+    function gar() { git remote -vv "$@"; }
+    function gra() { git-add-remote  "$@"; }
     # Add and attach a remote branch to current one
     # @param    $1|remoteUrl     remote Url adress
     # @param    $2|remoteBranch  remote branch name (default: manu)
@@ -162,10 +162,10 @@ function configure_monitoring_utilities() {
     }
 
     # human-readable sizes
-    function df() { command df -h "$@" }
+    function df() { command df -h "$@"; }
 
      # show sizes in MB
-    function free() { command free -m }
+    function free() { command free -m; }
 
     function psgrep() {
         ps aux | { \
@@ -185,26 +185,26 @@ function configure_network_utilities() {
         fi
     }
 
-    function myip() { wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1 "$@" }
+    function myip() { wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1 "$@"; }
 
-    function ping() { command ping -c 10 "$@" }
+    function ping() { command ping -c 10 "$@"; }
 }
 # APT / APTITUDE
 function configure_package_manager() {
     # DEBIAN/UBUNTU/LINUX MINT
-    function pkg-search() { aptitude search  "$@" }
-    function pkg-install() { sudo apt-get install  "$@" }
-    function pkg-remove() { sudo apt-get remove  "$@" }
-    function pkg-clean() { sudo apt-get clean }
-    function pkg-autoclean() { sudo apt-get autoclean }
-    function pkg-update() { sudo apt-get update  "$@" }
-    function pkg-upgrade() { sudo apt-get upgrade  "$@" }
-    function pkg-upgrade-all() { sudo apt-get dist-upgrade  "$@" }
-    function pkg-show() { aptitude show  "$@" }
-    function pkg-sync() { sudo apt-get update && sudo apt-get upgrade -y }
-    function pkg-sync-all() { sudo apt-get update && sudo apt-get dist-upgrade  }
-    function pkg-autoremove() { sudo apt-get autoremove  }
-    function pkg-clean-all() { sudo apt-get clean; sudo apt-get autoclean; sudo apt-get autoremove  }
+    function pkg-search() { aptitude search  "$@"; }
+    function pkg-install() { sudo apt-get install  "$@"; }
+    function pkg-remove() { sudo apt-get remove  "$@"; }
+    function pkg-clean() { sudo apt-get clean; }
+    function pkg-autoclean() { sudo apt-get autoclean; }
+    function pkg-update() { sudo apt-get update  "$@"; }
+    function pkg-upgrade() { sudo apt-get upgrade  "$@"; }
+    function pkg-upgrade-all() { sudo apt-get dist-upgrade  "$@"; }
+    function pkg-show() { aptitude show  "$@"; }
+    function pkg-sync() { sudo apt-get update && sudo apt-get upgrade -y; }
+    function pkg-sync-all() { sudo apt-get update && sudo apt-get dist-upgrade; }
+    function pkg-autoremove() { sudo apt-get autoremove; }
+    function pkg-clean-all() { sudo apt-get clean; sudo apt-get autoclean; sudo apt-get autoremove; }
 }
 
 # PAGER / LESS
@@ -284,13 +284,13 @@ function configure_string_utilities() {
     # @param     $@  String to upper
     # @return    string
     function to-upper() { echo "$@" |tr '[:lower:]' '[:upper:]'; }
-    function l2u() { to-upper  "$@" }
+    function l2u() { to-upper  "$@"; }
 
     # Change case from upper case to lower case
     # @param     $@  String to lower
     # @return    string
     function to-lower() { echo "$@" |tr '[:upper:]' '[:lower:]' ; }
-    function u2l() { to-lower  "$@" }
+    function u2l() { to-lower  "$@"; }
 
     # Capitalize a string
     # @param    $@  string to capitalize
@@ -303,7 +303,7 @@ function configure_string_utilities() {
         done
         echo
     }
-    function cap() { capitalize  "$@" }
+    function cap() { capitalize  "$@"; }
 
     function replaceText() {
         text="$1"
@@ -354,14 +354,14 @@ function configure_string_utilities() {
 
 # ALIASES / FUNCITONS
 function configure_utilities() {
-    function up() { cd .. "$@" }
-    function back() { cd - "$@" }
+    function up() { cd .. "$@"; }
+    function back() { cd - "$@"; }
 
     # Konsole color changing
-    function day-mode() { change-terminal-color-mode "colors=Tomorrow" }
-    function night-mode() { change-terminal-color-mode "colors=TomorrowNightBright" }
+    function day-mode() { change-terminal-color-mode "colors=Tomorrow"; }
+    function night-mode() { change-terminal-color-mode "colors=TomorrowNightBright"; }
 
-    function decrypt() { gpg --decrypt "$@" }
+    function decrypt() { gpg --decrypt "$@"; }
 
     # Open given file with adequate rights (sudo/user)
     # @param    $@|$file  file(s) name
@@ -410,7 +410,7 @@ function configure_utilities() {
     }
 
     # image viewer
-    function i() { feh "$@" }
+    function i() { feh "$@"; }
 
     # Filter given pass by given string
     # @param    $1|path  path to list
@@ -428,9 +428,9 @@ function configure_utilities() {
     # @return    void
     # @author:   Shrayas Rajagopal
     # @see: https://coderwall.com/p/p1sd5a
-    function md() { mkdir "$1" && cd "$1" }
+    function md() { mkdir "$1" && cd "$1"; }
 
-    function pdf2djvu-ocr() { $HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh "$@" }
+    function pdf2djvu-ocr() { $HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh "$@"; }
 
     # Use the google API to translate text
     # @param    $1|$text               text to translate
@@ -448,7 +448,7 @@ function configure_utilities() {
         echo "$raw"
     }
 
-    function tree() { command tree --charset utf-8 "$@" }
+    function tree() { command tree --charset utf-8 "$@"; }
 
     # We just want to view content with pager (default: less)
     function v() { $('$PAGER'  "$@") }
