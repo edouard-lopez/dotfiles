@@ -31,7 +31,7 @@ function configure_addition_config() {
     done
 }
 
-change-terminal-color-mode() {
+function change-terminal-color-mode() {
     arg="${1:-colors=Tomorrow}"
     if [[ -z "$TMUX" ]] && type konsoleprofile &> /dev/null; then
         konsoleprofile "$arg"
