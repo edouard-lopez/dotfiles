@@ -166,11 +166,11 @@ function configure_monitoring_utilities() {
     }
     
     # human-readable sizes
-    function df() { df -h "$@" }
- 
+    function df() { command df -h "$@" }
+
      # show sizes in MB
-    function free() { free -m }
-    
+    function free() { command free -m }
+
     function psgrep() {
         ps aux | { \
             read -r; # reads the first line of input \
@@ -191,7 +191,7 @@ function configure_network_utilities() {
 
     function myip() { wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1 "$@" }
 
-    function ping() { ping -c 10 "$@" }    
+    function ping() { command ping -c 10 "$@" }
 }
 # APT / APTITUDE
 function configure_package_manager() {
@@ -447,8 +447,8 @@ function configure_utilities() {
         echo "$raw"
     }
 
-    function tree() { tree --charset utf-8 "$@" }
-    
+    function tree() { command tree --charset utf-8 "$@" }
+
     # We just want to view content with pager (default: less)
     function v() { $('$PAGER'  "$@") }
 }
