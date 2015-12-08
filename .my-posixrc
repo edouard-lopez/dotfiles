@@ -282,19 +282,19 @@ function configure_string_utilities() {
     # Change case from lower case to upper case
     # @param     $@  String to upper
     # @return    string
-    to-upper() { echo "$@" |tr '[:lower:]' '[:upper:]'; }
+    function to-upper() { echo "$@" |tr '[:lower:]' '[:upper:]'; }
     function l2u() { to-upper  "$@" }
 
     # Change case from upper case to lower case
     # @param     $@  String to lower
     # @return    string
-    to-lower() { echo "$@" |tr '[:upper:]' '[:lower:]' ; }
+    function to-lower() { echo "$@" |tr '[:upper:]' '[:lower:]' ; }
     function u2l() { to-lower  "$@" }
 
     # Capitalize a string
     # @param    $@  string to capitalize
     # @return   String
-    capitalize() {
+    function capitalize() {
         input="$(u2l "$@")"
         for i in $input; do
             cap=$(echo -n "${i:0:1}" | tr "[:lower:]" "[:upper:]")
@@ -304,7 +304,7 @@ function configure_string_utilities() {
     }
     function cap() { capitalize  "$@" }
 
-    replaceText() {
+    function replaceText() {
         text="$1"
     sep="${2:- }" # space
     newsep="${3:--}"
@@ -312,14 +312,14 @@ function configure_string_utilities() {
     echo "${text//$sep/$newsep}"
     }
 
-    dashify() {
+    function dashify() {
         replaceText "$1" ' ' '-'
     }
 
     # Description: prepend text to a file
     # param, $1 : text to prepend
     # param, $2 : file to edit
-    prependText() {
+    function prependText() {
     # how to use with grep :
     # grep -LZ charset ~/pleade-*/**/theme/css/**/*.css | while IFS= read -rd '' file; do printf "%s\n" "$file"; prependText '@charset "UTF-8";' "$file"; done
     printf '%s\n' H 1i "$1" . w | ed -s "$2"
@@ -357,10 +357,10 @@ function configure_utilities() {
     function back() { cd - "$@" }
 
     # Konsole color changing
-    day-mode() { change-terminal-color-mode "colors=Tomorrow" }
-    night-mode() { change-terminal-color-mode "colors=TomorrowNightBright" }
+    function day-mode() { change-terminal-color-mode "colors=Tomorrow" }
+    function night-mode() { change-terminal-color-mode "colors=TomorrowNightBright" }
 
-    function decryp() { gpg --decrypt "$@" }
+    function decrypt() { gpg --decrypt "$@" }
 
     # Open given file with adequate rights (sudo/user)
     # @param    $@|$file  file(s) name
@@ -380,7 +380,7 @@ function configure_utilities() {
 
     # ex - archive extractor
     # usage: ex <file>
-    function ex () {
+    function ex() {
         if [[ -f "$1" ]] ; then
             case $1 in
                 *.tar.bz2)   tar xjf "$1"   ;;
