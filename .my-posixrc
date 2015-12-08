@@ -20,6 +20,7 @@ export IBUS_ENABLE_SYNC_MODE=1  # IBUS+Pycharm bug (see https://youtrack.jetbrai
 export TERM=screen-256color  # support 256 color palette
 export VISUAL=vim
 
+
 function configure_addition_config() {
     files=('n' 'akema' )  # rc files to load
     for file in "${files[@]}"; do
@@ -248,17 +249,34 @@ function configure_server_utilities() {
     }
 
     # start a VM on manu's server
-    qemu-ed() {
-    # variables
-    myVM="/mnt/data/ISO/vm-ubuntu-12.04.2-server-amd64"
-    myISO="/mnt/data/ISO/ubuntu-12.04.2-server-amd64.iso"
-    # lancement, use
-    # Bash: use nohup <cmd>
-    # Bash: <cmd> &
-    # Bash/Zsh (global): setopt nohup
-    # Zsh: <cmd> &!
-    # nohup qemu-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
-    qemu-system-x86_64 -enable-kvm -cpu SandyBridge -hda "$myVM" -m 1G -vnc :1 -usbdevice tablet -net nic,model=e1000 -net tap,ifname=qtap1,script=no  -cdrom "$myISO" -boot order=d &!
+    function qemu-ed() {
+        myVM="/mnt/data/ISO/vm-ubuntu-12.04.2-server-amd64"
+        myISO="/mnt/data/ISO/ubuntu-12.04.2-server-amd64.iso"
+        # Bash, use:
+        #   nohup <cmd>
+        #   <cmd> &
+        # Zsh, use:
+        #   <cmd> &!
+        # Bash/Zsh (global): setopt nohup
+        qemu_args=(
+            -enable-kvm
+            -cpu SandyBridge
+            -hda "$myVM"
+            -m 1G
+            -vnc :1
+            -usbdevice tablet
+            -net nic,model=e1000
+            -net tap,ifname=qtap1,script=no
+            -cdrom "$myISO"
+            -boot order=d
+        )
+        if [[ $BASH = *bash ]]; then
+            qemu-system-x86_64 "${qemu_args[@]}" &
+        elif [[ $ZSH_NAME = zsh ]]; then
+            qemu-system-x86_64 "${qemu_args[@]}" &!
+        else
+            echo -n "" # shell
+        fi
     }
 }
 
