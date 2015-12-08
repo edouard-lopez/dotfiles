@@ -21,7 +21,7 @@ export TERM=screen-256color  # support 256 color palette
 export VISUAL=vim
 
 
-function configure_addition_config() {
+function configure_additional_config() {
     files=('n' 'akema' )  # rc files to load
     for file in "${files[@]}"; do
         filerc="$HOME/.${file}rc"
@@ -496,6 +496,6 @@ configure_server_utilities
 configure_shell
 configure_string_utilities
 configure_utilities
-configure_addition_config
+configure_additional_config
 
 #EOF
