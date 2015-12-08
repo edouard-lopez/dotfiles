@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 # see: http://wiki.bash-hackers.org/internals/shell_options#globstar
 shopt -s cmdhist
 shopt -s cdspell # Correct minor spelling errors in directories
