@@ -132,7 +132,7 @@ function configure_git() {
         # push local files
         git push origin master
     }
-    
+
     # Add existing remote branch to the remote 'all' so you can:
     #  git push all
     # @return    void
@@ -164,7 +164,7 @@ function configure_monitoring_utilities() {
         | awk '{printf "%.1f MB \t %s\n", $2/(1024), $1}' \
         | tail -n "$size"
     }
-    
+
     # human-readable sizes
     function df() { command df -h "$@" }
 
@@ -183,7 +183,7 @@ function configure_monitoring_utilities() {
 function configure_network_utilities() {
     function irc() {
         if type mosh &> /dev/null; then
-            mosh --ssh="ssh -p 822" vm-ed -- tmux attach -t irc 
+            mosh --ssh="ssh -p 822" vm-ed -- tmux attach -t irc
         else
             ssh -p 822 vm-ed -- 'tmux attach -t irc || tmux -2 new -s irc'
         fi
@@ -428,7 +428,7 @@ function configure_utilities() {
     # @author:   Shrayas Rajagopal
     # @see: https://coderwall.com/p/p1sd5a
     function md() { mkdir "$1" && cd "$1" }
-    
+
     function pdf2djvu-ocr() { $HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh "$@" }
 
     # Use the google API to translate text
