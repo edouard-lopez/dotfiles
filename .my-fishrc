@@ -20,7 +20,14 @@ function configure_shell
             source "$HOME"/.config/fish/config.fish
         end
     end
+
+    # so we can distinguish between Yakuake and Konsole (no tmux)
+    function konsole
+        env TERMINAL_CONTEXT='konsole' command konsole
+    end
+
 end
+
 
 function start_tmux
     # https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login

@@ -1,9 +1,6 @@
 #!/usr/bin/env bash
 # Config for POSIX-compatible
 
-# so we can distinguish between Yakuake and Konsole (no tmux)
-alias konsole="TERMINAL_CONTEXT='konsole' konsole"
-
 stylerc="$HOME/stylerc"
 if [[ -f "$stylerc" || -h "$stylerc" ]]; then
 	source "$stylerc" # get some style
@@ -22,7 +19,6 @@ export PATH=$HOME/bin/:$HOME/apps/:/usr/local/bin/:./node_modules/.bin/:$PATH
 export IBUS_ENABLE_SYNC_MODE=1  # IBUS+Pycharm bug (see https://youtrack.jetbrains.com/issue/IDEA-78860)
 export TERM=screen-256color  # support 256 color palette
 export VISUAL=vim
-
 
 function configure_addition_config() {
     files=('n' 'akema' )  # rc files to load
@@ -276,6 +272,11 @@ function configure_shell() {
     else
         echo -n "" # shell
     fi
+
+    # so we can distinguish between Yakuake and Konsole (no tmux)
+    function konsole() {
+        TERMINAL_CONTEXT='konsole' command konsole
+    }
 }
 
 function configure_string_utilities() {
