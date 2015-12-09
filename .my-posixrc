@@ -55,11 +55,11 @@ function configure_date_utilities() {
     #
     # @return string
     function world-time() {
-        places=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
-        for tz in "${places[@]}";
+        locations=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
+        for location in "${locations[@]}";
         do
-            time=$(TZ="$tz" date '+%H:%M (%b-%d)')
-            printf "%s: %s\n" "${tz##*/}" "$time"
+            time=$(TZ="$location" date '+%H:%M (%b-%d)')
+            printf "%s: %s\n" "${location##*/}" "$time"
         done
     }
 
