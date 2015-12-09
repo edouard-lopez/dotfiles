@@ -44,7 +44,7 @@ function configure_backup_utilities() {
     # Backup data to external disk using cron tab (added by 'restore')
     # @param: void
     # @return: stdout
-    rsync2external-disk() {
+    function rsync2external-disk() {
         crontab -l | grep 'rsync' | sed 's!@daily !!' | while read -r cmd; do bash -c "$cmd"; done
     }
 }
