@@ -1,5 +1,5 @@
 [user]
-	name = Edouard Lopez
+	name = Édouard Lopez
 	email = dev+git@edouard-lopez.com
 [credential]
 	helper = cache --timeout=3600
