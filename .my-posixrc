@@ -54,7 +54,7 @@ function configure_date_utilities() {
     # list of timezone available in: /usr/share/zoneinfo/
     #
     # @return string
-    worldtime() {
+    function world-time() {
         places=( "America/New_York" "Asia/Kolkata" "Europe/Paris" )
         for tz in "${places[@]}";
         do
@@ -63,13 +63,13 @@ function configure_date_utilities() {
         done
     }
 
-    today() {
+    function today() {
         to-lower "$(date '+%Y-%b-%d')"
     }
-    today-num() {
+    function today-num() {
         to-lower "$(date '+%Y-%m-%d')"
     }
-    now() {
+    function now() {
         to-lower "$(date '+%Y-%b-%d-%H:%M')"
     }
 }
