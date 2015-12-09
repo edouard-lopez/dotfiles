@@ -22,7 +22,7 @@ function configure_additional_config
             source "$filerc"
         end
     end
-}
+end
 
 function change-terminal-color-mode
     set arg "$argv[1]"; or set arg "colors=Tomorrow"
@@ -31,7 +31,7 @@ function change-terminal-color-mode
     else
         printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
     end
-}
+end
 
 function configure_backup_utilities
     # Backup data to external disk using cron tab (added by 'restore')
