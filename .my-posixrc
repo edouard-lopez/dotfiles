@@ -76,24 +76,24 @@ function configure_date_utilities() {
 
 # GIT
 function configure_git() {
-    function ga() { git add  "$@"; }
-    function gb() { git branch  "$@"; }
+    function ga() { git add "$@"; }
+    function gb() { git branch "$@"; }
     function gc() { git commit "$@"; }
-    function go() { git checkout  "$@"; }
-    function gd() { git diff --color-words  "$@"; }
+    function go() { git checkout "$@"; }
+    function gd() { git diff --color-words "$@"; }
     function gg() { git gui & }
     function gpl() { git pull "$@"; }
     function gpu() { git push "$@"; }
-    function gs() { git status  "$@"; }
-    function gcl() { git clone  "$@"; }
-    function gu() { git rm --cached  "$@"; }
+    function gs() { git status "$@"; }
+    function gcl() { git clone "$@"; }
+    function gu() { git rm --cached "$@"; }
     # unstage files to commit
-    function grh() { git reset HEAD  "$@"; }
-    function push() { git push  "$@"; }
+    function grh() { git reset HEAD "$@"; }
+    function push() { git push "$@"; }
     function push-all() { push all "$@"; }
 
     function gar() { git remote -vv "$@"; }
-    function gra() { git-add-remote  "$@"; }
+    function gra() { git-add-remote "$@"; }
     # Add and attach a remote branch to current one
     # @param    $1|remoteUrl     remote Url adress
     # @param    $2|remoteBranch  remote branch name (default: manu)
@@ -193,15 +193,15 @@ function configure_network_utilities() {
 # APT / APTITUDE
 function configure_package_manager() {
     # DEBIAN/UBUNTU/LINUX MINT
-    function pkg-search() { aptitude search  "$@"; }
-    function pkg-install() { sudo apt-get install  "$@"; }
-    function pkg-remove() { sudo apt-get remove  "$@"; }
+    function pkg-search() { aptitude search "$@"; }
+    function pkg-install() { sudo apt-get install "$@"; }
+    function pkg-remove() { sudo apt-get remove "$@"; }
     function pkg-clean() { sudo apt-get clean; }
     function pkg-autoclean() { sudo apt-get autoclean; }
-    function pkg-update() { sudo apt-get update  "$@"; }
-    function pkg-upgrade() { sudo apt-get upgrade  "$@"; }
-    function pkg-upgrade-all() { sudo apt-get dist-upgrade  "$@"; }
-    function pkg-show() { aptitude show  "$@"; }
+    function pkg-update() { sudo apt-get update "$@"; }
+    function pkg-upgrade() { sudo apt-get upgrade "$@"; }
+    function pkg-upgrade-all() { sudo apt-get dist-upgrade "$@"; }
+    function pkg-show() { aptitude show "$@"; }
     function pkg-sync() { sudo apt-get update && sudo apt-get upgrade -y; }
     function pkg-sync-all() { sudo apt-get update && sudo apt-get dist-upgrade; }
     function pkg-autoremove() { sudo apt-get autoremove; }
@@ -302,13 +302,13 @@ function configure_string_utilities() {
     # @param     $@  String to upper
     # @return    string
     function to-upper() { echo "$@" |tr '[:lower:]' '[:upper:]'; }
-    function l2u() { to-upper  "$@"; }
+    function l2u() { to-upper "$@"; }
 
     # Change case from upper case to lower case
     # @param     $@  String to lower
     # @return    string
     function to-lower() { echo "$@" |tr '[:upper:]' '[:lower:]' ; }
-    function u2l() { to-lower  "$@"; }
+    function u2l() { to-lower "$@"; }
 
     # Capitalize a string
     # @param    $@  string to capitalize
@@ -321,7 +321,7 @@ function configure_string_utilities() {
         done
         echo
     }
-    function cap() { capitalize  "$@"; }
+    function cap() { capitalize "$@"; }
 
     function replaceText() {
         text="$1"
@@ -469,7 +469,7 @@ function configure_utilities() {
     function tree() { command tree --charset utf-8 "$@"; }
 
     # We just want to view content with pager (default: less)
-    function v() { $('$PAGER'  "$@") }
+    function v() { $('$PAGER' "$@") }
 }
 
 function start_tmux() {
