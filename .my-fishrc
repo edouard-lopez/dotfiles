@@ -33,6 +33,15 @@ function change-terminal-color-mode
     end
 }
 
+function configure_backup_utilities
+    # Backup data to external disk using cron tab (added by 'restore')
+    # @param: void
+    # @return: stdout
+    function rsync2external-disk
+        crontab -l | grep 'rsync' | sed 's!@daily !!' | while read -r cmd; bash -c "$cmd"; end
+    end
+end
+
 function configure_shell
     if  test  -n $FISH_VERSION
         function refresh
