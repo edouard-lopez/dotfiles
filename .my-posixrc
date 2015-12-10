@@ -194,6 +194,7 @@ function configure_network_utilities() {
 
     function ping() { command ping -c 10 "$@"; }
 }
+
 # APT / APTITUDE
 function configure_package_manager() {
     # DEBIAN/UBUNTU/LINUX MINT
