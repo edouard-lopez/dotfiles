@@ -237,11 +237,10 @@ function configure_python() {
 # OCTOPRESS BLOG
 function configure_octopress() {
     export OCTOPRESS_THEME='carillon'
-    octopressTagList() {
+    function octopressTagList() {
         WD="$HOME/blog/source/_posts/"
         awk -F ':' '/^tags/ || /^categories/{print $2}' "$WD"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
     }
-    alias tagList=octopressTagList
 }
 
 function configure_server_utilities() {
