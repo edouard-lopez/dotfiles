@@ -290,6 +290,18 @@ function configure_octopress
         awk -F ':' '/^tags/ || /^categories/{print $2}' "$working_directory"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
     end
 end
+
+function configure_server_utilities
+    # SSH alias
+    function ssh
+           if type mosh > /dev/null; then
+                   mosh $argv
+           else
+                   ssh $argv
+           end
+    end
+end
+
 function configure_shell
     if  test  -n $FISH_VERSION
         function refresh
