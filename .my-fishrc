@@ -68,6 +68,116 @@ function configure_date_utilities
 end
 
 
+## GIT
+function configure_git
+    function ga
+       git add $argv;
+    end
+    function gb
+       git branch $argv;
+    end
+    function gc
+       git commit $argv;
+    end
+    function go
+       git checkout $argv;
+    end
+    function gd
+       git diff --color-words $argv;
+    end
+    function gg
+       git gui ;
+    end
+    function gpl
+       git pull $argv;
+    end
+    function gpu
+       git push $argv;
+    end
+    function gs
+       git status $argv;
+    end
+    function gcl
+       git clone $argv;
+    end
+    function gu
+       git rm --cached $argv;
+    end
+    # unstage files to commit
+    function grh
+       git reset HEAD $argv;
+    end
+    function push
+       git push $argv;
+    end
+    function push-all
+       push all $argv;
+    end
+
+    function gar
+       git remote -vv $argv;
+    end
+    function gra
+       git-add-remote $argv;
+    end
+    # Add and attach a remote branch to current one
+    # @param    $1|remoteUrl     remote Url adress
+    # @param    $2|remoteBranch  remote branch name (default: manu)
+    # @return    void
+    function git-add-remote
+        set project (basename (pwd))
+        set remoteUrl $1; or set remoteUrl 'ssh://git@git.edouard-lopez.com:822/root/$project.git'
+        set remoteBranch $2; or set remoteBranch 'me'
+        set currentBranch (git rev-parse --abbrev-ref HEAD)
+        git remote add "$remoteBranch" "$remoteUrl"
+        git push -u "$remoteBranch" "$currentBranch"
+    end
+
+    # GITHUB
+    # Create a repo on github and connect it to local repo
+    # @param    $1|$project  project name
+    # @param    $2|server  remote server
+    # @param    $3|$user  remote user account
+    # @return    void
+    function git-new
+        set -l project $1; or set project "git-$RANDOM"
+        set -l server $2; or set server "github.com"
+        set -l user $3; or set user "edouard-lopez"
+
+        # create directory if missing
+        if test (basename (pwd)) != "$project"
+            mkdir "$project"
+        end
+
+        # connnect to remote repo
+        git remote add origin https://"$server"/"$user"/"$project".git
+
+        # pull README and stuff like that
+        git pull origin master
+        # push local files
+        git push origin master
+    end
+
+    # Add existing remote branch to the remote 'all' so you can:
+    #  git push all
+    # @return    void
+    function git-add-to-push-all
+        # Fields are: 'name', 'url' and 'method'
+        while read -r name url method;
+            git config --add remote.all.url "$url"
+        end < (git remote -v | awk '!/^all/ && /push/' | psub)
+    end
+
+    # Pull and track all remote branches
+    function git-pull-all
+        for branch in (git branch -a | grep remotes | grep -v HEAD | grep -v master | psub);
+            set -l remote_branch (echo $branch | sed -e 's!remotes/origin/!!')
+            git branch --track $remote_branch "$branch"
+        end
+    end
+
+end
+
 function configure_shell
     if  test  -n $FISH_VERSION
         function refresh
