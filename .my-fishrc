@@ -303,6 +303,12 @@ function configure_server_utilities
 end
 
 function configure_shell
+    # so we can distinguish between Yakuake and Konsole (no tmux)
+    function konsole
+        TERMINAL_CONTEXT='konsole' command konsole
+    end
+end
+
     if  test  -n $FISH_VERSION
         function refresh
             source "$HOME"/.config/fish/config.fish
