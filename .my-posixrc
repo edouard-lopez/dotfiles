@@ -252,38 +252,6 @@ function configure_server_utilities() {
                    ssh "$@"
            fi
     }
-
-    # start a VM on manu's server
-    function qemu-ed() {
-        myVM="/mnt/data/ISO/vm-ubuntu-12.04.2-server-amd64"
-        myISO="/mnt/data/ISO/ubuntu-12.04.2-server-amd64.iso"
-        # Bash, use:
-        #   nohup <cmd>
-        #   <cmd> &
-        # Zsh, use:
-        #   <cmd> &!
-        # Bash/Zsh (global): setopt nohup
-        qemu_args=(
-            -enable-kvm
-            -cpu SandyBridge
-            -hda "$myVM"
-            -m 1G
-            -vnc :1
-            -usbdevice tablet
-            -net nic,model=e1000
-            -net tap,ifname=qtap1,script=no
-            -cdrom "$myISO"
-            -boot order=d
-        );
-        if [[ $BASH = *bash ]]; then
-            setopt nohup
-            qemu-system-x86_64 "${qemu_args[@]}"
-        fi
-        if [[ $ZSH_NAME = zsh ]]; then
-            setopt nohup
-            qemu-system-x86_64 "${qemu_args[@]}"
-        fi
-    }
 }
 
 function configure_shell() {
