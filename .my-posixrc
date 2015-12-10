@@ -290,14 +290,8 @@ function configure_string_utilities() {
     # @param    $@  string to capitalize
     # @return   String
     function capitalize() {
-        input="$(u2l "$@")"
-        for i in $input; do
-            cap=$(echo -n "${i:0:1}" | tr "[:lower:]" "[:upper:]")
-            echo -n "${cap}${i:1} "
-        done
-        echo
+        read -ra words <<< "$@" && echo "${words[@]^}"
     }
-    function cap() { capitalize "$@"; }
 
     function replaceText() {
         text="$1"
