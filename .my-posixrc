@@ -309,9 +309,7 @@ function configure_string_utilities() {
     # param, $1 : text to prepend
     # param, $2 : file to edit
     function prependText() {
-    # how to use with grep :
-    # grep -LZ charset ~/pleade-*/**/theme/css/**/*.css | while IFS= read -rd '' file; do printf "%s\n" "$file"; prependText '@charset "UTF-8";' "$file"; done
-    printf '%s\n' H 1i "$1" . w | ed -s "$2"
+        printf '%s\n' H 1i "$1" . w | ed -s "$2"
     }
 
     # Compare a file computed md5sum against official checksum
