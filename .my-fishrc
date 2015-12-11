@@ -309,6 +309,79 @@ function configure_shell
     end
 end
 
+function configure_string_utilities
+    # Change case from lower case to upper case
+    # @param     $@  String to upper
+    # @return    string
+    function to-upper
+       echo $argv |tr '[:lower:]' '[:upper:]';
+    end
+    function l2u
+       to-upper $argv;
+    end
+
+    # Change case from upper case to lower case
+    # @param     $@  String to lower
+    # @return    string
+    function to-lower
+       echo $argv |tr '[:upper:]' '[:lower:]' ;
+    end
+    function u2l
+       to-lower $argv;
+    end
+
+    # Capitalize a string
+    # @param    $@  string to capitalize
+    # @return   String
+    function capitalize
+        set input "$argv"
+        echo "$input" | tr '[A-Z]' '[a-z]' | sed 's/\(^\| \)\([a-z]\)/\1\u\2/g'
+    end
+
+    function replaceText
+        set text "$argv[1]"
+        set sep "$argv[2]"; or set sep " " # space
+        set newsep "$argv[2]"; or set newsep "-" # dash
+
+        echo "$text" | sed -e "s/$sep/$newsep/g"
+    end
+
+    function dashify
+        replaceText "$argv[1]" ' ' '-'
+    end
+
+    # Description: prepend text to a file
+    # param, $1 : text to prepend
+    # param, $2 : file to edit
+    function prependText
+        printf '%s\n' H 1i "$argv[1]" . w | ed -s "$argv[2]"
+    end
+
+    # Compare a file computed md5sum against official checksum
+    # @param    $1|file  file to checksum
+    # @param    $2|controlChecksum  official/valid checksum
+    # @return    void
+    function md5check
+        set controlChecksum "$argv[2]"
+
+        if test ! -e "$argv[1]" || -z "$argv[2]"
+            if ! -e "$argv[1]"; and printf "[!] File not found\n"; end
+            if -z "$argv[2]"; and printf "[!] Checksum is empty\n"; end
+            printf "Aborting…\n"
+            exit
+        end
+
+        fileChecksum="$(md5sum "$argv[1]" | cut -d ' ' -f 1 )"
+
+        if [[ "$fileChecksum" = "$controlChecksum" ]];
+            then
+            printf "[i] File is valid.\n"
+        else
+            printf "[!] Checksum does NOT match!\n"
+        end
+    end
+end
+
     if  test  -n $FISH_VERSION
         function refresh
             source "$HOME"/.config/fish/config.fish
