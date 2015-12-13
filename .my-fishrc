@@ -15,10 +15,10 @@ set -gx VISUAL vim
 
 
 function configure_additional_config
-    set files 'n' 'akema'  # rc files to load
+    set files ''  # rc files to load
     for file in $files
         set filerc $HOME/.{$file}rc
-        if [[ -f "$filerc" || -h "$filerc" ]]; then
+        if test -f "$filerc"; or test -h "$filerc"
             source "$filerc"
         end
     end
