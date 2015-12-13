@@ -502,6 +502,7 @@ function configure_utilities
 end
 
 
+function configure_shell
     if  test  -n $FISH_VERSION
         function refresh
             source "$HOME"/.config/fish/config.fish
@@ -527,7 +528,19 @@ function start_tmux
 end
 
 start_tmux
+configure_backup_utilities
+configure_date_utilities
+configure_git
+configure_monitoring_utilities
+configure_network_utilities
+configure_package_manager
+configure_pager
+#configure_python
+configure_octopress
+configure_server_utilities
 configure_shell
+configure_string_utilities
+configure_utilities
 configure_additional_config
 
 #EOF
