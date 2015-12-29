@@ -50,6 +50,8 @@
 [gui]
 	diffcontext = 2
 	recentrepo = /mnt/data/projects/website-probe
+	fontui = -family \"Noto Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Noto Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 
 [pager]
     log = diff-highlight | less
