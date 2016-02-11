@@ -73,6 +73,24 @@ function configure_date_utilities
     end
 end
 
+# Docker
+function configure_docker
+    function docker-clean
+        docker-clean-containers
+        docker-clean-images
+    end
+
+    function docker-clean-containers
+        echo "Deleting stopped containers"
+        docker rm (docker ps -a -q)
+    end
+
+    function docker-clean-images
+        echo "Deleting untagged images"
+        docker rmi (docker images -q -f dangling=true)
+    end
+end
+
 
 ## GIT
 function configure_git
