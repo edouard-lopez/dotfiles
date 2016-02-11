@@ -432,10 +432,10 @@ function configure_utilities
         set file "$argv[1]"
 
         if test -w "$file"
-            eval EDITOR -- "$file"
+            eval $EDITOR -- "$file"
         else if test ! -a "$file"
             touch "$file"
-            eval EDITOR -- "$file"
+            eval $EDITOR -- "$file"
         else
             sudo -e -- "$file"
         end
