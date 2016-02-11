@@ -76,6 +76,22 @@ function configure_date_utilities() {
     }
 }
 
+# Docker
+function configure_docker() {
+    function docker-clean() {
+        docker-clean-containers
+        docker-clean-images
+    }
+    function docker-clean-containers() {
+        echo "Deleting stopped containers"
+        docker rm $(docker ps -a -q)
+    }
+    function docker-clean-images() {
+        echo "Deleting untagged images"
+        docker rmi $(docker images -q -f dangling=true)
+    }
+}
+
 # GIT
 function configure_git() {
     function ga() { git add "$@"; }
