@@ -13,6 +13,12 @@ set -gx IBUS_ENABLE_SYNC_MODE 1  # IBUS+Pycharm bug (see https://youtrack.jetbra
 set -gx TERM screen-256color  # support 256 color palette
 set -gx VISUAL vim
 
+# Virtualenv
+set -x WORKON_HOME "$HOME/.virtualenvs"
+set -x PROJECT_HOME "$HOME/projects"
+set -g VIRTUALFISH_HOME $WORKON_HOME
+set -g VIRTUALFISH_COMPAT_ALIASES "True"
+eval (python -m virtualfish compat_aliases auto_activation )
 
 function configure_additional_config
     set files ''  # rc files to load
