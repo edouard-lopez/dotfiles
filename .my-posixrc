@@ -469,6 +469,7 @@ function start_tmux() {
 start_tmux
 configure_backup_utilities
 configure_date_utilities
+configure_docker
 configure_git
 configure_monitoring_utilities
 configure_network_utilities
