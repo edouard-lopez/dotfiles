@@ -14,3 +14,6 @@ shopt -s lithist # store multiline command with '\n' instead of ';'
 complete -cf sudo #tab complete for sudo
 
 source "$HOME/.my-posixrc"
+
+# Run twolfson/sexy-bash-prompt
+. ~/.bash_prompt
