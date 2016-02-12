@@ -75,6 +75,12 @@ end
 
 # Docker
 function configure_docker
+    function docker-ls
+        docker images
+        echo ''
+        docker ps -a
+    end
+
     function docker-clean
         docker-clean-containers
         docker-clean-images
