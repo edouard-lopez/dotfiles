@@ -8,3 +8,6 @@ set -gx OMF_PATH /home/elopez/.local/share/omf
 source $OMF_PATH/init.fish
 
 source ~/.my-fishrc
+
+# THEME PURE #
+set fish_function_path $HOME/.config/fish/functions/theme-pure $fish_function_path
