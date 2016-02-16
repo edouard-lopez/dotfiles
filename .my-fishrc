@@ -80,20 +80,31 @@ function configure_docker
         echo ''
         docker ps -a
     end
+    alias dls docker-ls
 
     function docker-clean
         docker-clean-containers
         docker-clean-images
     end
+    alias dc docker-clean
 
     function docker-clean-containers
         echo "Deleting stopped containers"
         docker rm (docker ps -a -q)
     end
+    alias dcc docker-clean-containers
 
     function docker-clean-images
         echo "Deleting untagged images"
         docker rmi (docker images -q -f dangling=true)
+    end
+    alias dci docker-clean-images
+
+    function dbuild
+        docker build $argv;
+    end
+    function drun
+        docker run $argv;
     end
 end
 
