@@ -83,18 +83,29 @@ function configure_docker() {
         echo ''
         docker ps -a
     }
+    alias dls='docker-ls'
 
     function docker-clean() {
         docker-clean-containers
         docker-clean-images
     }
+    alias dc='docker-clean'
     function docker-clean-containers() {
         echo "Deleting stopped containers"
         docker rm $(docker ps -a -q)
     }
+    alias dcc='docker-clean-containers'
     function docker-clean-images() {
         echo "Deleting untagged images"
         docker rmi $(docker images -q -f dangling=true)
+    }
+    alias dci='docker-clean-images'
+
+    function dbuild() {
+        docker build "$@"
+    }
+    function drun() {
+        docker run "$@"
     }
 }
 
