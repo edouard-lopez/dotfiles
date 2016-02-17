@@ -83,7 +83,7 @@ function configure_docker() {
         echo ''
         docker ps -a
     }
-    alias dls='docker-ls'
+    alias dls='docker-ls '
 
     function docker-clean() {
         docker-clean-containers
@@ -94,12 +94,12 @@ function configure_docker() {
         echo "Deleting stopped containers"
         docker rm $(docker ps -a -q)
     }
-    alias dcc='docker-clean-containers'
+    alias dcc='docker-clean-containers '
     function docker-clean-images() {
         echo "Deleting untagged images"
         docker rmi $(docker images -q -f dangling=true)
     }
-    alias dci='docker-clean-images'
+    alias dci='docker-clean-images '
 
     function dbuild() {
         docker build "$@"
