@@ -106,6 +106,17 @@ function configure_docker
     function drun
         docker run $argv;
     end
+
+    function docker-list-volumes
+        docker volume ls -qf dangling=true
+    end
+    alias dlsv docker-list-volumes
+
+    function docker-clean-volumes
+        docker volume rm (docker-list-volumes)
+    end
+    alias dcv docker-list-volumes
+
 end
 
 

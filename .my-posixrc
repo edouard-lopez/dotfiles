@@ -107,6 +107,16 @@ function configure_docker() {
     function drun() {
         docker run "$@"
     }
+
+    function docker-list-volumes() {
+        docker volume ls -qf dangling=true
+    }
+    alias dlsv='docker-list-volumes '
+
+    function docker-clean-volumes() {
+        docker volume rm (docker-list-volumes)
+    }
+    alias dcv='docker-list-volumes '
 }
 
 # GIT
