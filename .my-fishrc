@@ -117,6 +117,11 @@ function configure_docker
     end
     alias dcv docker-list-volumes
 
+    function docker-list-container-volumes
+        docker inspect --format='{{json .Mounts}}' $argv[1] | underscore print --outfmt pretty
+    end
+    alias dlcv docker-list-container-volumes
+
 end
 
 
