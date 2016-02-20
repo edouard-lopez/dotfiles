@@ -114,7 +114,7 @@ function configure_docker() {
     alias dlsv='docker-list-volumes '
 
     function docker-clean-volumes() {
-        docker volume rm (docker-list-volumes)
+        docker volume rm $(docker-list-volumes)
     }
     alias dcv='docker-list-volumes '
 
