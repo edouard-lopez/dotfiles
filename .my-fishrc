@@ -183,8 +183,8 @@ function configure_git
     # @return    void
     function git-add-remote
         set project (basename (pwd))
-        set remoteUrl $1; or set remoteUrl 'ssh://git@git.edouard-lopez.com:822/root/$project.git'
-        set remoteBranch $2; or set remoteBranch 'me'
+        set remoteUrl $argv[1]; or set remoteUrl 'ssh://git@git.edouard-lopez.com:822/root/$project.git'
+        set remoteBranch $argv[2]; or set remoteBranch 'me'
         set currentBranch (git rev-parse --abbrev-ref HEAD)
         git remote add "$remoteBranch" "$remoteUrl"
         git push -u "$remoteBranch" "$currentBranch"
@@ -197,9 +197,9 @@ function configure_git
     # @param    $3|$user  remote user account
     # @return    void
     function git-new
-        set -l project $1; or set project "git-$RANDOM"
-        set -l server $2; or set server "github.com"
-        set -l user $3; or set user "edouard-lopez"
+        set -l project $argv[1]; or set project "git-$RANDOM"
+        set -l server $argv[2]; or set server "github.com"
+        set -l user $argv[3]; or set user "edouard-lopez"
 
         # create directory if missing
         if test (basename (pwd)) != "$project"
@@ -478,7 +478,7 @@ function configure_utilities
     # usage: ex <file>
     function ex
         if test -f "$argv[1]"
-            switch $1
+            switch $argv[1]
                 case *.tar.bz2;     tar xjf "$argv[1]";
                 case *.tar.gz;      tar xzf "$argv[1]";
                 case *.bz2;         bunzip2 "$argv[1]";
@@ -491,10 +491,10 @@ function configure_utilities
                 case *.Z;           uncompress "$argv[1]";
                 case *.7z;          7z x "$argv[1]";
                 case *.tar.xz;      tar xJf "$argv[1]";
-                case *;             echo "'$1' cannot be extracted via ex()";
+                case *;             echo "'$argv[1]' cannot be extracted via ex()";
             end
         else
-            echo "'$1' is not a valid file"
+            echo "'$argv[1]' is not a valid file"
         end
     end
 
@@ -539,8 +539,8 @@ function configure_utilities
     # @reutrn    string
     function translate
         set text "$argv[1]"
-        set sourceLang "$2"; or set sourceLang "en"
-        set targetLang "$3"; or set targetLang "fr-FR"
+        set sourceLang "$argv[2]"; or set sourceLang "en"
+        set targetLang "$argv[3]"; or set targetLang "fr-FR"
         set apiQueryString (printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")
         set url "http://translate.google.com/translate_a/t?$apiQueryString"
         set raw (curl -A "Mozilla\/5.0" \'"$url"\')
