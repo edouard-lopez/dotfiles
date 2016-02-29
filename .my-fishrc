@@ -4,7 +4,7 @@
 # disable cowlay with ansible: http://docs.ansible.com/faq.html#how-do-i-disable-cowsay
 set -gx ANSIBLE_NOCOWS 1
 set -gx BROWSER firefox  # Default web browser
-set -gx CDPATH $CDPATH $HOME/projects
+set -gx CDPATH $CDPATH . ~ $HOME/projects
 set -gx EDITOR vim
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-7-openjdk-amd64
