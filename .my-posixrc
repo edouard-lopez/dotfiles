@@ -122,6 +122,16 @@ function configure_docker() {
         docker inspect --format='{{json .Mounts}}' "$1" | underscore print --outfmt pretty
     }
     alias dlcv='docker-list-container-volumes '
+
+    function docker-compose-infinite() {
+        while true; do
+            docker-compose stop
+            docker-compose rm -f
+            docker-compose build
+            docker-compose up
+        done
+    }
+    alias infinite-docker-compose='docker-compose-infinite '
 }
 
 # GIT

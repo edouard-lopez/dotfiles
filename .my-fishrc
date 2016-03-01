@@ -122,6 +122,16 @@ function configure_docker
     end
     alias dlcv docker-list-container-volumes
 
+    function docker-compose-infinite
+        while true
+            docker-compose stop
+            docker-compose rm -f
+            docker-compose build
+            docker-compose up
+        end
+    end
+    alias infinite-docker-compose docker-compose-infinite
+
 end
 
 
