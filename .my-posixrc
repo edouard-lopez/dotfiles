@@ -132,6 +132,18 @@ function configure_docker() {
         done
     }
     alias infinite-docker-compose='docker-compose-infinite '
+
+    function docker-enter(){
+        docker exec -it $1 bash
+    }
+
+    function __complete_containers_running(){
+         local containers=( $(docker ps --format="{{.Names}}") )
+         local cur="${COMP_WORDS[COMP_CWORD]}"
+         COMPREPLY=( $(compgen -W "${containers[*]}" -- "$cur") )
+    }
+
+    complete -F __complete_containers_running docker-enter
 }
 
 # GIT
@@ -525,4 +537,3 @@ configure_string_utilities
 configure_utilities
 configure_additional_config
 
-#EOF
