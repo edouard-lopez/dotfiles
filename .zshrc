@@ -42,12 +42,12 @@ plugins=(
          # bower 
          command-not-found django fabric 
          history 
-         # jump 
+         # jump
+         k 
          git git-extras
          npm pip python 
          ssh-agent history-substring-search
          zsh-syntax-highlighting  zsh-completions
-         k
          # yeoman
         )
 export PATH=/usr/lib/lightdm/lightdm:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:./node_modules/.bin
