@@ -13,6 +13,11 @@ set -gx IBUS_ENABLE_SYNC_MODE 1  # IBUS+Pycharm bug (see https://youtrack.jetbra
 set -gx TERM screen-256color  # support 256 color palette
 set -gx VISUAL vim
 
+# Ibus/Chinese IME
+set -gx GTK_IM_MODULE ibus
+set -gx XMODIFIERS @im=ibus
+set -gx QT_IM_MODULE ibus
+
 # Virtualenv
 set -x WORKON_HOME "$HOME/.virtualenvs"
 set -x PROJECT_HOME "$HOME/projects"
@@ -595,6 +600,11 @@ function start_tmux
 end
 
 
+function start_ibus_ime
+    ibus-daemon --daemonize --replace --xim
+end
+
+
 # Fisherman
 set fisher_home ~/.local/share/fisherman
 set fisher_config ~/.config/fisherman
@@ -618,6 +628,7 @@ set tacklebox_plugins docker pip grc
 set fish_function_path $HOME/.config/fish/functions/theme-pure $fish_function_path
 
 
+start_ibus_ime
 start_tmux
 configure_backup_utilities
 configure_date_utilities

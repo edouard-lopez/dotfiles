@@ -1,0 +1,14 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=IBus (KIMPanel)
+GenericName=Input Method Framework
+Comment=Start IBus Input Method Framework
+Exec=ibus-daemon --panel=/usr/lib/kimpanel-ibus-panel
+Icon=ibus
+Terminal=false
+Type=Application
+Categories=System;Utility;
+X-GNOME-Autostart-Phase=Applications
+X-GNOME-AutoRestart=false
+X-GNOME-Autostart-Notify=true
+X-KDE-autostart-after=panel
