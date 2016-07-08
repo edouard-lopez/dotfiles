@@ -605,12 +605,6 @@ function start_ibus_ime
 end
 
 
-# Fisherman
-set fisher_home ~/.local/share/fisherman
-set fisher_config ~/.config/fisherman
-source $fisher_home/config.fish
-
-
 # Paths to your tackle
 set tacklebox_path ~/.tackle ~/.tacklebox
 
