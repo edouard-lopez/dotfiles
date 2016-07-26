@@ -9,3 +9,7 @@ stylesheets/
 .project
 .directory
 .vim/.netrwhist
+.gitconfig
+env/
+.env/
+node_modules/
