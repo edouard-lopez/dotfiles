@@ -73,6 +73,9 @@ zstyle ':completion:*' use-cache yes
 alias -g gpi="| grep -i "
 alias ll="k -h "
 
+autoload -Uz compinit && compinit -i
+fpath=(~/.zsh/completion $fpath)
+
 source "$HOME/.my-posixrc"
 
 # Solve: RVM is not a function, selecting rubies with 'rvm use ...' will not work.
