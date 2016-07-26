@@ -95,13 +95,17 @@ function configure_docker
 
     function docker-clean-containers
         echo "Deleting stopped containers"
-        docker rm (docker ps -a -q)
+        for container in (docker ps -a -q)
+            docker rm $container
+        end
     end
     alias dcc docker-clean-containers
 
     function docker-clean-images
         echo "Deleting untagged images"
-        docker rmi (docker images -q -f dangling=true)
+        for image in (docker images -q -f dangling=true)
+            docker rmi $image
+        end
     end
     alias dci docker-clean-images
 
@@ -118,7 +122,9 @@ function configure_docker
     alias dlsv docker-list-volumes
 
     function docker-clean-volumes
-        docker volume rm (docker-list-volumes)
+        for volume in (docker-list-volumes)
+            docker volume rm $volume
+        end
     end
     alias dcv docker-list-volumes
 
