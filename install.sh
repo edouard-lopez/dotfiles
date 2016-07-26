@@ -17,9 +17,9 @@ function backup() {
 }
 
 function install_fish() {
-    sourcefile="$PWD/$1"
+    sourcefile="$1"
     targetfile="$HOME/.config/fish/config.fish"
-    echo "$PWD" "$sourcefile" "$targetfile"
+    echo "$sourcefile" "$targetfile"
     
     rm "$targetfile"
     ln -nfs "$sourcefile" "$targetfile"
