@@ -322,6 +322,10 @@ function configure_python() {
     [[ -e "$venvBin" ]] && source "$venvBin"
 }
 
+function configure_nodejs() {
+    function load_nvm() {
+        export NVM_DIR="/home/ed8/.nvm"
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
     }
 }
 
@@ -548,6 +552,7 @@ configure_network_utilities
 configure_package_manager
 configure_pager
 configure_python
+configure_nodejs
 configure_server_utilities
 configure_shell
 configure_string_utilities

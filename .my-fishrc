@@ -366,6 +366,10 @@ function configure_pager
 end
 
 
+function configure_nodejs
+   function nvm
+       bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+    end 
 end
 
 function configure_server_utilities
@@ -638,6 +642,7 @@ configure_network_utilities
 configure_package_manager
 configure_pager
 #configure_python
+configure_nodejs
 configure_server_utilities
 configure_shell
 configure_string_utilities
