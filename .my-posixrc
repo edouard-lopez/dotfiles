@@ -238,7 +238,10 @@ function configure_git() {
             git branch --track "${branch#remotes/origin/}" "$branch"
         done < <(git branch -a | grep remotes | grep -v HEAD | grep -v master)
     }
+}
 
+function configure_keyboard_mapping() {
+    xmodmap -e "keycode 107 = Menu NoSymbol Menu"
 }
 
 function configure_monitoring_utilities() {
@@ -547,6 +550,7 @@ configure_backup_utilities
 configure_date_utilities
 configure_docker
 configure_git
+configure_keyboard_mapping
 configure_monitoring_utilities
 configure_network_utilities
 configure_package_manager
