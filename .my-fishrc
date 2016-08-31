@@ -259,8 +259,13 @@ function configure_git
             git branch --track $remote_branch "$branch"
         end
     end
-
 end
+
+
+function configure_keyboard_mapping
+    xmodmap -e "keycode 107 = Menu NoSymbol Menu"
+end
+
 
 function configure_monitoring_utilities
     # List n-application using most space
@@ -637,6 +642,7 @@ configure_backup_utilities
 configure_date_utilities
 configure_docker
 configure_git
+configure_keyboard_mapping
 configure_monitoring_utilities
 configure_network_utilities
 configure_package_manager
