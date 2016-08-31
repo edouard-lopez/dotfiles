@@ -365,13 +365,6 @@ function configure_pager
 end
 
 
-# OCTOPRESS BLOG
-function configure_octopress
-    set -gx OCTOPRESS_THEME 'carillon'
-    function octopressTagList
-        set working_directory "$HOME/blog/source/_posts/"
-        awk -F ':' '/^tags/ || /^categories/{print $2}' "$working_directory"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
-    end
 end
 
 function configure_server_utilities
@@ -644,7 +637,6 @@ configure_network_utilities
 configure_package_manager
 configure_pager
 #configure_python
-configure_octopress
 configure_server_utilities
 configure_shell
 configure_string_utilities
