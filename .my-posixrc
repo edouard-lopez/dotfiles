@@ -321,12 +321,6 @@ function configure_python() {
     [[ -e "$venvBin" ]] && source "$venvBin"
 }
 
-# OCTOPRESS BLOG
-function configure_octopress() {
-    export OCTOPRESS_THEME='carillon'
-    function octopressTagList() {
-        WD="$HOME/blog/source/_posts/"
-        awk -F ':' '/^tags/ || /^categories/{print $2}' "$WD"/* | tr -d '[] ' | tr -s ',' '\n' | sort -u
     }
 }
 
@@ -553,7 +547,6 @@ configure_network_utilities
 configure_package_manager
 configure_pager
 configure_python
-configure_octopress
 configure_server_utilities
 configure_shell
 configure_string_utilities
