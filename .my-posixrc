@@ -328,9 +328,9 @@ function configure_server_utilities() {
     # SSH alias
     function ssh() {
            if type mosh &> /dev/null; then
-                   mosh "$@"
+                   mosh "$@" || command ssh "$@"
            else
-                   ssh "$@"
+                   command ssh "$@"
            fi
     }
 }

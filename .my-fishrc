@@ -370,10 +370,10 @@ end
 function configure_server_utilities
     # SSH alias
     function ssh
-           if type mosh > /dev/null; then
-                   mosh $argv
+           if type mosh > /dev/null
+                   mosh $argv; or command ssh $argv
            else
-                   ssh $argv
+                   command ssh $argv
            end
     end
 end
