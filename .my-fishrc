@@ -1,5 +1,6 @@
 #!/usr/bin/env fish
 # Config for FISH
+set -gx MY_SERVER srv-sys
 
 # disable cowlay with ansible: http://docs.ansible.com/faq.html#how-do-i-disable-cowsay
 set -gx ANSIBLE_NOCOWS 1
@@ -291,10 +292,10 @@ end
 
 function configure_network_utilities
     function irc
-        if type mosh > /dev/null; then
-            mosh --ssh="ssh -p 822" vm-ed -- tmux attach -t irc
+        if type mosh > /dev/null
+            mosh "$MY_SERVER" -- tmux attach -t irc
         else
-            ssh -p 822 vm-ed -- 'tmux attach -t irc || tmux -2 new -s irc'
+            command ssh "$MY_SERVER" -- 'tmux attach -t irc || tmux -2 new -s irc'
         end
     end
 
