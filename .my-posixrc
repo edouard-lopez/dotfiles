@@ -144,8 +144,14 @@ function configure_docker() {
     }
     alias infinite-docker-compose='docker-compose-infinite '
 
+    function docker-compose-rebuild() {
+        docker-compose stop "$@";
+        docker-compose build "$@";
+        docker-compose up -d --no-deps "$@";
+    }
+
     function docker-enter(){
-        docker exec -it $1 bash
+        docker exec -it "$1" bash
     }
 
     function __complete_containers_running(){
