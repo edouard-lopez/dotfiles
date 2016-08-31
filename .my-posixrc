@@ -130,7 +130,7 @@ function configure_docker() {
     alias dcv='docker-list-volumes '
 
     function docker-list-container-volumes() {
-        docker inspect --format='{{json .Mounts}}' "$1" | underscore print --outfmt pretty
+        docker inspect --format='{{json .Mounts}}' "$1" | python -m json.tool
     }
     alias dlcv='docker-list-container-volumes '
 
