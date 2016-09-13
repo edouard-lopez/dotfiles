@@ -493,6 +493,10 @@ function configure_utilities
        mkdir "$argv[1]"; and cd "$argv[1]";
     end
 
+	function meteo
+		curl wttr.in/$argv
+	end
+
     function pdf2djvu-ocr
        $HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh $argv;
     end
