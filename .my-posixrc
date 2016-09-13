@@ -5,30 +5,32 @@ export CDPATH="$CDPATH:$HOME/projects"
 GPG_TTY="$(tty)"; export GPG_TTY
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"; export JAVA_HOME
 export PATH="$HOME/apps/:/usr/local/bin/:./node_modules/.bin/:$PATH"
+export BASE_INCLUDE=$HOME/dotfiles/includes
+export POSIX_INCLUDE=$HOME/dotfiles/includes/posix
 
 function include_shell_specific() {
     if [[ $BASH = *bash ]]; then
-        source includes/config.bash
+        source $HOME/dotfiles/includes/config.bash
     elif [[ $ZSH_NAME = zsh ]]; then
-        source includes/config.zsh
+        source $HOME/dotfiles/includes/config.zsh
     else
         echo -n "" # shell
     fi
 }
 
 include_shell_specific
-source includes/backup.bash
-source includes/date.bash
-source includes/docker.bash
-source includes/git.bash
-source includes/input.bash
-source includes/monitoring.bash
-source includes/nodejs.bash
-source includes/network.bash
-source includes/packages-manager.bash
-source includes/pager.bash
-source includes/python.bash
-source includes/terminal.bash
-source includes/string.bash
-source includes/utilities.bash
-source includes/additional.bash
+source "$POSIX_INCLUDE/backup.bash"
+source "$POSIX_INCLUDE/date.bash"
+source "$POSIX_INCLUDE/docker.bash"
+source "$POSIX_INCLUDE/git.bash"
+source "$POSIX_INCLUDE/input.bash"
+source "$POSIX_INCLUDE/monitoring.bash"
+source "$POSIX_INCLUDE/nodejs.bash"
+source "$POSIX_INCLUDE/network.bash"
+source "$POSIX_INCLUDE/packages-manager.bash"
+source "$POSIX_INCLUDE/pager.bash"
+source "$POSIX_INCLUDE/python.bash"
+source "$POSIX_INCLUDE/terminal.bash"
+source "$POSIX_INCLUDE/string.bash"
+source "$POSIX_INCLUDE/utilities.bash"
+source "$POSIX_INCLUDE/additional.bash"
