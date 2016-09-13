@@ -35,7 +35,7 @@ function update() {
         ln -nfs "$sourcefile" "$targetfile"
 	else
         printf "\tOverriding to: %s\n" "$targetfile"
-        rsync --exclude '.git' "$sourcefile" "$targetfile"
+        rsync --recursive --exclude '.git' "$sourcefile" "${targetfile%/*}"
 	fi
 }
 
