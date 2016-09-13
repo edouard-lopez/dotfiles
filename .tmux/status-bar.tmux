@@ -13,12 +13,14 @@ set-window-option -g window-status-format '#I:#W'
 set-window-option -g window-status-current-format '#[bg=green,fg=white,bold]#I:#W'
 
 # status right options
-set -g @batt_charged_icon '#[fg=green,bold]✔'
-set -g @batt_charging_icon '#[fg=yellow,bold]▴'  # ⚡
-set -g @batt_discharging_icon '#[fg=red,bold]▾'  # '🔋'
-set -g @batt_attached_icon '#[fg=cyan,bold]🔌'  #
+set -g @batt_charged_icon '#[fg=yellow,bold]✔ '  # ✔⬤●
+set -g @batt_charging_icon '#[fg=yellow,bold]⌁ '  # 🗲⚡🔌▴↻↺
+set -g @batt_discharging_icon '#[fg=red,bold]↯ '  # '⬇⬆↯🔋'
+set -g @batt_attached_icon '#[fg=cyan,bold]🔌 '  #
 set -g status-right-length 100
-set -g status-right '#[fg=blue]%a %d %b#[default] ⌚ #[fg=yellow]%H#[default]:#[fg=yellow]%M #[default]| #[fg=blue]⇣#{download_speed} #[fg=green]⇡#{upload_speed}#[default] | #{battery_icon}#[fg=black]#{battery_percentage} '
+# net-speed: ⬇⬆⇡⇣
+set -g status-right '#[fg=blue]%a %d %b#[default] ⌚ #[fg=yellow]%H#[default]:#[fg=yellow]%M #[default]| #[fg=blue]⬇#{download_speed} #[fg=green]⬆#{upload_speed} #[default] | #{battery_icon}#[fg=black]#{battery_percentage} '
+set -g status-right '#[fg=blue]⬇#{download_speed} #[fg=green]⬆#{upload_speed} #[default] | #{battery_icon}#[fg=black]#{battery_percentage} | #[fg=blue]%a %d %b#[default] ⌚ #[fg=yellow]%H#[default]:#[fg=yellow]%M #[default]'
 
 
 # Allow the title bar to adapt to whatever host you connect to: https://wiki.archlinux.org/index.php/Tmux#Terminal_emulator_window_titles
