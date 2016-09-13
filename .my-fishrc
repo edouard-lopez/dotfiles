@@ -154,76 +154,13 @@ end
 
 ## GIT
 function configure_git
-    function ga
-       git add $argv;
-    end
-    function gb
-       git branch $argv;
-    end
-    function gc
-       git commit $argv;
-    end
-    function go
-       git checkout $argv;
-    end
-    function gd
-       git diff --color-words $argv;
-    end
-    function gg
-       git gui ;
-    end
-    function gpl
-       git pull $argv;
-    end
-    function gpu
-       git push $argv;
-    end
-    function gs
-       git status $argv;
-    end
-    function gcl
-       git clone $argv;
-    end
-    function gu
-       git rm --cached $argv;
-    end
-    # unstage files to commit
-    function grh
-       git reset HEAD $argv;
-    end
-    function push
-       git push $argv;
-    end
-    function push-all
-       push all $argv;
-    end
-
-    function gar
-       git remote -vv $argv;
-    end
-    function gra
-       git-add-remote $argv;
-    end
-    # Add and attach a remote branch to current one
-    # @param    $1|remoteUrl     remote Url adress
-    # @param    $2|remoteBranch  remote branch name (default: manu)
-    # @return    void
-    function git-add-remote
-        set project (basename (pwd))
-        set remoteUrl $argv[1]; or set remoteUrl 'ssh://git@git.edouard-lopez.com:822/root/$project.git'
-        set remoteBranch $argv[2]; or set remoteBranch 'me'
-        set currentBranch (git rev-parse --abbrev-ref HEAD)
-        git remote add "$remoteBranch" "$remoteUrl"
-        git push -u "$remoteBranch" "$currentBranch"
-    end
-
     # GITHUB
     # Create a repo on github and connect it to local repo
     # @param    $1|$project  project name
     # @param    $2|server  remote server
     # @param    $3|$user  remote user account
     # @return    void
-    function git-new
+    function github-new
         set -l project $argv[1]; or set project "git-$RANDOM"
         set -l server $argv[2]; or set server "github.com"
         set -l user $argv[3]; or set user "edouard-lopez"
@@ -300,7 +237,7 @@ function configure_network_utilities
         if type mosh > /dev/null
             mosh "$MY_SERVER" -- tmux attach -t irc
         else
-            command ssh "$MY_SERVER" -- 'tmux attach -t irc || tmux -2 new -s irc'
+            command ssh "$MY_SERVER" -- '.tmux attach -t irc || .tmux -2 new -s irc'
         end
     end
 
@@ -310,6 +247,23 @@ function configure_network_utilities
 
     function ping
        command ping -c 10 $argv;
+    end
+end
+
+function configure_nodejs
+   function nvm
+       bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
+    end
+end
+
+function configure_server_utilities
+    # SSH alias
+    function ssh
+           if type mosh > /dev/null
+                   mosh $argv; or command ssh $argv
+           else
+                   command ssh $argv
+           end
     end
 end
 
@@ -368,24 +322,6 @@ function configure_pager
     set -gx LESS_TERMCAP_so \e'[38;5;016m'\e'[48;5;220m'    # begin standout-mode - info box
     set -gx LESS_TERMCAP_ue \e'[0m'           # end underline
     set -gx LESS_TERMCAP_us \e'[04;38;5;146m' # begin underline
-end
-
-
-function configure_nodejs
-   function nvm
-       bass source ~/.nvm/nvm.sh --no-use ';' nvm $argv
-    end 
-end
-
-function configure_server_utilities
-    # SSH alias
-    function ssh
-           if type mosh > /dev/null
-                   mosh $argv; or command ssh $argv
-           else
-                   command ssh $argv
-           end
-    end
 end
 
 function configure_shell
@@ -645,10 +581,10 @@ configure_git
 configure_keyboard_mapping
 configure_monitoring_utilities
 configure_network_utilities
+configure_nodejs
 configure_package_manager
 configure_pager
 #configure_python
-configure_nodejs
 configure_server_utilities
 configure_shell
 configure_string_utilities

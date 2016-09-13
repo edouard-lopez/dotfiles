@@ -70,18 +70,12 @@ zstyle :omz:plugins:ssh-agent agent-forwarding on
 zstyle ':completion:*' use-cache yes
 
 # ZSH aliases
-alias -g gpi="| grep -i "
 alias ll="k -h "
 
 autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
 
 source "$HOME/.my-posixrc"
-
-# Solve: RVM is not a function, selecting rubies with 'rvm use ...' will not work.
-# see http://stackoverflow.com/a/8664090/802365
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && . "$HOME/.rvm/scripts/rvm"  # This loads rvm
-alias rake="noglob rake"
 
 # EOF
 
