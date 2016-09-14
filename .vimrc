@@ -39,4 +39,6 @@ set gdefault " Search all occurrences by default
 source ~/.vim/filetype.vim
 source ~/.vim/plugin-manager.vim
 
+" Plugin settings
+GitGutterEnable
 
