@@ -5,32 +5,10 @@
 	helper = cache --timeout=3600
 
 [alias]
-	pl = pull
-	ps = push
-	st = status
-	ci = commit
-	br = branch
-	co = checkout
-	df = diff
 	lg = log --graph --pretty=format:'%C(blue)%h%Creset -%C(yellow)%d%Creset %<|(80,trunc)%s %C(white)-- (%cr) %C(yellow)<%an>%Creset' --abbrev-commit
 	summary = log --graph --pretty=format:'%<|(80,trunc)%s%Creset' --abbrev-commit
 	pretty-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-	meld = !/mnt/data/apps/git-meld/git-meld.pl
-	who = shortlog -s --
-        gitkconflict = !gitk --left-right HEAD...MERGE_HEAD
-        changes=diff --name-status -r
-        diffstat=diff --stat -r
-	new = !sh -c 'git log $1@{1}..$1@{0} "$@"'
-	mt = mergetool
-	dfw = diff --ignore-space-change
 
-[giggle]
-	main-window-maximized = true
-	main-window-geometry = 421x197+278+0
-	file-view-hpane-position = 184
-	main-window-view = HistoryView
-	history-view-vpane-position = 445
-	file-view-vpane-position = 664
 [color]
 	ui = auto
 	branch = auto
