@@ -65,8 +65,3 @@ set ts=4	" Tabstop number of spaces a <Tab> in the text stands for (local to buf
 if filereadable("/etc/vim/vimrc.local")
   source /etc/vim/vimrc.local
 endif
-
-let g:GPGDebugLevel = 2
-let g:GPGDebugLog = expand('~/gnupg.log')
-
-call pathogen#infect() 
