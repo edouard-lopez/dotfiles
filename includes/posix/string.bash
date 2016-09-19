@@ -20,12 +20,12 @@ function configure() {
         read -ra words <<< "$@" && echo "${words[@]^}"
     }
 
-    function replaceText() {
+    function replace() {
         text="$1"
-    sep="${2:- }" # space
-    newsep="${3:--}"
-    [[ -z "$text" ]] && exit
-    echo "${text//$sep/$newsep}"
+        sep="${2:- }" # space
+        newsep="${3:--}"
+        [[ -z "$text" ]] && exit
+        echo "${text//$sep/$newsep}"
     }
 
     function dashify() {
@@ -35,7 +35,7 @@ function configure() {
     # Description: prepend text to a file
     # param, $1 : text to prepend
     # param, $2 : file to edit
-    function prependText() {
+    function prepend() {
         printf '%s\n' H 1i "$1" . w | ed -s "$2"
     }
 
