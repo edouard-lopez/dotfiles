@@ -6,51 +6,37 @@ function configure() {
         echo ''
         docker ps -a
     }
-    alias dls='docker-ls '
 
     function docker-clean() {
         docker-clean-containers
         docker-clean-images
     }
-    alias dc='docker-clean'
     function docker-clean-containers() {
         echo "Deleting stopped containers"
         for container in $(docker ps -a -q); do
             docker rm $container
         done
     }
-    alias dcc='docker-clean-containers '
     function docker-clean-images() {
         echo "Deleting untagged images"
         for image in $(docker images -q -f dangling=true); do
             docker rmi $image
         done
     }
-    alias dci='docker-clean-images '
-
-    function dbuild() {
-        docker build "$@"
-    }
-    function drun() {
-        docker run "$@"
-    }
 
     function docker-list-volumes() {
         docker volume ls -qf dangling=true
     }
-    alias dlsv='docker-list-volumes '
 
     function docker-clean-volumes() {
         for volume in $(docker-list-volumes); do
             docker volume rm $volume
         done
     }
-    alias dcv='docker-list-volumes '
 
     function docker-list-container-volumes() {
         docker inspect --format='{{json .Mounts}}' "$1" | python -m json.tool
     }
-    alias dlcv='docker-list-container-volumes '
 
     function docker-compose-infinite() {
         while true; do
