@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function utilities() {
+function configure() {
     function up() { cd .. "$@" || exit; }
     function back() { cd - "$@" || exit; }
 

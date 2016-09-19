@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-function git() {
+function configure() {
     # GITHUB
     # Create a repo on github and connect it to local repo
     # @param    $1|$project  project name

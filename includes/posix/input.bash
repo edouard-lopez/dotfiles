@@ -12,7 +12,6 @@ function configure() {
         xmodmap -e "keycode 107 = Menu NoSymbol Menu"
     }
 
-
     function start_ibus_ime() {
         ibus-daemon --daemonize --replace --xim
     }
