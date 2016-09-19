@@ -1,4 +1,5 @@
 #!/usr/bin/env bash
+
 export MY_SERVER="srv-sys"
 export BROWSER="firefox"  # Default web browser
 export CDPATH="$CDPATH:$HOME/projects"
