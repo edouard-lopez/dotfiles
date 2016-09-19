@@ -14,7 +14,7 @@ function configure() {
     }
 
     # human-readable sizes
-    function df() { command df -h "$@"; }
+    function df() { command df --human-readable --print-type "$@" | grep -v tmpfs; }
 
      # show sizes in MB
     function free() { command free -m; }
