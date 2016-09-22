@@ -9,7 +9,7 @@ function configure() {
 
 
     function map_printScreen_to_open_contextual_menu() {
-        xmodmap -e "keycode 107 = Menu NoSymbol Menu"
+        cmd_exists xmodmap && xmodmap -e "keycode 107 = Menu NoSymbol Menu"
     }
 
     function start_ibus_ime() {
