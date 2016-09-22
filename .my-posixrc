@@ -19,6 +19,10 @@ function include_shell_specific() {
     fi
 }
 
+function cmd_exists() {
+    type "$1" &> /dev/null
+}
+
 include_shell_specific
 source "$POSIX_INCLUDE/backup.bash"
 source "$POSIX_INCLUDE/date.bash"
