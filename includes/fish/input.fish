@@ -6,7 +6,7 @@ function configure
     set -gx XMODIFIERS @im=ibus
 
     function map_printScreen_to_open_contextual_menu
-        xmodmap -e "keycode 107 = Menu NoSymbol Menu"
+        cmd_exists xmodmap ; and xmodmap -e "keycode 107 = Menu NoSymbol Menu"
     end
 
     function start_ibus_ime
