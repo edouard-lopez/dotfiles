@@ -40,5 +40,3 @@ source ~/.vim/filetype.vim
 source ~/.vim/plugin-manager.vim
 
 " Plugin settings
-GitGutterEnable
-
