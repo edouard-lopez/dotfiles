@@ -17,8 +17,15 @@ function configure() {
     }
 
     # Theme mode
-    function day-mode() { change-terminal-color-mode "colors=Tomorrow"; }
-    function night-mode() { change-terminal-color-mode "colors=TomorrowNightBright"; }
+    function night-mode() { 
+		change-terminal-color-mode "colors=TomorrowNightBright"; 
+		tmux source-file ~/dotfiles/.tmux/themes/tomorrow.tmux
+	}
+
+    function day-mode() { 
+		change-terminal-color-mode "colors=Tomorrow"; 
+		tmux source-file ~/dotfiles/.tmux/themes/tomorrow-night.tmux
+	}
 
     # so we can distinguish between Yakuake and Konsole (no .tmux)
     function konsole() {
