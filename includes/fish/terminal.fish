@@ -9,7 +9,7 @@ function change-terminal-color-mode
     if test -z "$TMUX"; and type konsoleprofile > /dev/null
         konsoleprofile "$arg"
     else
-        printf '\033Ptmux;\033\033]50;%s\007\033\\' "$arg"
+        printf '\033Ptmux;\033\033]50;%s\007\033\\ ' "$arg"
     end
 end
 
