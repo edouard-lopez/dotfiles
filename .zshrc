@@ -39,13 +39,13 @@ ZSH_THEME="pure"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
         autojump
-         # bower 
-         command-not-found django fabric 
-         history 
+         # bower
+         command-not-found django fabric
+         history
          # jump
-         k 
+         k
          git git-extras
-         npm pip python 
+         npm pip python
          ssh-agent history-substring-search
          zsh-syntax-highlighting  zsh-completions
          # yeoman
@@ -78,4 +78,3 @@ fpath=(~/.zsh/completion $fpath)
 source "$HOME/.my-posixrc"
 
 # EOF
-
