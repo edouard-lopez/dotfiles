@@ -9,7 +9,7 @@ function map_printScreen_to_open_contextual_menu
 end
 
 function start_ibus_ime
-    ibus-daemon --daemonize --replace --xim
+  ibus-daemon --single --xim --replace --daemonize
 end
 
 map_printScreen_to_open_contextual_menu
