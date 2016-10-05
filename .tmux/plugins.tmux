@@ -3,7 +3,7 @@ set -g @plugin 'tmux-plugins/tpm'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 
 # Other examples:
-set -g @plugin 'tmux-plugins/tmux-copycat'
+#set -g @plugin 'tmux-plugins/tmux-copycat'
 #set -g @plugin 'tmux-plugins/tmux-net-speed'
 set -g @plugin 'edouard-lopez/tmux-net-speed'
 set -g @plugin 'tmux-plugins/tmux-sidebar'
