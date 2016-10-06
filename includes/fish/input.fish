@@ -9,7 +9,11 @@ function map_printScreen_to_open_contextual_menu
 end
 
 function start_ibus_ime
-  ibus-daemon --single --xim --replace --daemonize
+  set exists (process_exists ibus-daemon)
+
+  if [ $exists = false ]
+    ibus-daemon --single --xim --replace --daemonize
+  end
 end
 
 map_printScreen_to_open_contextual_menu

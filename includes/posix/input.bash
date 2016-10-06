@@ -13,7 +13,10 @@ function configure() {
     }
 
     function start_ibus_ime() {
+      exists="$(process_exists ibus-daemon)"
+      if [[ $exists = false ]] ; then
         ibus-daemon --single --xim --replace --daemonize
+      fi
     }
 
     map_printScreen_to_open_contextual_menu
