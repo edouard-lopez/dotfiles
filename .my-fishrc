@@ -16,14 +16,12 @@ function include_shell_specific
     end
 end
 
-function cmd_exists
-    type "$1" > /dev/null
-end
-
 # THEME PURE #
 set fish_function_path $HOME/.config/fish/functions/theme-pure $fish_function_path
 
+
 include_shell_specific
+source "$FISH_INCLUDE/core.fish"
 source "$FISH_INCLUDE/backup.fish"
 source "$FISH_INCLUDE/date.fish"
 source "$FISH_INCLUDE/docker.fish"

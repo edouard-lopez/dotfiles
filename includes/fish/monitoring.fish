@@ -19,7 +19,3 @@ end
 function free
    command free -m;
 end
-
-function psgrep
-    ps aux | grep -i $argv[1] | grep -v grep
-end
