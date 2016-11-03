@@ -45,7 +45,8 @@ plugins=(
          # jump
          k
          git git-extras
-         npm pip python
+         npm nvm
+         pip python
          ssh-agent history-substring-search
          zsh-syntax-highlighting  zsh-completions
          # yeoman
