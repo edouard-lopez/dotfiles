@@ -18,7 +18,7 @@ end
 
 # THEME PURE #
 set fish_function_path $HOME/.config/fish/functions/theme-pure $fish_function_path
-
+eval (python -m virtualfish)
 
 include_shell_specific
 source "$FISH_INCLUDE/core.fish"
