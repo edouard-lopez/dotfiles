@@ -1,35 +1,37 @@
 [user]
-	name = Édouard Lopez
-	email = dev+git@edouard-lopez.com
+    name = Édouard Lopez
+    email = contact@edouard-lopez.com
 [credential]
-	helper = cache --timeout=3600
+    helper = cache --timeout=3600
 
 [alias]
-	lg = log --graph --pretty=format:'%C(blue)%h%Creset -%C(yellow)%d%Creset %<|(80,trunc)%s %C(white)-- (%cr) %C(yellow)<%an>%Creset' --abbrev-commit
-	summary = log --graph --pretty=format:'%<|(80,trunc)%s%Creset' --abbrev-commit
-	pretty-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    lg = log --graph --decorate --pretty=oneline --abbrev-commit
+    tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
+    pretty-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+    df = diff --word-diff=color
+	unstage = reset HEAD --
 
 [color]
-	ui = auto
-	branch = auto
-	diff = auto
-	interactive = auto
-	status = auto
+    ui = auto
+    branch = auto
+    diff = auto
+    interactive = auto
+    status = auto
 [apply]
-	whitespace = nowarn
+    whitespace = nowarn
 [core]
-	edit = sublime-text-2
-	excludes = ~/.gitexcludes
-	excludesfile = ~/.gitignore
-	autocrlf = input
-	editor = vim
+    edit = sublime-text-2
+    excludes = ~/.gitexcludes
+    excludesfile = ~/.gitignore
+    autocrlf = input
+    editor = vim
 [merge]
-	tool = meld
+    tool = meld
 [gui]
-	diffcontext = 2
-	recentrepo = /mnt/data/projects/website-probe
+    diffcontext = 2
 	fontui = -family \"Noto Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Noto Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	tabsize = 4
 
 [pager]
     log = diff-highlight | less
@@ -37,9 +39,78 @@
     diff = diff-highlight | less
 [url "https://"]
 [push]
-	default = simple
+    default = simple
 
 [guitool "Add to .gitignore"]
-	cmd = echo \"\n$FILENAME\" >> .gitignore & git add .gitignore
-	needsfile = yes
-	confirm = yes
+    cmd = echo \"\n$FILENAME\" >> .gitignore & git add .gitignore
+    needsfile = yes
+    confirm = yes
+
+[guitool "Stash"]
+    cmd = git stash
+[guitool "Stash/show"]
+    cmd = git stash show -p
+[guitool "Stash/list"]
+    cmd = git stash list
+[guitool "Stash/pop"]
+    cmd = git stash pop
+[guitool "Stash/drop"]
+    cmd = git stash drop
+    confirm = yes
+[guitool "Rebase onto... (non-interactive)"]
+    cmd = git rebase $REVISION
+    revprompt = yes
+[guitool "Rebase/Current branch"]
+    cmd = git rebase -i $(git merge-base $CUR_BRANCH master)
+[guitool "Rebase/Interactive"]
+    cmd = git rebase -i $REVISION
+    revprompt = Revision
+[guitool "Rebase/Interactive number"]
+    cmd = git rebase -i HEAD~$ARGS
+    argprompt = Number
+[guitool "Rebase/Continue"]
+    cmd = git rebase --continue
+[guitool "Rebase/Skip commit"]
+    cmd = git rebase --skip
+    confirm = yes
+[guitool "Rebase/Abort"]
+    cmd = git rebase --abort
+[guitool "Pull with Rebase"]
+    cmd = git pull --rebase
+[guitool "Status"]
+    cmd = git status
+[guitool "Revert/Revision"]
+    cmd = git revert $REVISION
+    revprompt = Revision
+[guitool "Revert/Latest local"]
+    cmd = git revert $(git rev-parse HEAD)
+[guitool "Revert/Latest remote"]
+    cmd = git revert $(git rev-parse origin/master)
+[sequence]
+    editor = vim
+[core]
+    editor = vim
+[guitool "Tag - List all"]
+    cmd = git tag
+[guitool "Tag - List pattern"]
+    cmd = git tag -l \"$ARGS\"
+    argprompt = yes
+[guitool "Tag - Show"]
+    cmd = git show $ARGS
+    argprompt = yes
+[guitool "Tag - Latest annotated tag"]
+    cmd = git describe
+[guitool "Tag - Latest tag"]
+    cmd = git describe --tags
+[guitool "Run git command"]
+    cmd = git $ARGS
+    argprompt = yes
+[guitool "Run command"]
+    cmd = $ARGS
+    argprompt = yes
+[guitool "Open .gitconfig"]
+    cmd = "start ~/.gitconfig"
+[guitool "Open file"]
+    cmd = start $FILENAME
+    noconsole = yes
+    needsfile = yes
