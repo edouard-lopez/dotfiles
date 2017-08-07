@@ -17,8 +17,10 @@ function include_shell_specific
 end
 
 # THEME PURE #
-set fish_function_path $HOME/.config/fish/functions/theme-pure $fish_function_path
-eval (python -m virtualfish)
+# Base16 Shell
+if status --is-interactive
+    eval sh $HOME/.config/base16-shell/scripts/base16-tomorrow.sh
+end
 
 include_shell_specific
 source "$FISH_INCLUDE/core.fish"
@@ -34,6 +36,8 @@ source "$FISH_INCLUDE/packages-manager.fish"
 source "$FISH_INCLUDE/pager.fish"
 source "$FISH_INCLUDE/python.fish"
 source "$FISH_INCLUDE/terminal.fish"
+source "$FISH_INCLUDE/terminal.fish"
+source "$FISH_INCLUDE/tacklebox.fish"
 source "$FISH_INCLUDE/string.fish"
 source "$FISH_INCLUDE/utilities.fish"
 source "$FISH_INCLUDE/additional.fish"
