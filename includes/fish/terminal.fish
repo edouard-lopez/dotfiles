@@ -5,7 +5,7 @@ set -gx TERM screen-256color  # support 256 color palette
 set -gx VISUAL vim
 
 function change-terminal-color-mode
-    set arg "$argv[1]"; or set arg "colors=Tomorrow"
+    set arg "$argv[1]"; or set arg "colors=base16-tomorrow"
     if test -z "$TMUX"; and type konsoleprofile > /dev/null
         konsoleprofile "$arg"
     else
@@ -17,13 +17,13 @@ end
 function night-mode
   tmux source-file $HOME/dotfiles/.tmux/themes/tomorrow-night-bright.tmux
   tmux source-file $HOME/.tmux.conf
-  change-terminal-color-mode "colors=TomorrowNightBright";
+  change-terminal-color-mode "colors=base16-tomorrow-night";
 end
 
 function day-mode
   tmux source-file $HOME/dotfiles/.tmux/themes/tomorrow.tmux
   tmux source-file $HOME/.tmux.conf
-  change-terminal-color-mode "colors=Tomorrow";
+  change-terminal-color-mode "colors=base16-tomorrow";
 end
 
 # so we can distinguish between Yakuake and Konsole (no tmux)

@@ -8,7 +8,7 @@ function configure() {
     export VISUAL=vim
 
     function change-terminal-color-mode() {
-        arg="${1:-colors=Tomorrow}"
+        arg="${1:-colors=base16-tomorrow}"
         if [[ -z "$TMUX" ]] && type konsoleprofile &> /dev/null; then
             konsoleprofile "$arg"
         else
@@ -18,12 +18,12 @@ function configure() {
 
     # Theme mode
     function night-mode() {
-  		change-terminal-color-mode "colors=TomorrowNightBright";
+  		change-terminal-color-mode "colors=base16-tomorrow-night";
   		tmux source-file ~/dotfiles/.tmux/themes/tomorrow.tmux
   	}
 
       function day-mode() {
-  		change-terminal-color-mode "colors=Tomorrow";
+  		change-terminal-color-mode "colors=base16-tomorrow";
   		tmux source-file ~/dotfiles/.tmux/themes/tomorrow-night.tmux
   	}
 

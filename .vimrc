@@ -7,6 +7,9 @@ if $TERM =~ '^screen-256color'
     map! <Esc>OF <End>
 endif
 
+" using the fish shell: add 
+shell=/bin/bash
+
 
 " User Interface
 set matchpairs+=<:> " Show matching <> as well
@@ -36,7 +39,11 @@ set hlsearch " Highlight search terms
 nmap <silent> ,/ :nohlsearch<CR>
 set gdefault " Search all occurrences by default
 
-source ~/.vim/filetype.vim
-source ~/.vim/plugin-manager.vim
+if filereadable(expand("~/.vimrc_background"))
+    let base16colorspace=256
+    source ~/.vimrc_background
+endif
 
 " Plugin settings
+source ~/.vim/filetype.vim
+source ~/.vim/plugin-manager.vim
