@@ -8,8 +8,7 @@ if $TERM =~ '^screen-256color'
 endif
 
 " using the fish shell: add 
-shell=/bin/bash
-
+set shell=/bin/bash
 
 " User Interface
 set matchpairs+=<:> " Show matching <> as well
