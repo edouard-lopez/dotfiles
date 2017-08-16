@@ -18,10 +18,10 @@ end
 
 # THEME PURE #
 # Base16 Shell
-if status --is-interactive
+ if status --is-interactive
     eval sh $HOME/.config/base16-shell/scripts/base16-tomorrow.sh
 end
-
+     
 include_shell_specific
 source "$FISH_INCLUDE/core.fish"
 source "$FISH_INCLUDE/backup.fish"

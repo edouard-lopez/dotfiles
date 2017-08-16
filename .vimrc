@@ -15,7 +15,6 @@ set matchpairs+=<:> " Show matching <> as well
 set cursorline " Highlight current line
 set mouse=a " Enable the mouse for everything
 set t_Co=256
-colorscheme Tomorrow
 
 " Editor config
 set nobackup    " Don't create backup files
@@ -38,6 +37,8 @@ set hlsearch " Highlight search terms
 nmap <silent> ,/ :nohlsearch<CR>
 set gdefault " Search all occurrences by default
 
+" Base16
+colorscheme base16-tomorrow
 if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
