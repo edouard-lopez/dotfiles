@@ -4,7 +4,7 @@ set -gx BROWSER firefox  # Default web browser
 set -gx CDPATH $CDPATH . ~ $HOME/projects
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-set -gx PATH $HOME/.yarn/bin $HOME/apps {$HOME/apps/*,$HOME/.config/fnm,/usr/local,/usr,}/bin {/usr/local,/usr,}/sbin
+set -gx PATH $HOME/apps ./node_modules/.bin {,$HOME/.yarn,$HOME/.config/fnm,/usr/local,/usr,}/bin {/usr/local,/usr,}/sbin
 set -gx BASE_INCLUDE $HOME/dotfiles/includes
 set -gx FISH_INCLUDE $HOME/dotfiles/includes/fish
 
