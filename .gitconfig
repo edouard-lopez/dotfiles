@@ -39,7 +39,7 @@
     diff = diff-highlight | less
 [url "https://"]
 [push]
-    default = simple
+	default = current
 
 [guitool "Add to .gitignore"]
     cmd = echo \"\n$FILENAME\" >> .gitignore & git add .gitignore
