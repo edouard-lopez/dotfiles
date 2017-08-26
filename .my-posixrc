@@ -5,7 +5,19 @@ export BROWSER="firefox"  # Default web browser
 export CDPATH="$CDPATH:$HOME/projects"
 GPG_TTY="$(tty)"; export GPG_TTY
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"; export JAVA_HOME
-export PATH="./node_modules/.bin:$HOME/.yarn/bin:$HOME/apps:$HOME/.config/fnm/bin:/usr/local/bin:/usr/bin:/usr/local/sbin:/usr/sbin"
+pathes=(
+  ./node_modules/.bin
+  $HOME/.yarn/bin
+  $HOME/apps
+  $HOME/.config/fnm/bin
+  /usr/local/bin
+  /bin
+  /usr/bin
+  /usr/local/sbin
+  /usr/sbin
+)
+export PATH
+PATH=$(IFS=":$IFS"; printf '%s\n' "${pathes[*]}")
 export BASE_INCLUDE=$HOME/dotfiles/includes
 export POSIX_INCLUDE=$HOME/dotfiles/includes/posix
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
