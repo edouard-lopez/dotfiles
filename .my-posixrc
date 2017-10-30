@@ -15,6 +15,7 @@ pathes=(
   /usr/bin
   /usr/local/sbin
   /usr/sbin
+  /snap/bin/
 )
 export PATH
 PATH=$(IFS=":$IFS"; printf '%s\n' "${pathes[*]}")

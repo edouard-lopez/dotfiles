@@ -4,9 +4,22 @@ set -gx BROWSER firefox  # Default web browser
 set -gx CDPATH $CDPATH . ~ $HOME/projects
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-set -gx PATH $HOME/apps ./node_modules/.bin {,$HOME/.yarn,$HOME/.config/fnm,/usr/local,/usr,}/bin {/usr/local,/usr,}/sbin
+set pathes \
+  ./node_modules/.bin \
+  $HOME/.yarn/bin \
+  $HOME/apps \
+  $HOME/.config/fnm/bin \
+  /usr/local/bin \
+  /bin \
+  /usr/bin \
+  /usr/local/sbin \
+  /usr/sbin \
+  /snap/bin/
+set -gx PATH $pathes
+
 set -gx BASE_INCLUDE $HOME/dotfiles/includes
 set -gx FISH_INCLUDE $HOME/dotfiles/includes/fish
+set -gx XDG_DATA_HOME $HOME/.local/share
 
 function include_shell_specific
     if  test  -n $FISH_VERSION
@@ -21,7 +34,7 @@ end
  if status --is-interactive
     eval sh $HOME/.config/base16-shell/scripts/base16-tomorrow.sh
 end
-     
+
 include_shell_specific
 source "$FISH_INCLUDE/core.fish"
 source "$FISH_INCLUDE/backup.fish"
