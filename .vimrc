@@ -38,11 +38,11 @@ nmap <silent> ,/ :nohlsearch<CR>
 set gdefault " Search all occurrences by default
 
 " Base16
-colorscheme base16-tomorrow
 if filereadable(expand("~/.vimrc_background"))
     let base16colorspace=256
     source ~/.vimrc_background
 endif
+colorscheme Tomorrow
 
 " Plugin settings
 source ~/.vim/filetype.vim
