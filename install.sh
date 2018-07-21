@@ -43,7 +43,7 @@ function install() {
 
     for sourcefile in "$scriptDir"/{*,.*}; do
         filename="$(basename "$sourcefile")"
-        [[ "$filename" == *.git* ]] && continue
+        [[ "$filename" == *.git ]] && continue
         [[ "$filename" == install.sh || "$filename" == *.swp ]] && continue # ignore install.sh and *.swp
         [[ "$filename" == "." || "$filename" == ".." ]] && continue
         [[ "$filename" == "config.fish" ]] && install_fish "$sourcefile"
