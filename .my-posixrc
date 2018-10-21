@@ -41,6 +41,7 @@ function include_shell_specific() {
 
 include_shell_specific
 source "$POSIX_INCLUDE/core.bash"
+source "$POSIX_INCLUDE/alias.bash"
 source "$POSIX_INCLUDE/backup.bash"
 source "$POSIX_INCLUDE/date.bash"
 source "$POSIX_INCLUDE/docker.bash"

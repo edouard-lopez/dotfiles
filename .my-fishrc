@@ -37,6 +37,7 @@ end
 
 include_shell_specific
 source "$FISH_INCLUDE/core.fish"
+source "$FISH_INCLUDE/alias.fish"
 source "$FISH_INCLUDE/backup.fish"
 source "$FISH_INCLUDE/date.fish"
 source "$FISH_INCLUDE/docker.fish"
