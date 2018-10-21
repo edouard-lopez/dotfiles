@@ -30,8 +30,8 @@
     tool = meld
 [gui]
     diffcontext = 2
-	fontui = -family \"Noto Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
-	fontdiff = -family \"Noto Sans\" -size 10 -weight normal -slant roman -underline 0 -overstrike 0
+	fontui = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
+	fontdiff = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	tabsize = 4
 
 [pager]
