@@ -1,6 +1,10 @@
 function find
     fd $argv
 end
-
-# Then, to save it across terminal sessions:
 funcsave find
+
+function cat
+    bat --theme="Monokai Extended Light" $argv
+end
+funcsave cat
+
