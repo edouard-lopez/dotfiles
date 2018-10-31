@@ -2,7 +2,7 @@
 set-window-option -g xterm-keys on
 
 # Allow mouse interaction
-bind m run "bash $HOME/dotfiles/toggle-mouse.sh"
+bind m run "bash $HOME/.tmux/toggle-mouse.sh"
 
 # page Up/Down directly and enable copy mode
 bind-key -T root PPage if-shell -F "#{alternate_on}" "send-keys PPage" "copy-mode -e; send-keys PPage"
