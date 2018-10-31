@@ -1,30 +1,39 @@
-set -g status on
-bind-key b set-option status  # toggle statusbar
+set-option -g status on                # Enable status bar 
+bind-key b set-option status    # Toggle status bar visibility
 
-set-option -g status-justify left
+set-option -g status-style "bg=$FOCUSED_BACKGROUND_COLOR"
+set-option -ga status-style "fg=$FOCUSED_TEXT_COLOR"
 
-# status left options
-set-option -g status-left '#[fg=black][#S]#[default] '
-set-option -g status-left-length 20
+# Status bar left part
+set-option -g status-right-length 10
+set-option -g status-left "#{host}❯"
+set-window-option -g status-left-bg "$DEFAULT_BACKGROUND_COLOR"
+set-window-option -g status-left-fg "$ACTIVE_TEXT_COLOR"
 
-# window list options
-set-window-option -g automatic-rename on
-set-window-option -g window-status-format '#I:#W'
-set-window-option -g window-status-current-format '#[bg=green,fg=white,bold]#I:#W'
+# Window's Tab
+set-window-option -g window-status-format '#{window_index}:#{window_name}'
+set-window-option -g window-status-bg "$DEFAULT_BACKGROUND_COLOR"
+set-window-option -g window-status-fg "$DEFAULT_TEXT_COLOR"
 
-# status right options
-set -g @batt_charged_icon '#[fg=green,bold]✔ '  # ✔⬤●
-set -g @batt_charging_icon '#[fg=yellow,bold]⌁ '  # 🗲⚡🔌▴↻↺
-set -g @batt_discharging_icon '#[fg=red,bold]↯ '  # '⬇⬆↯🔋'
-set -g @batt_attached_icon '#[fg=cyan,bold]🔌 '  #
-set -g status-right-length 100
-# net-speed: ⬇⬆⇡⇣
-#set -g status-right '#[fg=blue]%a %d %b#[default] ⌚ #[fg=yellow]%H#[default]:#[fg=yellow]%M #[default]| #[fg=blue]⬇#{download_speed} #[fg=green]⬆#{upload_speed} #[default] | #{battery_icon}#[fg=black]#{battery_percentage} '
-set -g status-right '#[fg=blue]⬇#{download_speed} #[fg=green]⬆#{upload_speed} #[default] | #{battery_icon}#[fg=black]#{battery_percentage} | #[fg=blue]%a %d %b#[default] ⌚ #[fg=yellow]%H#[default]:#[fg=yellow]%M #[default]'
+# Active Window's Tab
+set-window-option -g window-status-current-format '[#{window_index}:#{window_name}]'
+set-window-option -g window-status-current-bg "$FOCUSED_BACKGROUND_COLOR"
+set-window-option -g window-status-current-fg "$FOCUSED_TEXT_COLOR"
+set-window-option -g window-status-current-attr "bold"
 
+# Status bar right part
+set-option -g @batt_charged_icon "$EMPTY"
+set-option -g @batt_charging_icon "$TEXT_WARNING🗲$TEXT_RESET"  # 🗲⚡🔌▴↻↺
+set-option -g @batt_attached_icon "$EMPTY"  #
+set-option -g @batt_full_charge_icon "$EMPTY"
+set-option -g @batt_high_charge_icon "$EMPTY"
+set-option -g @batt_medium_charge_icon "$TEXT_WARNING💣$TEXT_RESET"
+set-option -g @batt_low_charge_icon "$TEXT_DANGER💣$TEXT_RESET"  # '⬇⬆↯🔋'
 
-# Allow the title bar to adapt to whatever host you connect to: https://wiki.archlinux.org/index.php/Tmux#Terminal_emulator_window_titles
-set -g set-titles on
-# wm window title string (uses statusbar variables)
-set -g set-titles-string "#T"
-# set -g set-titles-string "tmux:#I [ #W ]"
+set-option -g @net_speed_interfaces "wlp4s0"
+set-option -g @download_speed_format "%10s"
+set-option -g @upload_speed_format "%10s"
+set-option -g @net_speed_format "D:%10s U:%10s"
+
+set-option -g status-right-length 60
+set-option -g status-right '⇣#{download_speed} ⇡#{upload_speed} | #{battery_icon}#{battery_percentage} #{battery_graph} | %a %d %b ⌚ %H:%M'
