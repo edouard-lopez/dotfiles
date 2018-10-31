@@ -26,20 +26,19 @@ function install_fish() {
 
 function install_tmux() {
     tmux_directory="$1"
-
-    echo "$tmux_directory" "$HOME/.tmux"
-    rm --force --recursive "$HOME/.tmux"
-    ln -nfs "$tmux_directory" "$HOME/.tmux"
-
-    files_to_symlink=( .tmux.conf .tmux-tomorrow.conf )
+    
+    files_to_symlink=( .tmux .tmux.conf .tmux-tomorrow.conf )
     for file in "${files_to_symlink[@]}"; do
         sourcefile="$tmux_directory/$file"
         target="$HOME/$file"
         echo "$sourcefile" "$target"
 
-        rm "$target"
+        rm --force --recursive "$target"
         ln -nfs "$sourcefile" "$target"
     done
+    if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+        git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    fi
 }
 
 function update() {
