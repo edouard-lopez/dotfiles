@@ -24,6 +24,24 @@ function install_fish() {
     ln -nfs "$sourcefile" "$targetfile"
 }
 
+function install_tmux() {
+    tmux_directory="$1"
+
+    echo "$tmux_directory" "$HOME/.tmux"
+    rm --force --recursive "$HOME/.tmux"
+    ln -nfs "$tmux_directory" "$HOME/.tmux"
+
+    files_to_symlink=( .tmux.conf .tmux-tomorrow.conf )
+    for file in "${files_to_symlink[@]}"; do
+        sourcefile="$tmux_directory/$file"
+        target="$HOME/$file"
+        echo "$sourcefile" "$target"
+
+        rm "$target"
+        ln -nfs "$sourcefile" "$target"
+    done
+}
+
 function update() {
     sourcefile="$1"
     targetfile="$2"
@@ -46,7 +64,8 @@ function install() {
         [[ "$filename" == *.git ]] && continue
         [[ "$filename" == install.sh || "$filename" == *.swp ]] && continue # ignore install.sh and *.swp
         [[ "$filename" == "." || "$filename" == ".." ]] && continue
-        [[ "$filename" == "config.fish" ]] && install_fish "$sourcefile"
+        [[ "$filename" == "config.fish" ]] && install_fish "$sourcefile" && continue
+        [[ "$filename" == ".tmux" ]] && install_tmux "$sourcefile" && continue
 
         targetfile="$HOME/$filename"
         printf "%s\n" "$sourcefile"
