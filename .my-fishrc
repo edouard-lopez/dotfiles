@@ -6,6 +6,7 @@ set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 set pathes \
   ./node_modules/.bin \
+  $HOME/.local/bin \
   $HOME/.yarn/bin \
   $HOME/apps \
   $HOME/.config/fnm/bin \
