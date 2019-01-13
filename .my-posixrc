@@ -7,6 +7,7 @@ GPG_TTY="$(tty)"; export GPG_TTY
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"; export JAVA_HOME
 pathes=(
   ./node_modules/.bin
+  $HOME/.local/bin
   $HOME/.yarn/bin
   $HOME/apps
   $HOME/.config/fnm/bin
