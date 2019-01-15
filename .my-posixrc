@@ -24,9 +24,8 @@ export BASE_INCLUDE=$HOME/dotfiles/includes
 export POSIX_INCLUDE=$HOME/dotfiles/includes/posix
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
-BASE16_SHELL=$HOME/.config/base16-shell/
-[ -n "$PS1" ] && [ -s $BASE16_SHELL/profile_helper.sh ] && eval "$($BASE16_SHELL/profile_helper.sh)"
-
+BASE16_SHELL="$HOME/.config/base16-shell/"
+[ -n "$PS1" ] && [ -s "$BASE16_SHELL/profile_helper.sh" ] && eval "$("$BASE16_SHELL/profile_helper.sh")"
 
 function include_shell_specific() {
     if [[ $BASH = *bash ]]; then
