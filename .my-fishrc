@@ -18,8 +18,6 @@ set pathes \
   /snap/bin/
 set -gx PATH $pathes
 
-set -gx BASE_INCLUDE $HOME/dotfiles/includes
-set -gx FISH_INCLUDE $HOME/dotfiles/includes/fish
 set -gx XDG_DATA_HOME $HOME/.local/share
 
 function include_shell_specific
@@ -38,22 +36,22 @@ end
 end
 
 include_shell_specific
-source "$FISH_INCLUDE/core.fish"
-source "$FISH_INCLUDE/alias.fish"
-source "$FISH_INCLUDE/backup.fish"
-source "$FISH_INCLUDE/date.fish"
-source "$FISH_INCLUDE/docker.fish"
-source "$FISH_INCLUDE/git.fish"
-source "$FISH_INCLUDE/input.fish"
-source "$FISH_INCLUDE/monitoring.fish"
-source "$FISH_INCLUDE/nodejs.fish"
-source "$FISH_INCLUDE/network.fish"
-source "$FISH_INCLUDE/packages-manager.fish"
-source "$FISH_INCLUDE/pager.fish"
-source "$FISH_INCLUDE/python.fish"
-source "$FISH_INCLUDE/terminal.fish"
-source "$FISH_INCLUDE/terminal.fish"
-source "$FISH_INCLUDE/tacklebox.fish"
-source "$FISH_INCLUDE/string.fish"
-source "$FISH_INCLUDE/utilities.fish"
-source "$FISH_INCLUDE/additional.fish"
+source "$HOME/dotfiles/includes/fish/core.fish"
+source "$HOME/dotfiles/includes/fish/alias.fish"
+source "$HOME/dotfiles/includes/fish/backup.fish"
+source "$HOME/dotfiles/includes/fish/date.fish"
+source "$HOME/dotfiles/includes/fish/docker.fish"
+source "$HOME/dotfiles/includes/fish/git.fish"
+source "$HOME/dotfiles/includes/fish/input.fish"
+source "$HOME/dotfiles/includes/fish/monitoring.fish"
+source "$HOME/dotfiles/includes/fish/nodejs.fish"
+source "$HOME/dotfiles/includes/fish/network.fish"
+source "$HOME/dotfiles/includes/fish/packages-manager.fish"
+source "$HOME/dotfiles/includes/fish/pager.fish"
+source "$HOME/dotfiles/includes/fish/python.fish"
+source "$HOME/dotfiles/includes/fish/terminal.fish"
+source "$HOME/dotfiles/includes/fish/terminal.fish"
+source "$HOME/dotfiles/includes/fish/tacklebox.fish"
+source "$HOME/dotfiles/includes/fish/string.fish"
+source "$HOME/dotfiles/includes/fish/utilities.fish"
+source "$HOME/dotfiles/includes/fish/additional.fish"
