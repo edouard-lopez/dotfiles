@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'chriskempson/base16-vim'
 Plugin 'L9'  " vim library/utilities
 Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}  " emmet-lize
 Plugin 'kien/ctrlp.vim'  " Fuzzy file, buffer, mru, tag, etc finder.
