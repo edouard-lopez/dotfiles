@@ -21,7 +21,6 @@ pathes=(
 export PATH
 PATH=$(IFS=":$IFS"; printf '%s\n' "${pathes[*]}")
 export BASE_INCLUDE=$HOME/dotfiles/includes
-export POSIX_INCLUDE=$HOME/dotfiles/includes/posix
 export XDG_DATA_HOME=${XDG_DATA_HOME:="$HOME/.local/share"}
 
 BASE16_SHELL="$HOME/.config/base16-shell/"
@@ -40,21 +39,21 @@ function include_shell_specific() {
 
 
 include_shell_specific
-source "$POSIX_INCLUDE/core.bash"
-source "$POSIX_INCLUDE/alias.bash"
-source "$POSIX_INCLUDE/backup.bash"
-source "$POSIX_INCLUDE/date.bash"
-source "$POSIX_INCLUDE/docker.bash"
-source "$POSIX_INCLUDE/git.bash"
-source "$POSIX_INCLUDE/input.bash"
-source "$POSIX_INCLUDE/monitoring.bash"
-source "$POSIX_INCLUDE/nodejs.bash"
-source "$POSIX_INCLUDE/network.bash"
-source "$POSIX_INCLUDE/packages-manager.bash"
-source "$POSIX_INCLUDE/pager.bash"
-source "$POSIX_INCLUDE/python.bash"
-source "$POSIX_INCLUDE/terminal.bash"
-source "$POSIX_INCLUDE/string.bash"
-source "$POSIX_INCLUDE/utilities.bash"
-source "$POSIX_INCLUDE/additional.bash"
+source "$HOME/dotfiles/includes/posix/core.bash"
+source "$HOME/dotfiles/includes/posix/alias.bash"
+source "$HOME/dotfiles/includes/posix/backup.bash"
+source "$HOME/dotfiles/includes/posix/date.bash"
+source "$HOME/dotfiles/includes/posix/docker.bash"
+source "$HOME/dotfiles/includes/posix/git.bash"
+source "$HOME/dotfiles/includes/posix/input.bash"
+source "$HOME/dotfiles/includes/posix/monitoring.bash"
+source "$HOME/dotfiles/includes/posix/nodejs.bash"
+source "$HOME/dotfiles/includes/posix/network.bash"
+source "$HOME/dotfiles/includes/posix/packages-manager.bash"
+source "$HOME/dotfiles/includes/posix/pager.bash"
+source "$HOME/dotfiles/includes/posix/python.bash"
+source "$HOME/dotfiles/includes/posix/terminal.bash"
+source "$HOME/dotfiles/includes/posix/string.bash"
+source "$HOME/dotfiles/includes/posix/utilities.bash"
+source "$HOME/dotfiles/includes/posix/additional.bash"
 
