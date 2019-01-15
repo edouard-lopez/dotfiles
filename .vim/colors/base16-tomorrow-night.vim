@@ -121,6 +121,25 @@ if has("nvim")
     let g:terminal_color_background = g:terminal_color_7
     let g:terminal_color_foreground = g:terminal_color_2
   endif
+elseif has('terminal')
+  let g:terminal_ansi_colors = [
+        \ "#1d1f21",
+        \ "#cc6666",
+        \ "#b5bd68",
+        \ "#f0c674",
+        \ "#81a2be",
+        \ "#b294bb",
+        \ "#8abeb7",
+        \ "#c5c8c6",
+        \ "#969896",
+        \ "#cc6666",
+        \ "#b5bd68",
+        \ "#f0c674",
+        \ "#81a2be",
+        \ "#b294bb",
+        \ "#8abeb7",
+        \ "#ffffff",
+        \ ]
 endif
 
 " Theme setup
@@ -129,7 +148,11 @@ syntax reset
 let g:colors_name = "base16-tomorrow-night"
 
 " Highlighting function
-function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, attr, guisp)
+" Optional variables are attributes and guisp
+function! g:Base16hi(group, guifg, guibg, ctermfg, ctermbg, ...)
+	let a:attr = get(a:, 1, "")
+	let a:guisp = get(a:, 2, "")
+
   if a:guifg != ""
     exec "hi " . a:group . " guifg=#" . a:guifg
   endif
@@ -333,6 +356,7 @@ call <sid>hi("NERDTreeExecFile",  s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("phpMemberSelector",  s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("phpComparison",      s:gui05, "", s:cterm05, "", "", "")
 call <sid>hi("phpParent",          s:gui05, "", s:cterm05, "", "", "")
+call <sid>hi("phpMethodsVar",      s:gui0C, "", s:cterm0C, "", "", "")
 
 " Python highlighting
 call <sid>hi("pythonOperator",  s:gui0E, "", s:cterm0E, "", "", "")
