@@ -1,3 +1,5 @@
+set encoding=utf-8
+
 " Tmux fixes "
 " Handle tmux $TERM quirks in vim
 if $TERM =~ '^screen-256color'
