@@ -25,6 +25,7 @@
     excludes = ~/.gitexcludes
     excludesfile = ~/.gitignore
     autocrlf = input
+	pager = diff-so-fancy | less --tabs=4 -RFX
     editor = vim
 [merge]
     tool = meld
