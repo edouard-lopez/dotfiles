@@ -13,7 +13,7 @@
 	unstage = reset HEAD --
 
 [color]
-    ui = auto
+	ui = true
     branch = auto
     diff = auto
     interactive = auto
@@ -89,9 +89,7 @@
 [guitool "Revert/Latest remote"]
     cmd = git revert $(git rev-parse origin/master)
 [sequence]
-    editor = vim
-[core]
-    editor = vim
+	editor = gvim
 [guitool "Tag - List all"]
     cmd = git tag
 [guitool "Tag - List pattern"]
@@ -118,3 +116,5 @@
     needsfile = yes
 [commit]
 	gpgsign = true
+[gitreview]
+	username = edouard-lopez
