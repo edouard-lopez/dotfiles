@@ -89,7 +89,7 @@
 [guitool "Revert/Latest remote"]
     cmd = git revert $(git rev-parse origin/master)
 [sequence]
-	editor = gvim
+	editor = vim
 [guitool "Tag - List all"]
     cmd = git tag
 [guitool "Tag - List pattern"]
