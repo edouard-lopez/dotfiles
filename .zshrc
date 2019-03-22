@@ -73,7 +73,7 @@ zstyle ':completion:*' use-cache yes
 alias ll="k -h "
 
 autoload -Uz compinit && compinit -i
-fpath=(~/.zsh/completion $fpath)
+fpath=(~/.zsh ~/.zsh/completion $fpath)
 
 source "$HOME/.my-posixrc"
 # EOF
