@@ -10,7 +10,7 @@ export HISTCONTROL=ignoreboth
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="pure" # using sindre sorhus theme https://github.com/robbyrussell/oh-my-zsh/issues/5657
+#ZSH_THEME="pure" # using sindre sorhus theme https://github.com/robbyrussell/oh-my-zsh/issues/5657
 
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
@@ -76,5 +76,6 @@ autoload -Uz compinit && compinit -i
 fpath=(~/.zsh/completion $fpath)
 
 source "$HOME/.my-posixrc"
-
 # EOF
+export PURE_EXECUTABLE_PATH=$HOME/.pure/
+source $HOME/.zsh/prompt.zsh
