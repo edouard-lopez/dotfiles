@@ -25,3 +25,5 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 # if this is interactive shell, then bind hh to Ctrl-r (for Vi mode check doc)
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hh \C-j"'; fi
 
+export PURE_EXECUTABLE_PATH=$HOME/.pure/
+source $HOME/.bash/prompt.bash
