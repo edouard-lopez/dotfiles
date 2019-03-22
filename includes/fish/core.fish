@@ -9,7 +9,7 @@ end
 function process_exists
   set -l count (psgrep "$argv[1]" | wc -l)
 
-  if math "$count > 0" > /dev/null
+  if test $count -gt 0 > /dev/null
         echo true
     else
         echo false
