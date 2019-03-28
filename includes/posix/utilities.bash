@@ -78,22 +78,6 @@ function configure() {
 
     function pdf2djvu-ocr() { "$HOME"/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh "$@"; }
 
-    # Use the google API to translate text
-    # @param    $1|$text               text to translate
-    # @param    $2|$sourceLang   text to translate
-    # @param    $3|$targetLang    text to translate
-    # @reutrn    string
-    function translate() {
-        text="$1"
-        sourceLang="${2:-en}"
-        targetLang="${3:-fr-FR}"
-        apiQueryString="$(printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")"
-        url="http://translate.google.com/translate_a/t?$apiQueryString"
-        raw="$(curl -A "Mozilla\/5.0" \'"$url"\')"
-
-        echo "$raw"
-    }
-
     function tree() { command tree --charset utf-8 "$@"; }
 
     # We just want to view content with pager (default: less)
