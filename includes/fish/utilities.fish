@@ -88,22 +88,6 @@ function pdf2djvu-ocr
    $HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh $argv;
 end
 
-# Use the google API to translate text
-# @param    $1|$text               text to translate
-# @param    $2|$sourceLang   text to translate
-# @param    $3|$targetLang    text to translate
-# @reutrn    string
-function translate
-    set text "$argv[1]"
-    set sourceLang "$argv[2]"; or set sourceLang "en"
-    set targetLang "$argv[3]"; or set targetLang "fr-FR"
-    set apiQueryString (printf "client=t&text=%s&hl=en&sl=%s&tl=%s&ie=UTF-8&oe=UTF-8&multires=1&prev=btn&ssel=0&tsel=0&sc=1" "$text" "$sourceLang" "$targetLang")
-    set url "http://translate.google.com/translate_a/t?$apiQueryString"
-    set raw (curl -A "Mozilla\/5.0" \'"$url"\')
-
-    echo "$raw"
-end
-
 function tree
    command tree --charset utf-8 $argv;
 end
