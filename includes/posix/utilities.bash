@@ -83,4 +83,7 @@ function configure() {
     # We just want to view content with pager (default: less)
     function v() { "$PAGER" "$@"; }
 }
+
+eval "$(thefuck --alias)"
+
 configure

@@ -96,3 +96,5 @@ end
 function v
    eval $PAGER $argv;
 end
+
+thefuck --alias | source 
