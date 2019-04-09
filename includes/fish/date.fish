@@ -12,7 +12,7 @@ function worldtime
 end
 
 function today
-    to-lower (date '+%Y-%m-%d')
+    to-lower (date '+%Y-%m-%d') | xclip -selection clipboard
 end
 function now
     to-lower (date '+%Y-%b-%d-%H:%M')
