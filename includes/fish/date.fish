@@ -12,9 +12,6 @@ function worldtime
 end
 
 function today
-    to-lower (date '+%Y-%b-%d')
-end
-function today-num
     to-lower (date '+%Y-%m-%d')
 end
 function now

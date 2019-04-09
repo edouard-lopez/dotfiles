@@ -15,9 +15,6 @@ function configure() {
     }
 
     function today() {
-        to-lower "$(date '+%Y-%b-%d')"
-    }
-    function today-num() {
         to-lower "$(date '+%Y-%m-%d')"
     }
     function now() {
