@@ -15,7 +15,7 @@ function configure() {
     }
 
     function today() {
-        to-lower "$(date '+%Y-%m-%d')" | xclip -selection clipboard
+        printf "%s" "$(to-lower "$(date '+%Y-%m-%d')")" | xclip -selection clipboard
     }
     function now() {
         to-lower "$(date '+%Y-%b-%d-%H:%M')"
