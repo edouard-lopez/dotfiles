@@ -6,9 +6,9 @@
     helper = cache --timeout=3600
 
 [alias]
-    tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
     pretty-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     hist = log --graph --no-decorate --pretty=oneline --abbrev-commit
+    hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
 	unstage = reset HEAD --
 
 [color]
