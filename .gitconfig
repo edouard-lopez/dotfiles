@@ -12,6 +12,7 @@
     hist-by = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
 	unstage = reset HEAD --
+    k = !gitk --all &
 
 [color]
 	ui = true
