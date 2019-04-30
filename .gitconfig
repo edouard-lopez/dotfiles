@@ -13,6 +13,7 @@
     hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
 	unstage = reset HEAD --
     k = !gitk --all &
+    pr = "!f() { git fetch origin pull/$1/head:$2; git checkout $2; }; f"
 
 [color]
 	ui = true
