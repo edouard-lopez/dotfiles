@@ -8,7 +8,6 @@
 [alias]
     tree = log --all --graph --decorate --pretty=oneline --abbrev-commit
     pretty-log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    df = diff --word-diff=color
     hist = log --graph --no-decorate --pretty=oneline --abbrev-commit
 	unstage = reset HEAD --
 
