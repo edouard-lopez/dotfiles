@@ -15,6 +15,7 @@
     k = !gitk --all &
     pr = "!f() { git fetch origin pull/$1/head:$2; git checkout $2; }; f"
     new-branch = checkout -b
+    rebase-on-master = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout master; git pull origin master --rebase; git checkout $current_branch; git rebase master; }; f"
 
 [color]
 	ui = true
