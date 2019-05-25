@@ -10,6 +10,7 @@ set pathes \
   $HOME/.yarn/bin \
   $HOME/apps \
   $HOME/.config/fnm/bin \
+  $HOME/miniconda3/bin/ \
   /usr/local/bin \
   /bin \
   /usr/bin \
