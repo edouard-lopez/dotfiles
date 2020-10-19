@@ -84,6 +84,4 @@ function configure() {
     function v() { "$PAGER" "$@"; }
 }
 
-eval "$(thefuck --alias)"
-
 configure
