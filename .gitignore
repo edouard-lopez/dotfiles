@@ -12,3 +12,6 @@
 *~
 env/
 cypress.env.json
+.env
+TODO.md
+todo.md
