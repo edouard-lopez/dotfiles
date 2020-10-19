@@ -43,3 +43,5 @@ fi
 unset __conda_setup
 # <<< conda initialize <<<
 
+
+source /home/ed8/.config/broot/launcher/bash/br
