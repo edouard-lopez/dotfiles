@@ -79,3 +79,5 @@ source "$HOME/.my-posixrc"
 # EOF
 export PURE_EXECUTABLE_PATH=$HOME/.pure/
 source $HOME/.zsh/prompt.zsh
+
+source /home/ed8/.config/broot/launcher/bash/br
