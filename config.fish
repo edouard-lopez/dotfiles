@@ -5,9 +5,22 @@ source ~/.my-fishrc
 set fish_function_path /home/ed8/.config/fish/functions/theme-pure/functions/ $fish_function_path
 set --global --export PURE_EXECUTABLE_PATH $HOME/.pure/
 
-# >>> conda initialize >>>
-source ~/miniconda3/etc/fish/conf.d/conda.fish
-# !! Contents within this block are managed by 'conda init' !!
-eval (eval /home/ed8/miniconda3/bin/conda "shell.fish" "hook" $argv)
-# <<< conda initialize <<<
+
+
+# Paths to your tackle
+set tacklebox_path ~/.tackle ~/.tacklebox
+
+# Theme
+#set tacklebox_theme entropy
+
+# Which modules would you like to load? (modules can be found in ~/.tackle/modules/*)
+# Custom modules may be added to ~/.tacklebox/modules/
+# Example format: set tacklebox_modules virtualfish virtualhooks
+
+# Which plugins would you like to enable? (plugins can be found in ~/.tackle/plugins/*)
+# Custom plugins may be added to ~/.tacklebox/plugins/
+# Example format: set tacklebox_plugins python extract
+
+# Load Tacklebox configuration
+. ~/.tacklebox/tacklebox.fish
 
