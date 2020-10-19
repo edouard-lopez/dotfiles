@@ -4,6 +4,8 @@ set -gx BROWSER firefox  # Default web browser
 set -gx CDPATH $CDPATH . ~ $HOME/projects $HOME/projects/*
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+set -gx GOPATH $HOME/apps/go
+set -gx GOBIN $GOPATH/bin
 set pathes \
   ./node_modules/.bin \
   $HOME/.local/bin \
@@ -16,7 +18,8 @@ set pathes \
   /usr/bin \
   /usr/local/sbin \
   /usr/sbin \
-  /snap/bin/
+  /snap/bin/ \
+  $GOBIN
 set -gx PATH $pathes
 
 set -gx XDG_DATA_HOME $HOME/.local/share
