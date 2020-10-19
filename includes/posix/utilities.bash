@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
 function configure() {
-    function up() { cd .. "$@" || exit; }
-    function back() { cd - "$@" || exit; }
+    function up() { cd .. || exit; }
+    function back() { cd - || exit; }
 
 
     function decrypt() { gpg --decrypt "$@"; }
