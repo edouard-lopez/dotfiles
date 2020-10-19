@@ -1,5 +1,5 @@
 function find
-    fd $argv
+    fdfind $argv
 end
 funcsave find
 
