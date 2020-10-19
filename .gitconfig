@@ -13,9 +13,16 @@
     hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
 	unstage = reset HEAD --
     k = !gitk --all &
-    pr = "!f() { git fetch origin pull/$1/head:$2; git checkout $2; }; f"
-    new-branch = checkout -b
     rebase-on-master = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout master; git pull origin master --rebase; git checkout $current_branch; git rebase master; }; f"
+    rebase-and-push = "!f() { git pull --rebase && git push $@; }; f"
+    rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
+    delete-branch = branch -D
+	new-branch-me = !git checkout -b
+    new-branch = !git checkout --track $(git config branch.$(git rev-parse --abbrev-ref HEAD).remote)/$(git rev-parse --abbrev-ref HEAD) -b
+    show-upstream = "!f() { git rev-parse --symbolic-full-name --abbrev-ref ${1}@{u} 2>/dev/null }; f"
+    diverge-commit = "!f() { git merge-base $(git show-upstream $@) ${1:-HEAD}; }; f"
+    rework = "!git rebase -i $(git diverge-commit $@)^"
+    h = !git rework
 
 [color]
 	ui = true
@@ -123,3 +130,8 @@
 	gpgsign = true
 [gitreview]
 	username = edouard-lopez
+[credential "https://github.com"]
+	helper = store
+	username = edouard-lopez
+[diff]
+	noprefix = true
