@@ -32,6 +32,9 @@ function include_shell_specific
     end
 end
 
+# icons-in-terminal integration: https://github.com/sebastiencs/icons-in-terminal
+source ~/.local/share/icons-in-terminal/icons.fish
+
 # THEME PURE #
 # Base16 Shell
 if status --is-interactive
