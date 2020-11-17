@@ -9,6 +9,7 @@ pathes=(
   ./node_modules/.bin
   $HOME/.local/bin
   $HOME/.yarn/bin
+  $HOME/.config/yarn/global/node_modules/.bin
   $HOME/apps
   $HOME/.config/fnm/bin
   $HOME/miniconda3/bin/
