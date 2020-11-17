@@ -23,6 +23,7 @@
     diverge-commit = "!f() { git merge-base $(git show-upstream $@) ${1:-HEAD}; }; f"
     rework = "!git rebase -i $(git diverge-commit $@)^"
     h = !git rework
+    edit-pr = "!f() { git checkout -b $1 && git fetch origin && git merge origin/$1; }; f"
 
 [color]
 	ui = true
