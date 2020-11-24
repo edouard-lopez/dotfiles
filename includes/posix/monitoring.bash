@@ -14,7 +14,15 @@ function configure() {
     }
 
     # human-readable sizes
-    function df() { command df --human-readable --print-type "$@" | grep -v tmpfs; }
+    function df() { 
+        command df \
+            --human-readable \
+            --print-type \
+            --exclude-type squashfs \
+            --exclude-type tmpfs \
+            --exclude-type devtmpfs \
+            "$@"
+    }
 
      # show sizes in MB
     function free() { command free -m; }

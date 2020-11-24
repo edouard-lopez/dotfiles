@@ -12,7 +12,13 @@ end
 
 # human-readable sizes
 function df
-   command df --human-readable --print-type $argv | grep -v tmpfs;
+   command df \
+      --human-readable \
+      --print-type \
+      --exclude-type squashfs \
+      --exclude-type tmpfs \
+      --exclude-type devtmpfs \
+      $argv
 end
 
  # show sizes in MB
