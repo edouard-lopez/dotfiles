@@ -77,7 +77,10 @@ fpath=(~/.zsh ~/.zsh/completion $fpath)
 
 source "$HOME/.my-posixrc"
 # EOF
-export PURE_EXECUTABLE_PATH=$HOME/.pure/
-source $HOME/.zsh/prompt.zsh
-
+# edouard-lopez' pure
+#export PURE_EXECUTABLE_PATH=$HOME/.pure/
+#source $HOME/.zsh/prompt.zsh
+# sindreshorus pure
+autoload -U promptinit; promptinit
+prompt pure
 source /home/ed8/.config/broot/launcher/bash/br
