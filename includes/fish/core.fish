@@ -1,7 +1,3 @@
-function cmd_exists
-    type "$1" > /dev/null
-end
-
 function psgrep
     ps aux | grep -i $argv[1] | grep -v grep
 end

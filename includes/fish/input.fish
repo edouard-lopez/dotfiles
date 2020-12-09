@@ -5,7 +5,7 @@ set -gx QT_IM_MODULE ibus
 set -gx XMODIFIERS @im=ibus
 
 function map_printScreen_to_open_contextual_menu
-    cmd_exists xmodmap ; and xmodmap -e "keycode 107 = Menu NoSymbol Menu"
+    type -q xmodmap; and xmodmap -e "keycode 107 = Menu NoSymbol Menu"
 end
 
 function start_ibus_ime
