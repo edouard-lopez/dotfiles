@@ -18,7 +18,7 @@
     rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
     delete-branch = branch -D
 	new-branch-me = !git checkout -b
-    new-branch = !git checkout --track $(git config branch.$(git rev-parse --abbrev-ref HEAD).remote)/$(git rev-parse --abbrev-ref HEAD) -b
+    new-branch = "!f() { git checkout master; git checkout -b $@; }; f"
     show-upstream = "!f() { git rev-parse --symbolic-full-name --abbrev-ref ${1}@{u} 2>/dev/null }; f"
     diverge-commit = "!f() { git merge-base $(git show-upstream $@) ${1:-HEAD}; }; f"
     rework = "!git rebase -i $(git diverge-commit $@)^"
