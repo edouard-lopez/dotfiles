@@ -27,7 +27,7 @@ function install_fish() {
 function install_tmux() {
     tmux_directory="$1"
     
-    files_to_symlink=( .tmux .tmux.conf .tmux-tomorrow.conf )
+    files_to_symlink=( .tmux .tmux.conf )
     for file in "${files_to_symlink[@]}"; do
         sourcefile="$tmux_directory/$file"
         target="$HOME/$file"
