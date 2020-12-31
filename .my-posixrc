@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 export MY_SERVER="srv-sys"
-export BROWSER="brave"  # Default web browser
+export BROWSER="brave-browser"  # Default web browser
 export CDPATH="$CDPATH:$HOME/projects:$HOME/projects/*"
 GPG_TTY="$(tty)"; export GPG_TTY
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"; export JAVA_HOME
