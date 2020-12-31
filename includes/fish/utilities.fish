@@ -1,5 +1,9 @@
-function up
-   cd .. $argv;
+function up --argument-names repeat
+    set --query repeat; or set --local repeat 1
+
+    for i in (seq 1 $repeat)
+       cd ..;
+    end
 end
 function back
    cd - $argv;
