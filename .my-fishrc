@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 set -gx MY_SERVER srv-sys
-set -gx BROWSER firefox  # Default web browser
+set -gx BROWSER brave  # Default web browser
 set -gx CDPATH $CDPATH . ~ $HOME/projects $HOME/projects/*
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
