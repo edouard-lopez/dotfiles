@@ -1,3 +1,4 @@
+set --export PYTHONSTARTUP $HOME/dotfiles/includes/python_shell_startup.py
 # Virtualenv
 # set -x WORKON_HOME "$HOME/.virtualenvs"
 # set -x PROJECT_HOME "$HOME/projects"
