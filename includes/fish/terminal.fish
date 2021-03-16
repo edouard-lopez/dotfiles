@@ -1,7 +1,6 @@
 # disable cowlay with ansible: http://docs.ansible.com/faq.html#how-do-i-disable-cowsay
 set -gx ANSIBLE_NOCOWS 1
 set -gx EDITOR vim
-set -gx TERM screen-256color # support 256 color palette
 set -gx VISUAL vim
 
 function start_tmux

@@ -4,7 +4,6 @@ function configure() {
     # disable cowlay with ansible: http://docs.ansible.com/faq.html#how-do-i-disable-cowsay
     export ANSIBLE_NOCOWS=1
     export EDITOR=vim
-    export TERM=screen-256color  # support 256 color palette
     export VISUAL=vim
 
     function change-terminal-color-mode() {
