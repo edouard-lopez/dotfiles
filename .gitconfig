@@ -8,6 +8,7 @@
 [alias]
     go = checkout
     st = status
+    get-default-branch = "!f() { git remote show origin | grep 'HEAD branch' | cut -d' ' -f5; }; f"
     hist = log --graph --no-decorate --pretty=oneline --abbrev-commit
     hist-by = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
     hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
@@ -16,7 +17,7 @@
     rebase-on-master = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout master; git pull origin master --rebase; git checkout $current_branch; git rebase master; }; f"
     rebase-and-push = "!f() { git pull --rebase && git push $@; }; f"
     rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
-    delete-branch = branch -D
+    delete-branch = "!f() { git checkout $(git get-default-branch); git branch --delete --force $@; }; f"
 	new-branch-me = !git checkout -b
     new-branch = "!f() { git checkout master; git checkout -b $@; }; f"
     show-upstream = "!f() { git rev-parse --symbolic-full-name --abbrev-ref ${1}@{u} 2>/dev/null }; f"
