@@ -18,7 +18,7 @@
     rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
     delete-branch = "!f() { git checkout $(git get-default-branch); git branch --delete --force $@; }; f"
 	new-branch-me = !git checkout -b
-    new-branch = "!f() { git checkout master; git checkout -b $@; }; f"
+    new-branch = "!f() { git checkout $(git get-default-branch); git checkout -b $@; }; f"
 
 [color]
 	ui = true
