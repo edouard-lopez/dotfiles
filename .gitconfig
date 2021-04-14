@@ -20,7 +20,9 @@
 	new-branch-me = !git checkout -b
     new-branch = "!f() { git checkout $(git get-default-branch); git checkout -b $@; }; f"
     push-with-tags = "!f() { git push $@ ; git push --tags $@; }; f"
-    fixup = "!sh -c '(git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1)) && COMMIT=$(git rev-parse $1) && git commit --fixup=$COMMIT && git rebase -i --autosquash $COMMIT~1' -"
+    pre-fixup = "!f() { git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1); }; f"
+    fixup = "!f() { git pre-fixup && COMMIT=$(git rev-parse $1) && HUSKY=0 git commit --fixup=$COMMIT; }; f"
+    fixup-and-squash = "!f() { git fixup $1 && COMMIT=$(git rev-parse $1) && git rebase -i --autosquash $COMMIT~1; }; f $@"
 
 
 [color]
