@@ -1,5 +1,5 @@
 function irc
-    if type mosh >/dev/null
+    if type --query mosh
         mosh "$MY_SERVER" -- tmux attach -t irc
     else
         command ssh "$MY_SERVER" -- '.tmux attach -t irc || .tmux -2 new -s irc'
@@ -15,7 +15,7 @@ function ping
 end
 
 function ssh
-    if type mosh >/dev/null
+    if type --query mosh
         mosh $argv; or command ssh $argv
     else
         command ssh $argv
