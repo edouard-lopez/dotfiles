@@ -6,10 +6,6 @@ function irc
     end
 end
 
-function myip
-    wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1 $argv
-end
-
 function ping
     command ping -c 10 $argv
 end
