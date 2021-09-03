@@ -27,6 +27,7 @@
     fixup = "!f() { git pre-fixup && COMMIT=$(git rev-parse $1) && HUSKY=0 git commit --fixup=$COMMIT; }; f"
     fixup-and-squash = "!f() { git fixup $1 && COMMIT=$(git rev-parse $1) && git rebase --autosquash $COMMIT~1; }; f $@"
     fixup-and-squash-interactive = "!f() { git fixup $1 && COMMIT=$(git rev-parse $1) && git rebase --interactive --autosquash $COMMIT~1; }; f $@"
+    pull-and-rebase = "!f() { git save-current-branch; git go "$1" && git pull --rebase; git back-to-previous-branch; }; f $@"
 
 
 [color]
