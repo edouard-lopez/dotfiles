@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 set -gx MY_SERVER srv-sys
-set -gx BROWSER brave-browser  # Default web browser
+set -gx BROWSER brave-browser # Default web browser
 set -gx --append CDPATH \
     . \
     $HOME \
@@ -12,25 +12,25 @@ set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 set -gx GOPATH $HOME/apps/go
 set -gx GOBIN $GOPATH/bin
 set pathes \
-  ./node_modules/.bin \
-  $HOME/.local/bin \
-  $HOME/.yarn/bin \
-  $HOME/.config/yarn/global/node_modules/.bin \
-  $HOME/apps \
-  $HOME/miniconda3/bin/ \
-  /usr/local/bin \
-  /bin \
-  /usr/bin \
-  /usr/local/sbin \
-  /usr/sbin \
-  /snap/bin/ \
-  $GOBIN
+    ./node_modules/.bin \
+    $HOME/.local/bin \
+    $HOME/.yarn/bin \
+    $HOME/.config/yarn/global/node_modules/.bin \
+    $HOME/apps \
+    $HOME/miniconda3/bin/ \
+    /usr/local/bin \
+    /bin \
+    /usr/bin \
+    /usr/local/sbin \
+    /usr/sbin \
+    /snap/bin/ \
+    $GOBIN
 set -gx PATH $pathes
 
 set -gx XDG_DATA_HOME $HOME/.local/share
 
 function include_shell_specific
-    if  test  -n $FISH_VERSION
+    if test -n $FISH_VERSION
         function refresh
             source "$HOME"/.config/fish/config.fish
         end
@@ -39,8 +39,6 @@ end
 
 # icons-in-terminal integration: https://github.com/sebastiencs/icons-in-terminal
 source ~/.local/share/icons-in-terminal/icons.fish
-
-# THEME PURE #
 
 # Base16 Shell
 if status --is-interactive
