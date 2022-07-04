@@ -39,14 +39,10 @@ set hlsearch " Highlight search terms
 nmap <silent> ,/ :nohlsearch<CR>
 set gdefault " Search all occurrences by default
 
-" Base16
-" if filereadable(expand("~/.vimrc_background"))
-"     let base16colorspace=256
-"     source ~/.vimrc_background
-" endif
-" colorscheme base16-classic-light
-" colorscheme base16-classic-light
-
 " Plugin settings
 source ~/.vim/filetype.vim
 source ~/.vim/plugin-manager.vim
+" BEGIN Added by ansbible `vim` task
+let base16colorspace=256  " Access colors present in 256 colorspace
+colorscheme base16-tomorrow
+" END Added by ansbible `vim` task
