@@ -35,7 +35,7 @@ BASE16_SHELL_PATH="$HOME/.config/base16-shell"
 function include_shell_specific() {
     if [[ $BASH = *bash ]]; then
         source $HOME/dotfiles/includes/config.bash
-        source ~/.bash-powerline.sh
+#        source ~/.bash-powerline.sh
     elif [[ $ZSH_NAME = zsh ]]; then
         source $HOME/dotfiles/includes/config.zsh
     else
