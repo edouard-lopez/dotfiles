@@ -1,5 +1,5 @@
 [user]
-    name = Edouard Lopez
+    name = Édouard Lopez
     email = contact@edouard-lopez.com
 	signingkey = 0F90A96C5FEB6076
 [credential]
@@ -14,6 +14,7 @@
     hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
     k = !gitk --all &
     rebase-on-master = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout master; git pull origin master --rebase; git checkout $current_branch; git rebase master; }; f"
+    rebase-on = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout $1; git pull origin $1 --rebase; git checkout $current_branch; git rebase $1; }; f"
     rebase-and-push = "!f() { git pull --rebase && git push $@; }; f"
     rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
     delete-branch = "!f() { git checkout $(git get-default-branch); git branch --delete --force $@; }; f"
