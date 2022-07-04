@@ -29,7 +29,7 @@
 [color]
 	ui = true
     branch = auto
-    diff = auto
+#    diff = auto
     interactive = auto
     status = auto
 [apply]
@@ -39,7 +39,6 @@
     excludes = ~/.gitexcludes
     excludesfile = ~/.gitignore
     autocrlf = input
-	pager = diff-so-fancy | less --tabs=4 -RFX
     editor = vim
 [merge]
     tool = meld
@@ -49,10 +48,6 @@
 	fontdiff = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	tabsize = 4
 
-[pager]
-    log = diff-highlight | less
-    show = diff-highlight | less
-    diff = diff-highlight | less
 [url "https://"]
 [push]
 	default = current
@@ -135,9 +130,35 @@
 [credential "https://github.com"]
 	helper = store
 	username = edouard-lopez
-[diff]
-	noprefix = true
+#[diff]
+#	noprefix = true
 [pull]
 	rebase = true
 [rebase]
 	autoStash = true
+[gpg]
+	program = gpg
+# BEGIN Added by ansbible `delta` task 
+[core]
+    pager = delta
+
+[interactive]
+    diffFilter = delta --color-only --features=interactive
+    
+[delta]
+    features = decorations
+    navigate = true
+    side-by-side = true
+
+[delta "interactive"]
+    keep-plus-minus-markers = false
+
+[delta "decorations"]
+    commit-decoration-style = blue ol
+    commit-style = raw
+    file-style = omit
+    # hunk-header-decoration-style = blue box
+    # hunk-header-file-style = red
+    # hunk-header-line-number-style = "#067a00"
+    # hunk-header-style = file line-number syntax
+# END Added by ansbible `delta` task 
