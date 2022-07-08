@@ -1,5 +1,4 @@
 #!/usr/bin/env bash
 
 alias find=fdfind
-alias cat=bat --theme="Monokai Extended Light"
-eval "$(thefuck --alias)"
+alias cat=batcat --theme="Monokai Extended Light"
