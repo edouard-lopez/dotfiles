@@ -1,20 +1,11 @@
 #!/usr/bin/env zsh
 
-# Path to your oh-my-zsh configuration.
-ZSH=$HOME/.oh-my-zsh
 export HISTSIZE=100000
 export HISTFILESIZE=${HISTSIZE}
 export HISTCONTROL=ignoreboth
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-#ZSH_THEME="pure" # using sindre sorhus theme https://github.com/robbyrussell/oh-my-zsh/issues/5657
-
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Set to this to use case-sensitive completion
 # CASE_SENSITIVE="true"
@@ -34,9 +25,6 @@ export HISTCONTROL=ignoreboth
 # COMPLETION_WAITING_DOTS="true"
 
 # ZSH
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(
         autojump
          # bower
@@ -52,15 +40,7 @@ plugins=(
          # yeoman
         )
 
-source $ZSH/oh-my-zsh.sh
-
-
 # ZSH
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-#plugins=(command-not-found composer cp debian gpg-agent git git-extras gitfast github heroku npm sprunge ssh-agent yo )
-
 zstyle ':completion:*' verbose yes
 zstyle ':completion:*:descriptions' format '%B%d%b'
 zstyle ':completion:*:messages' format '%d'
@@ -81,6 +61,9 @@ source "$HOME/.my-posixrc"
 #export PURE_EXECUTABLE_PATH=$HOME/.pure/
 #source $HOME/.zsh/prompt.zsh
 # sindreshorus pure
+
+# BEGIN Added by ansbible `zsh` task
+fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
-source /home/ed8/.config/broot/launcher/bash/br
+# END Added by ansbible `zsh` task
