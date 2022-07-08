@@ -5,13 +5,13 @@ set -gx --append CDPATH \
     . \
     $HOME \
     $HOME/projects \
-    $HOME/projects/* \
-    $HOME/projects/tolk/*
+    $HOME/projects/*
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 set -gx GOPATH $HOME/apps/go
 set -gx GOBIN $GOPATH/bin
-set pathes \
+
+set -gx --append PATH \
     ./node_modules/.bin \
     $HOME/.local/bin \
     $HOME/.yarn/bin \
@@ -25,7 +25,6 @@ set pathes \
     /usr/sbin \
     /snap/bin/ \
     $GOBIN
-set -gx PATH $pathes
 
 set -gx XDG_DATA_HOME $HOME/.local/share
 
