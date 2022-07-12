@@ -64,6 +64,6 @@ source "$HOME/dotfiles/includes/fish/string.fish"
 source "$HOME/dotfiles/includes/fish/utilities.fish"
 source "$HOME/dotfiles/includes/fish/additional.fish"
 
-if test -f HOME/.config/work/config.fish
-    source HOME/.config/work/config.fish
+if test -f $HOME/.config/work/config.fish
+    source $HOME/.config/work/config.fish
 end
