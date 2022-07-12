@@ -8,8 +8,6 @@ set -gx --append CDPATH \
     $HOME/projects/*
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-set -gx GOPATH $HOME/apps/go
-set -gx GOBIN $GOPATH/bin
 
 set -gx --append PATH \
     ./node_modules/.bin \
@@ -23,8 +21,7 @@ set -gx --append PATH \
     /usr/bin \
     /usr/local/sbin \
     /usr/sbin \
-    /snap/bin/ \
-    $GOBIN
+    /snap/bin/
 
 set -gx XDG_DATA_HOME $HOME/.local/share
 
