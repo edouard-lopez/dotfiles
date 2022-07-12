@@ -30,7 +30,6 @@ set shiftwidth=4
 set shiftround
 set expandtab
 
-
 " Searching
 set ignorecase " Ignore case when searching
 set smartcase " Ignore case if search pattern is all lowercase,
@@ -41,7 +40,8 @@ set gdefault " Search all occurrences by default
 
 " Plugin settings
 source ~/.vim/filetype.vim
-source ~/.vim/plugin-manager.vim
+source ~/.vim/plugins.vim
+
 " BEGIN Added by ansbible `vim` task
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
