@@ -1,5 +1,5 @@
 function irc
-    if type mosh > /dev/null
+    if type mosh >/dev/null
         mosh "$MY_SERVER" -- tmux attach -t irc
     else
         command ssh "$MY_SERVER" -- '.tmux attach -t irc || .tmux -2 new -s irc'
@@ -7,20 +7,21 @@ function irc
 end
 
 function myip
-   wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1 $argv;
+    wget http://checkip.dyndns.org -O - -o /dev/null | cut -d : -f 2 | cut -d \< -f 1 $argv
 end
 
 function ping
-   command ping -c 10 $argv;
+    command ping -c 10 $argv
 end
 
 function ssh
-       if type mosh > /dev/null
-               mosh $argv; or command ssh $argv
-       else
-               command ssh $argv
-       end
+    if type mosh >/dev/null
+        mosh $argv; or command ssh $argv
+    else
+        command ssh $argv
+    end
 end
+
 
 # Based on thibault-ketterer solution https://gist.github.com/josh-padnick/c90183be3d0e1feb89afd7573505cab3
 function sshagent_findsockets
