@@ -16,3 +16,5 @@ function start_tmux
 end
 
 start_tmux
+
+direnv hook fish | source
