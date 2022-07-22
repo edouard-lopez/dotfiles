@@ -15,7 +15,6 @@ set -gx --append PATH \
     $HOME/.yarn/bin \
     $HOME/.config/yarn/global/node_modules/.bin \
     $HOME/apps \
-    $HOME/miniconda3/bin/ \
     /usr/local/bin \
     /bin \
     /usr/bin \

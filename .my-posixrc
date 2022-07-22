@@ -12,7 +12,6 @@ pathes=(
   $HOME/.config/yarn/global/node_modules/.bin
   $HOME/apps
   $HOME/.config/fnm/bin
-  $HOME/miniconda3/bin/
   /usr/local/bin
   /bin
   /usr/bin
