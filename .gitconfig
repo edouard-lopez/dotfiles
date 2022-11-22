@@ -168,3 +168,5 @@
     # hunk-header-line-number-style = "#067a00"
     # hunk-header-style = file line-number syntax
 # END Added by ansbible `delta` task 
+[init]
+	defaultBranch = main
