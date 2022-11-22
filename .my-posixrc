@@ -62,3 +62,6 @@ source "$HOME/dotfiles/includes/posix/string.bash"
 source "$HOME/dotfiles/includes/posix/utilities.bash"
 source "$HOME/dotfiles/includes/posix/additional.bash"
 
+if [[ -f $HOME/.config/work/config.bash ]]; then
+    source $HOME/.config/work/config.bash
+fi
