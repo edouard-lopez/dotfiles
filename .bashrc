@@ -26,7 +26,4 @@ export PROMPT_COMMAND="history -a; history -n; ${PROMPT_COMMAND}"   # mem/file s
 if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hh \C-j"'; fi
 
 export PURE_EXECUTABLE_PATH=$HOME/.pure/
-source $HOME/.bash/prompt.bash
 
-
-source /home/ed8/.config/broot/launcher/bash/br
