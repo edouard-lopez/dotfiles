@@ -21,7 +21,7 @@
     rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
     delete-branch = "!f() { git checkout $(git get-default-branch); git branch --delete --force $@; }; f"
 	new-branch-me = !git checkout -b
-    new-branch = "!f() { git checkout $(git get-default-branch); git checkout -b $@; }; f"
+    new-branch = "!f() { git switch $(git get-default-branch); git switch --create \"$@\" ; }; f"
     push-with-tags = "!f() { git push $@ ; git push --tags $@; }; f"
     pre-fixup = "!f() { git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1); }; f"
     fixup = "!f() { git pre-fixup && COMMIT=$(git rev-parse $1) && HUSKY=0 git commit --fixup=$COMMIT; }; f"
