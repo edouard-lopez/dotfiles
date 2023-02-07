@@ -16,7 +16,7 @@
     save-current-branch = "!f() { git rev-parse --abbrev-ref HEAD > .git-previous-branch; }; f"
     back-to-previous-branch ="!f() { git go "$(cat .git-previous-branch)"; rm .git-previous-branch;}; f"
     rebase-on-master = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout master; git pull origin master --rebase; git checkout $current_branch; git rebase master; }; f"
-    rebase-on = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout $1; git pull origin $1 --rebase; git checkout $current_branch; git rebase $1; }; f"
+    rebase-on = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); git checkout $1; git pull origin $1 --rebase; git checkout $current_branch; git rebase $1; }; f"
     rebase-and-push = "!f() { git pull --rebase && git push $@; }; f"
     rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
     delete-branch = "!f() { git checkout $(git get-default-branch); git branch --delete --force $@; }; f"
