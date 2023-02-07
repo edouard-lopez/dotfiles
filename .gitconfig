@@ -130,7 +130,7 @@
     noconsole = yes
     needsfile = yes
 [commit]
-	gpgsign = true
+	gpgSign = true
 [gitreview]
 	username = edouard-lopez
 [credential "https://github.com"]
