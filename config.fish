@@ -13,3 +13,6 @@ set --global --export VOLTA_HOME $HOME/.volta
 set --append --export --global PATH $VOLTA_HOME/bin
 set --global --export PNPM_HOME $HOME/.local/share/pnpm
 
+# tabtab source for packages
+# uninstall by removing these lines
+[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
