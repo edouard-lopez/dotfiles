@@ -140,6 +140,8 @@
 #	noprefix = true
 [pull]
 	rebase = true
+	default = current
+	autoSetupRemote = true
 [rebase]
 	autoStash = true
 [gpg]
