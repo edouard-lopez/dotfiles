@@ -27,3 +27,5 @@ if [[ $- =~ .*i.* ]]; then bind '"\C-r": "\C-a hh \C-j"'; fi
 
 export PURE_EXECUTABLE_PATH=$HOME/.pure/
 
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
