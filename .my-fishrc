@@ -9,6 +9,7 @@ set -gx --append CDPATH \
 set -gx GPG_TTY (tty)
 set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 set --global --export VOLTA_HOME $HOME/.volta
+set --global --export PNPM_HOME $HOME/.local/share/pnpm
 
 set -gx --append PATH \
     ./node_modules/.bin \
@@ -16,6 +17,7 @@ set -gx --append PATH \
     $VOLTA_HOME/bin \
     $HOME/.yarn/bin \
     $HOME/.config/yarn/global/node_modules/.bin \
+    $PNPM_HOME \
     $HOME/apps \
     /usr/local/bin \
     /bin \
