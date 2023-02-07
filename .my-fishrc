@@ -1,32 +1,32 @@
 #!/usr/bin/env fish
-set -gx MY_SERVER srv-sys
-set -gx BROWSER brave-browser # Default web browser
-set -gx --append CDPATH \
+set --global --export BROWSER brave-browser # Default web browser
+set --global --export --append CDPATH \
     . \
     $HOME \
     $HOME/projects \
     $HOME/projects/*
-set -gx GPG_TTY (tty)
-set -gx JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
+set --global --export XDG_DATA_HOME $HOME/.local/share
+set --global --export GPG_TTY (tty)
+set --global --export JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 set --global --export VOLTA_HOME $HOME/.volta
 set --global --export PNPM_HOME $HOME/.local/share/pnpm
 
-set -gx --append PATH \
+set --global --export --append PATH \
     ./node_modules/.bin \
-    $HOME/.local/bin \
+    ./.venv/bin \
     $VOLTA_HOME/bin \
     $HOME/.yarn/bin \
+    $HOME/.local/bin \
     $HOME/.config/yarn/global/node_modules/.bin \
     $PNPM_HOME \
     $HOME/apps \
-    /usr/local/bin \
     /bin \
+    /snap/bin \
     /usr/bin \
+    /usr/local/bin \
     /usr/local/sbin \
-    /usr/sbin \
-    /snap/bin/
+    /usr/sbin
 
-set -gx XDG_DATA_HOME $HOME/.local/share
 
 function include_shell_specific
     if test -n $FISH_VERSION
@@ -45,7 +45,7 @@ if status --is-interactive
     source "$BASE16_SHELL/profile_helper.fish"
 end
 
-include_shell_specific
+# include_shell_specific
 source "$HOME/dotfiles/includes/fish/core.fish"
 source "$HOME/dotfiles/includes/fish/alias.fish"
 source "$HOME/dotfiles/includes/fish/backup.fish"
