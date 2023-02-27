@@ -10,6 +10,7 @@ function less \
         highlight \
             --style base16/one-light \
             --out-format=xterm256 \
+            --force \
             "$file_to_highlight" \
             | command less -R
     else
