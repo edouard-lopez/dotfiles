@@ -5,7 +5,7 @@ source ~/.my-fishrc
 set fish_function_path /home/ed8/.config/fish/functions/theme-pure/functions/ $fish_function_path
 set --global --export PURE_EXECUTABLE_PATH $HOME/.pure/
 set -gx VOLTA_HOME $HOME/.volta
-set --append --export --global PATH $VOLTA_HOME/bin
+fish_add_path --append PATH $VOLTA_HOME/bin
 set --global --export VOLTA_HOME $HOME/.volta
 
 # pnpm

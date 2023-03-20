@@ -11,21 +11,20 @@ set --global --export JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 set --global --export VOLTA_HOME $HOME/.volta
 set --global --export PNPM_HOME $HOME/.local/share/pnpm
 
-set --global --export --append PATH \
-    ./node_modules/.bin \
-    ./.venv/bin \
-    $VOLTA_HOME/bin \
-    $HOME/.yarn/bin \
-    $HOME/.local/bin \
-    $HOME/.config/yarn/global/node_modules/.bin \
-    $PNPM_HOME \
-    $HOME/apps \
-    /bin \
-    /snap/bin \
-    /usr/bin \
-    /usr/local/bin \
-    /usr/local/sbin \
-    /usr/sbin
+fish_add_path --append ./node_modules/.bin
+fish_add_path --append ./.venv/bin
+fish_add_path --append $VOLTA_HOME/bin
+fish_add_path --append $HOME/.yarn/bin
+fish_add_path --append $HOME/.local/bin
+fish_add_path --append $HOME/.config/yarn/global/node_modules/.bin
+fish_add_path --append $PNPM_HOME
+fish_add_path --append $HOME/apps
+fish_add_path --append /bin
+fish_add_path --append /snap/bin
+fish_add_path --append /usr/bin
+fish_add_path --append /usr/local/bin
+fish_add_path --append /usr/local/sbin
+fish_add_path --append /usr/sbim
 
 
 function include_shell_specific
