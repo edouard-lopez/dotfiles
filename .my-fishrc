@@ -6,6 +6,7 @@ set --global --export --append CDPATH \
     $HOME/projects \
     $HOME/projects/*
 set --global --export XDG_DATA_HOME $HOME/.local/share
+set --universal --export XDG_CONFIG_HOME $HOME/.config
 set --global --export GPG_TTY (tty)
 set --global --export JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
 set --global --export VOLTA_HOME $HOME/.volta
@@ -40,8 +41,10 @@ source ~/.local/share/icons-in-terminal/icons.fish
 
 # Base16 Shell
 if status --is-interactive
-    set BASE16_SHELL "$HOME/.config/base16-shell/"
-    source "$BASE16_SHELL/profile_helper.fish"
+    set BASE16_SHELL_PATH "$HOME/.config/base16-shell"
+    if test -s "$BASE16_SHELL_PATH"
+        source "$BASE16_SHELL_PATH/profile_helper.fish"
+    end
 end
 
 # include_shell_specific
