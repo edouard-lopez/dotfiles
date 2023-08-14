@@ -25,22 +25,23 @@ function sshagent_findsockets
 end
 
 function sshagent_testsocket
-    if test ! -x (command which ssh-add)
+    set --local ssh_add_bin (/usr/bin/which ssh-add)
+    if test ! -x $ssh_add_bin
         echo "ssh-add is not available; agent testing aborted"
         return 1
     end
 
-    if test X"$argv[1]" != X 
+    if test X"$argv[1]" != X
         set -xg SSH_AUTH_SOCK $argv[1]
     end
 
-    if test X"$SSH_AUTH_SOCK" = X 
+    if test X"$SSH_AUTH_SOCK" = X
         return 2
     end
 
-    if test -S $SSH_AUTH_SOCK 
+    if test -S $SSH_AUTH_SOCK
         ssh-add -l >/dev/null
-        if test $status -eq 2 
+        if test $status -eq 2
             echo "Socket $SSH_AUTH_SOCK is dead!  Deleting!"
             rm -f $SSH_AUTH_SOCK
             return 4
@@ -69,9 +70,9 @@ function ssh_agent_init
     # If there is no agent in the environment, search /tmp for
     # possible agents to reuse before starting a fresh ssh-agent
     # process.
-    if test $AGENTFOUND -eq 0 
+    if test $AGENTFOUND -eq 0
         for agentsocket in (sshagent_findsockets)
-            if test $AGENTFOUND -ne 0 
+            if test $AGENTFOUND -ne 0
                 break
             end
             if sshagent_testsocket $agentsocket
@@ -83,7 +84,7 @@ function ssh_agent_init
 
     # If at this point we still haven't located an agent, it's time to
     # start a new one
-    if test $AGENTFOUND -eq 0 
+    if test $AGENTFOUND -eq 0
         # echo "Need to start a new agent"
         eval (ssh-agent -c)
         set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
