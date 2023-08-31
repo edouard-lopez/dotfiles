@@ -9,7 +9,7 @@
 function backup() {
     targetfile="$1"
 
-    if [[ -f "$targetfile" || -h "$targetfile" ]]; then
+    if [[ -f "$targetfile" || -L "$targetfile" ]]; then
         printf "\tBackup to: %s\n" "$targetfile".bak
         mv "$targetfile"{,.bak}
     fi
@@ -17,7 +17,7 @@ function backup() {
 
 function install_fish() {
     sourcefile="$1"
-    targetfile="$HOME/.config/fish/config.fish"
+    targetfile="$HOME/.config/fish/"
     echo "$sourcefile" "$targetfile"
 
     rm "$targetfile"
@@ -26,8 +26,8 @@ function install_fish() {
 
 function install_tmux() {
     tmux_directory="$1"
-    
-    files_to_symlink=( .tmux .tmux.conf )
+
+    files_to_symlink=(.tmux .tmux.conf)
     for file in "${files_to_symlink[@]}"; do
         sourcefile="$tmux_directory/$file"
         target="$HOME/$file"
@@ -45,14 +45,14 @@ function update() {
     sourcefile="$1"
     targetfile="$2"
 
-	if [[ -f "$sourcefile" || -h "$sourcefile" ]]; then
+    if [[ -f "$sourcefile" || -L "$sourcefile" ]]; then
         # symlink to file
         printf "\tLinking to: %s\n" "$targetfile"
         ln -nfs "$sourcefile" "$targetfile"
-	else
+    else
         printf "\tOverriding to: %s\n" "$targetfile"
         rsync --recursive --exclude '.git' "$sourcefile" "${targetfile%/*}"
-	fi
+    fi
 }
 
 function install() {
@@ -64,6 +64,7 @@ function install() {
         [[ "$filename" == install.sh || "$filename" == *.swp ]] && continue # ignore install.sh and *.swp
         [[ "$filename" == "." || "$filename" == ".." ]] && continue
         [[ "$filename" == "config.fish" ]] && install_fish "$sourcefile" && continue
+        [[ "$filename" == "fish_plugins" ]] && install_fish "$sourcefile" && continue
         [[ "$filename" == ".tmux" ]] && install_tmux "$sourcefile" && continue
 
         targetfile="$HOME/$filename"
