@@ -48,23 +48,11 @@ if status --is-interactive
 end
 
 # include_shell_specific
-source "$HOME/dotfiles/includes/fish/core.fish"
-source "$HOME/dotfiles/includes/fish/alias.fish"
-source "$HOME/dotfiles/includes/fish/backup.fish"
-source "$HOME/dotfiles/includes/fish/date.fish"
-source "$HOME/dotfiles/includes/fish/docker.fish"
-source "$HOME/dotfiles/includes/fish/git.fish"
-source "$HOME/dotfiles/includes/fish/input.fish"
-source "$HOME/dotfiles/includes/fish/monitoring.fish"
-source "$HOME/dotfiles/includes/fish/nodejs.fish"
-source "$HOME/dotfiles/includes/fish/network.fish"
-source "$HOME/dotfiles/includes/fish/packages-manager.fish"
-source "$HOME/dotfiles/includes/fish/pager.fish"
-source "$HOME/dotfiles/includes/fish/python.fish"
-source "$HOME/dotfiles/includes/fish/terminal.fish"
-source "$HOME/dotfiles/includes/fish/string.fish"
-source "$HOME/dotfiles/includes/fish/utilities.fish"
-source "$HOME/dotfiles/includes/fish/additional.fish"
+for file in $HOME/dotfiles/includes/fish/*.fish
+    # echo "Sourcing "(basename $file)
+    source $file
+end
+
 
 if test -f $HOME/.config/work/config.fish
     source $HOME/.config/work/config.fish
