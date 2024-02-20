@@ -3,8 +3,9 @@ set --global --export BROWSER brave-browser # Default web browser
 set --global --export --append CDPATH \
     . \
     $HOME \
-    $HOME/projects \
-    $HOME/projects/*
+    $HOME/projects/work/ \
+    $HOME/projects/work/* \
+    $HOME/projects/oss/
 set --global --export XDG_DATA_HOME $HOME/.local/share
 set --universal --export XDG_CONFIG_HOME $HOME/.config
 set --global --export GPG_TTY (tty)
