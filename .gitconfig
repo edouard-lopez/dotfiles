@@ -54,6 +54,7 @@
 	fontui = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	tabsize = 4
+	gcwarning = true
 
 [url "https://"]
 [push]
@@ -174,3 +175,9 @@
 # END Added by ansbible `delta` task 
 [init]
 	defaultBranch = main
+[rerere]
+	enabled = true
+[column]
+	ui = auto
+[branch]
+	sort = -commiterdate
