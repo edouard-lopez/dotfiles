@@ -1,7 +1,8 @@
 [user]
-    name = Édouard Lopez
+	name = Édouard Lopez
     email = contact@edouard-lopez.com
 	signingkey = 0F90A96C5FEB6076
+
 [credential]
     helper = cache --timeout=3600
 
@@ -149,13 +150,13 @@
 	autoStash = true
 [gpg]
 	program = gpg
-# BEGIN Added by ansbible `delta` task 
+# BEGIN Added by ansbible `delta` task
 [core]
     pager = delta
 
 [interactive]
     diffFilter = delta --color-only --features=interactive
-    
+
 [delta]
     features = decorations
     navigate = true
@@ -172,7 +173,7 @@
     # hunk-header-file-style = red
     # hunk-header-line-number-style = "#067a00"
     # hunk-header-style = file line-number syntax
-# END Added by ansbible `delta` task 
+# END Added by ansbible `delta` task
 [init]
 	defaultBranch = main
 [rerere]
@@ -183,3 +184,9 @@
 	sort = -commiterdate
 [maintenance]
 	repo = /home/edouard/projects/contributions/pure
+
+[includeIf "gitdir:~/projects/oss/"]
+    path = "~/dotfiles/.git-oss.gitconfig"
+
+[includeIf "gitdir:~/projects/work/"]
+    path = "~/dotfiles/.git-work.gitconfig"
