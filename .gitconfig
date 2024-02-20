@@ -1,57 +1,56 @@
 [user]
 	name = Édouard Lopez
-    email = contact@edouard-lopez.com
-	signingkey = 0F90A96C5FEB6076
+	email = contact@edouard-lopez.com
 
 [credential]
-    helper = cache --timeout=3600
+	helper = cache --timeout=3600
 
 [alias]
-    go = checkout
-    st = status
-    clean-remote = fetch --prune
-    cleanup-merged = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d"
-    get-default-branch = "!f() { git remote show origin | grep 'HEAD branch' | cut -d' ' -f5; }; f"
-    hist = log --graph --no-decorate --pretty=oneline --abbrev-commit
-    hist-by = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
-    hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
-    k = !gitk --all &
-    save-current-branch = "!f() { git rev-parse --abbrev-ref HEAD > .git-previous-branch; }; f"
-    back-to-previous-branch ="!f() { git go "$(cat .git-previous-branch)"; rm .git-previous-branch;}; f"
-    rebase-on-master = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout master; git pull origin master --rebase; git checkout $current_branch; git rebase master; }; f"
-    rebase-on = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); git checkout $1; git pull origin $1 --rebase; git checkout $current_branch; git rebase $1; }; f"
-    rebase-and-push = "!f() { git pull --rebase && git push $@; }; f"
-    rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
-    delete-branch = "!f() { git checkout $(git get-default-branch); git branch --delete --force $@; }; f"
+	go = checkout
+	st = status
+	clean-remote = fetch --prune
+	cleanup-merged = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d"
+	get-default-branch = "!f() { git remote show origin | grep 'HEAD branch' | cut -d' ' -f5; }; f"
+	hist = log --graph --no-decorate --pretty=oneline --abbrev-commit
+	hist-by = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
+	hist-all = log --all --graph --decorate --pretty=oneline --abbrev-commit
+	k = !gitk --all &
+	save-current-branch = "!f() { git rev-parse --abbrev-ref HEAD > .git-previous-branch; }; f"
+	back-to-previous-branch ="!f() { git go "$(cat .git-previous-branch)"; rm .git-previous-branch;}; f"
+	rebase-on-master = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD --); git checkout master; git pull origin master --rebase; git checkout $current_branch; git rebase master; }; f"
+	rebase-on = "!f() { current_branch=$(git rev-parse --abbrev-ref HEAD); git checkout $1; git pull origin $1 --rebase; git checkout $current_branch; git rebase $1; }; f"
+	rebase-and-push = "!f() { git pull --rebase && git push $@; }; f"
+	rebase-all-on-master = "!f() { for branch in $(git branch --format='%(refname:short)'); do [ $branch = 'master' ] && continue; git checkout $branch && git rebase-on-master; done  }; f"
+	delete-branch = "!f() { git checkout $(git get-default-branch); git branch --delete --force $@; }; f"
 	new-branch-me = !git checkout -b
-    new-branch = "!f() { git switch $(git get-default-branch); git switch --create \"$@\" ; }; f"
-    push-with-tags = "!f() { git push $@ ; git push --tags $@; }; f"
-    pre-fixup = "!f() { git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1); }; f"
-    fixup = "!f() { git pre-fixup && COMMIT=$(git rev-parse $1) && HUSKY=0 git commit --fixup=$COMMIT; }; f"
-    fixup-and-squash = "!f() { git fixup $1 && COMMIT=$(git rev-parse $1) && git rebase --autosquash $COMMIT~1; }; f $@"
-    fixup-and-squash-interactive = "!f() { git fixup $1 && COMMIT=$(git rev-parse $1) && git rebase --interactive --autosquash $COMMIT~1; }; f $@"
-    pull-and-rebase = "!f() { git save-current-branch; git go "$1" && git pull --rebase; git back-to-previous-branch; }; f $@"
+	new-branch = "!f() { git switch $(git get-default-branch); git switch --create \"$@\" ; }; f"
+	push-with-tags = "!f() { git push $@ ; git push --tags $@; }; f"
+	pre-fixup = "!f() { git diff-files --quiet || (echo Unstaged changes, please commit or stash with --keep-index; exit 1); }; f"
+	fixup = "!f() { git pre-fixup && COMMIT=$(git rev-parse $1) && HUSKY=0 git commit --fixup=$COMMIT; }; f"
+	fixup-and-squash = "!f() { git fixup $1 && COMMIT=$(git rev-parse $1) && git rebase --autosquash $COMMIT~1; }; f $@"
+	fixup-and-squash-interactive = "!f() { git fixup $1 && COMMIT=$(git rev-parse $1) && git rebase --interactive --autosquash $COMMIT~1; }; f $@"
+	pull-and-rebase = "!f() { git save-current-branch; git go "$1" && git pull --rebase; git back-to-previous-branch; }; f $@"
 	amend = commit --amend --no-edit
 
 
 [color]
 	ui = true
-    branch = auto
+	branch = auto
 #    diff = auto
-    interactive = auto
-    status = auto
+	interactive = auto
+	status = auto
 [apply]
-    whitespace = nowarn
+	whitespace = nowarn
 [core]
-    edit = sublime-text-2
-    excludes = ~/.gitexcludes
-    excludesfile = ~/.gitignore
-    autocrlf = input
-    editor = vim
+	edit = sublime-text-2
+	excludes = ~/.gitexcludes
+	excludesfile = ~/.gitignore
+	autocrlf = input
+	editor = vim
 [merge]
-    tool = meld
+	tool = meld
 [gui]
-    diffcontext = 2
+	diffcontext = 2
 	fontui = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	fontdiff = -family \"Noto Sans\" -size 12 -weight normal -slant roman -underline 0 -overstrike 0
 	tabsize = 4
@@ -63,76 +62,76 @@
 	autoSetupRemote = true
 
 [guitool "Add to .gitignore"]
-    cmd = echo \"\n$FILENAME\" >> .gitignore & git add .gitignore
-    needsfile = yes
-    confirm = yes
+	cmd = echo \"\n$FILENAME\" >> .gitignore & git add .gitignore
+	needsfile = yes
+	confirm = yes
 
 [guitool "Stash"]
-    cmd = git stash
+	cmd = git stash
 [guitool "Stash/show"]
-    cmd = git stash show -p
+	cmd = git stash show -p
 [guitool "Stash/list"]
-    cmd = git stash list
+	cmd = git stash list
 [guitool "Stash/pop"]
-    cmd = git stash pop
+	cmd = git stash pop
 [guitool "Stash/drop"]
-    cmd = git stash drop
-    confirm = yes
+	cmd = git stash drop
+	confirm = yes
 [guitool "Rebase onto... (non-interactive)"]
-    cmd = git rebase $REVISION
-    revprompt = yes
+	cmd = git rebase $REVISION
+	revprompt = yes
 [guitool "Rebase/Current branch"]
-    cmd = git rebase -i $(git merge-base $CUR_BRANCH master)
+	cmd = git rebase -i $(git merge-base $CUR_BRANCH master)
 [guitool "Rebase/Interactive"]
-    cmd = git rebase -i $REVISION
-    revprompt = Revision
+	cmd = git rebase -i $REVISION
+	revprompt = Revision
 [guitool "Rebase/Interactive number"]
-    cmd = git rebase -i HEAD~$ARGS
-    argprompt = Number
+	cmd = git rebase -i HEAD~$ARGS
+	argprompt = Number
 [guitool "Rebase/Continue"]
-    cmd = git rebase --continue
+	cmd = git rebase --continue
 [guitool "Rebase/Skip commit"]
-    cmd = git rebase --skip
-    confirm = yes
+	cmd = git rebase --skip
+	confirm = yes
 [guitool "Rebase/Abort"]
-    cmd = git rebase --abort
+	cmd = git rebase --abort
 [guitool "Pull with Rebase"]
-    cmd = git pull --rebase
+	cmd = git pull --rebase
 [guitool "Status"]
-    cmd = git status
+	cmd = git status
 [guitool "Revert/Revision"]
-    cmd = git revert $REVISION
-    revprompt = Revision
+	cmd = git revert $REVISION
+	revprompt = Revision
 [guitool "Revert/Latest local"]
-    cmd = git revert $(git rev-parse HEAD)
+	cmd = git revert $(git rev-parse HEAD)
 [guitool "Revert/Latest remote"]
-    cmd = git revert $(git rev-parse origin/master)
+	cmd = git revert $(git rev-parse origin/master)
 [sequence]
 	editor = vim
 [guitool "Tag - List all"]
-    cmd = git tag
+	cmd = git tag
 [guitool "Tag - List pattern"]
-    cmd = git tag -l \"$ARGS\"
-    argprompt = yes
+	cmd = git tag -l \"$ARGS\"
+	argprompt = yes
 [guitool "Tag - Show"]
-    cmd = git show $ARGS
-    argprompt = yes
+	cmd = git show $ARGS
+	argprompt = yes
 [guitool "Tag - Latest annotated tag"]
-    cmd = git describe
+	cmd = git describe
 [guitool "Tag - Latest tag"]
-    cmd = git describe --tags
+	cmd = git describe --tags
 [guitool "Run git command"]
-    cmd = git $ARGS
-    argprompt = yes
+	cmd = git $ARGS
+	argprompt = yes
 [guitool "Run command"]
-    cmd = $ARGS
-    argprompt = yes
+	cmd = $ARGS
+	argprompt = yes
 [guitool "Open .gitconfig"]
-    cmd = "start ~/.gitconfig"
+	cmd = "start ~/.gitconfig"
 [guitool "Open file"]
-    cmd = start $FILENAME
-    noconsole = yes
-    needsfile = yes
+	cmd = start $FILENAME
+	noconsole = yes
+	needsfile = yes
 [commit]
 	gpgsign = true
 [gitreview]
@@ -152,27 +151,27 @@
 	program = gpg
 # BEGIN Added by ansbible `delta` task
 [core]
-    pager = delta
+	pager = delta
 
 [interactive]
-    diffFilter = delta --color-only --features=interactive
+	diffFilter = delta --color-only --features=interactive
 
 [delta]
-    features = decorations
-    navigate = true
-    side-by-side = true
+	features = decorations
+	navigate = true
+	side-by-side = true
 
 [delta "interactive"]
-    keep-plus-minus-markers = false
+	keep-plus-minus-markers = false
 
 [delta "decorations"]
-    commit-decoration-style = blue ol
-    commit-style = raw
-    file-style = omit
-    # hunk-header-decoration-style = blue box
-    # hunk-header-file-style = red
-    # hunk-header-line-number-style = "#067a00"
-    # hunk-header-style = file line-number syntax
+	commit-decoration-style = blue ol
+	commit-style = raw
+	file-style = omit
+	# hunk-header-decoration-style = blue box
+	# hunk-header-file-style = red
+	# hunk-header-line-number-style = "#067a00"
+	# hunk-header-style = file line-number syntax
 # END Added by ansbible `delta` task
 [init]
 	defaultBranch = main
@@ -183,10 +182,12 @@
 [branch]
 	sort = -commiterdate
 [maintenance]
+	repo = /home/edouard/projects/contributions/terminal-screenshot
+	repo = /home/edouard/projects/support/iac-lib
 	repo = /home/edouard/projects/contributions/pure
 
 [includeIf "gitdir:~/projects/oss/"]
-    path = "~/dotfiles/.git-oss.gitconfig"
+	path = "~/dotfiles/.git-oss.gitconfig"
 
 [includeIf "gitdir:~/projects/work/"]
-    path = "~/dotfiles/.git-work.gitconfig"
+	path = "~/dotfiles/.git-work.gitconfig"
