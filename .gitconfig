@@ -9,6 +9,7 @@
     go = checkout
     st = status
     clean-remote = fetch --prune
+    cleanup-merged = "!git branch --merged | grep  -v '\\*\\|master\\|develop' | xargs -n 1 -r git branch -d"
     get-default-branch = "!f() { git remote show origin | grep 'HEAD branch' | cut -d' ' -f5; }; f"
     hist = log --graph --no-decorate --pretty=oneline --abbrev-commit
     hist-by = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit --date=relative
