@@ -181,3 +181,5 @@
 	ui = auto
 [branch]
 	sort = -commiterdate
+[maintenance]
+	repo = /home/edouard/projects/contributions/pure
