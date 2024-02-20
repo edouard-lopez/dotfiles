@@ -9,14 +9,8 @@ edouard-lopez/ayu-theme.fish
 danhper/fish-ssh-agent
 patrickf1/fzf.fish
 matchai/fish-mock
-/home/edouard/projects/fish-work-config
 acomagu/fish-async-prompt
-pure-fish/pure
-bobsoppe/fish-prompt-pure@improve-k8s-support
 franciscolourenco/done
-/tmp/nvm.fish
-/home/edouard/projects/contributions/nvm.fish
-/home/edouard/projects/contributions/saml2aws-fish-completions
-/home/edouard/.config/base16-shell
-/home/edouard/projects/contributions/pure
-edouard-lopez/pnpm-shell-completion
+meaningful-ooo/sponge
+bobsoppe/fish-prompt-pure@improve-k8s-support
+pure-fish/pure
