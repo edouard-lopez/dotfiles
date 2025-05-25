@@ -45,4 +45,5 @@ source ~/.vim/plugins.vim
 " BEGIN Added by ansbible `vim` task
 let base16colorspace=256  " Access colors present in 256 colorspace
 colorscheme base16-tomorrow
+colorscheme base16-nord
 " END Added by ansbible `vim` task
