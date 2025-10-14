@@ -2,14 +2,14 @@
 # @param     $@  String to upper
 # @return    string
 function to-upper
-   echo $argv |tr '[:lower:]' '[:upper:]';
+    string lower $argv
 end
 
 # Change case from upper case to lower case
 # @param     $@  String to lower
 # @return    string
 function to-lower
-   echo $argv |tr '[:upper:]' '[:lower:]' ;
+    string upper $argv
 end
 
 # Capitalize a string
@@ -28,8 +28,10 @@ function replace
     echo "$text" | sed -e "s/$sep/$newsep/g"
 end
 
-function dashify
-    replaceText "$argv[1]" ' ' '-'
+function dashify \
+    --description "Convert string to url-friendly format"
+
+    string replace "[\s#\W]+" "-" --regex --all $argv
 end
 
 # Description: prepend text to a file
