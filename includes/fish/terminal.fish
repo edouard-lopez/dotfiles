@@ -7,18 +7,15 @@ set --universal --export BASE16_THEME_DEFAULT "base-ayu-dark"
 set --universal --export BASE16_TMUX_OPTION_ACTIVE 1
 set --universal --export BASE16_TMUX_OPTION_STATUS 0
 
-function start_tmux
-    # https://wiki.archlinux.org/index.php/Tmux#Start_tmux_on_every_shell_login
-    if type --query tmux
-        #if not inside a tmux session, and if no session is started, start a new session
-        if test -z "$TMUX"
-            and test -z $TERMINAL_CONTEXT
-            tmux -2 attach
-            or tmux -2 new-session
+if status is-interactive
+    if not set -q TMUX
+        if set -q VSCODE_WORKSPACE
+            # skip as not yet supported in VSCode https://github.com/microsoft/vscode/pull/233526
+            # exec tmux new-session -A -t "$VSCODE_WORKSPACE" 
+        else
+            exec tmux new-session -A -t default
         end
     end
 end
-
-start_tmux
 
 direnv hook fish | source
