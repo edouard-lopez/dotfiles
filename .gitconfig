@@ -1,6 +1,7 @@
 [user]
 	name = Édouard Lopez
 	email = contact@edouard-lopez.com
+	signingkey = 0F90A96C5FEB6076
 
 [credential]
 	helper = cache --timeout=3600
@@ -158,8 +159,11 @@
 
 [delta]
 	features = decorations
-	navigate = true
 	side-by-side = true
+    navigate = true
+    line-numbers = true
+    hyperlinks = true
+    tabs = 4
 
 [delta "interactive"]
 	keep-plus-minus-markers = false
@@ -184,14 +188,17 @@
 [column]
 	ui = auto
 [branch]
-	sort = -commiterdate
+	sort = -committerdate
 [maintenance]
 	repo = /home/edouard/projects/contributions/terminal-screenshot
 	repo = /home/edouard/projects/support/iac-lib
 	repo = /home/edouard/projects/contributions/pure
+	repo = /data/projects/pure/pure
 
 [includeIf "gitdir:~/projects/oss/"]
 	path = "~/dotfiles/.git-oss.gitconfig"
 
 [includeIf "gitdir:~/projects/work/"]
 	path = "~/dotfiles/.git-work.gitconfig"
+[tag]
+	gpgSign = true
