@@ -20,7 +20,9 @@ function install_fish() {
     targetfile="$HOME/.config/fish/"
     echo "$sourcefile" "$targetfile"
 
-    rm "$targetfile"
+    if ! test -d "$targetfile"; then
+        rm "$targetfile"
+    fi
     ln -nfs "$sourcefile" "$targetfile"
 }
 
@@ -66,12 +68,15 @@ function install() {
         [[ "$filename" == "config.fish" ]] && install_fish "$sourcefile" && continue
         [[ "$filename" == "fish_plugins" ]] && install_fish "$sourcefile" && continue
         [[ "$filename" == ".tmux" ]] && install_tmux "$sourcefile" && continue
+        [[ "$filename" == "includes" ]] && continue
 
         targetfile="$HOME/$filename"
         printf "%s\n" "$sourcefile"
         backup "$targetfile"
         update "$sourcefile" "$targetfile"
     done
+
+    rsync --verbose --recursive --backup  $HOME/dotfiles/includes/fish/ $(fish -c 'echo $__fish_config_dir')
 }
 
 scriptDir="$(dirname "$0")"
