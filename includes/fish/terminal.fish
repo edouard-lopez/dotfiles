@@ -3,7 +3,7 @@ set -gx ANSIBLE_NOCOWS 1
 set -gx EDITOR vim
 set -gx VISUAL vim
 
-set --universal --export BASE16_THEME_DEFAULT "ayu-light"
+set --universal --export BASE16_THEME_DEFAULT "base-ayu-dark"
 set --universal --export BASE16_TMUX_OPTION_ACTIVE 1
 set --universal --export BASE16_TMUX_OPTION_STATUS 0
 

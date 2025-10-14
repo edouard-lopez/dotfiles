@@ -8,7 +8,7 @@ function less \
 
     if test -n "$file_to_highlight"
         highlight \
-            --style base16/ayu-light \
+            --style base16/tomorrow \
             --out-format=xterm256 \
             --force \
             "$file_to_highlight" \

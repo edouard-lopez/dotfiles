@@ -40,14 +40,6 @@ end
 # icons-in-terminal integration: https://github.com/sebastiencs/icons-in-terminal
 source ~/.local/share/icons-in-terminal/icons.fish
 
-# Base16 Shell
-if status --is-interactive
-    set BASE16_SHELL_PATH "$HOME/.config/base16-shell"
-    if test -s "$BASE16_SHELL_PATH"
-        source "$BASE16_SHELL_PATH/profile_helper.fish"
-    end
-end
-
 # include_shell_specific
 for file in $HOME/dotfiles/includes/fish/*.fish
     # echo "Sourcing "(basename $file)

@@ -1,6 +1,6 @@
 call plug#begin()
 Plug 'VundleVim/Vundle.vim'
-Plug 'base16-project/base16-vim'
+Plug 'tinted-theming/tinted-vim'
 Plug 'rstacruz/sparkup', {'rtp': 'vim/'}  " emmet-lize
 Plug 'kien/ctrlp.vim'  " Fuzzy file, buffer, mru, tag, etc finder.
 Plug 'airblade/vim-gitgutter'  " shows a git diff in the gutter.
@@ -9,4 +9,6 @@ Plug 'raimondi/delimitmate'   " auto close quote/bracket/parenthesis
 Plug 'editorconfig/editorconfig-vim'
 Plug 'nathanaelkane/vim-indent-guides'
 Plug 'dag/vim-fish'
+Plug 'preservim/nerdtree'
+Plug 'ryanoasis/vim-devicons'
 call plug#end()
