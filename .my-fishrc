@@ -5,6 +5,7 @@ set --global --export --append CDPATH \
     $HOME \
     $HOME/projects/work/ \
     $HOME/projects/work/* \
+    $HOME/projects/* \
     $HOME/projects/oss/
 set --global --export XDG_DATA_HOME $HOME/.local/share
 set --universal --export XDG_CONFIG_HOME $HOME/.config
