@@ -11,7 +11,7 @@ end
 function start_ibus_ime
   set exists (process_exists ibus-daemon)
 
-  if [ $exists = false ]
+  if [ $exists = false ]; and type -q ibus-daemon
     ibus-daemon --single --xim --replace --daemonize
   end
 end
