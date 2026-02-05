@@ -29,3 +29,6 @@ set --export PATH $BUN_INSTALL/bin $PATH
 if [ -n "$TMUX" ]
     set -x SSH_AUTH_SOCK (tmux show-environment | grep '^SSH_AUTH_SOCK' | cut -d '=' -f2-)
 end
+for file in $HOME/dotfiles/includes/fish/functions/*.fish
+    source $file
+end
