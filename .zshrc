@@ -66,6 +66,8 @@ source "$HOME/.my-posixrc"
 fpath+=($HOME/.zsh/pure)
 autoload -U promptinit; promptinit
 prompt pure
+#PROMPT='%(?.%F{magenta}.%F{red}❯%F{magenta})❯%f ' # https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#show-exit-code-of-last-command-as-a-separate-prompt-character
+PROMPT='%(?.%F{magenta}△.%F{red}▲)%f ' # https://github.com/sindresorhus/pure/wiki/Customizations,-hacks-and-tweaks#use-different-prompt-symbol-for-non-zero-exit-codes
 # END Added by ansbible `zsh` task
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
