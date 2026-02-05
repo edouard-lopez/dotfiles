@@ -6,6 +6,11 @@ set --append fish_function_path /home/ed8/.config/fish/functions/echo-colored/ #
 # THEME PURE #
 set fish_function_path /home/ed8/.config/fish/functions/theme-pure/functions/ $fish_function_path
 set --global --export PURE_EXECUTABLE_PATH $HOME/.pure/
+
+set --universal pure_show_exit_status true
+set --universal pure_convert_exit_status_to_signal true
+set --universal fish_transient_prompt 1
+
 set --global --export VOLTA_HOME $HOME/.volta
 fish_add_path --append $VOLTA_HOME/bin
 
