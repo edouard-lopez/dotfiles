@@ -32,3 +32,4 @@ end
 for file in $HOME/dotfiles/includes/fish/functions/*.fish
     source $file
 end
+thefuck --alias | source
