@@ -1,3 +1,3 @@
 ## Install
 
-    ~/dotfiles/install.sh
+    $HOME/dotfiles/install.sh
