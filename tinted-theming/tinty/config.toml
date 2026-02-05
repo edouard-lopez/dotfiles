@@ -1,0 +1,39 @@
+shell = "bash -c '{}'"
+
+#preferred-schemes = ["base16-ayu-light", "base16-ayu-dark"]
+preferred-schemes = ["base16-ayu-light", "base16-ayu-mirage"]
+
+[[items]]
+name = "tinted-shell"
+path = "https://github.com/tinted-theming/tinted-shell"
+hook = ". %f"
+supported-systems = ["base16"]
+themes-dir = "scripts"
+
+[[items]]
+path = "https://github.com/tinted-theming/base16-vim"
+name = "base16-vim"
+themes-dir = "colors"
+
+[[items]]
+path = "https://github.com/tinted-theming/tinted-tmux"
+name = "tinted-tmux"
+# Check if tmux is in use and if it is, reload the config file
+#hook = "tmux run 2> /dev/null && tmux source-file %f"
+hooks = ["tmux source-file /home/ed8/.tmux.conf"]
+themes-dir = "colors"
+
+[[items]]
+path = "https://github.com/tinted-theming/tinted-delta"
+name = "tinted-delta"
+themes-dir = "configs"
+supported-systems = ["base16", "base24"]
+
+[[items]]
+path = "https://github.com/tinted-theming/tinted-terminal"
+name = "tinted-terminal"
+themes-dir = "themes/alacritty"
+hook = "cp -f %f ~/.config/alacritty/colors.toml && touch ~/.config/alacritty/alacritty.toml"
+supported-systems = ["base16", "base24"]
+
+hooks = ["echo \"The current scheme is: $(tinty current)\""]

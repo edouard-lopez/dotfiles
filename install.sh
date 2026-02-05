@@ -57,6 +57,12 @@ function update() {
     fi
 }
 
+function install_tinted() {
+    echo "Installing tinted-theming"
+    rm --force --recursive "$HOME/.config/tinted-theming"
+    ln -nfs "$HOME/dotfiles/tinted-theming" "$HOME/.config/tinted-theming"
+}
+
 function install() {
     scriptDir="$1"
 
@@ -68,6 +74,7 @@ function install() {
         [[ "$filename" == "config.fish" ]] && install_fish "$sourcefile" && continue
         [[ "$filename" == "fish_plugins" ]] && install_fish "$sourcefile" && continue
         [[ "$filename" == ".tmux" ]] && install_tmux "$sourcefile" && continue
+        [[ "$filename" == "tinted-theming" ]] && install_tinted && continue
         [[ "$filename" == "includes" ]] && continue
 
         targetfile="$HOME/$filename"
