@@ -10,7 +10,7 @@ function backup() {
     targetfile="$1"
 
     if [[ -f "$targetfile" || -L "$targetfile" ]]; then
-        printf "\tBackup to: %s\n" "$targetfile".bak
+        printf "\t💾 Backup to: %s\n" "$targetfile".bak
         mv "$targetfile"{,.bak}
     fi
 }
@@ -49,7 +49,7 @@ function update() {
 
     if [[ -f "$sourcefile" || -L "$sourcefile" ]]; then
         # symlink to file
-        printf "\tLinking to: %s\n" "$targetfile"
+        printf "\t🔗 Linking to: %s\n" "$targetfile"
         ln -nfs "$sourcefile" "$targetfile"
     else
         printf "\tOverriding to: %s\n" "$targetfile"
@@ -83,7 +83,11 @@ function install() {
         update "$sourcefile" "$targetfile"
     done
 
-    rsync --verbose --recursive --backup  $HOME/dotfiles/includes/fish/ $(fish -c 'echo $__fish_config_dir')
+    {
+        rsync --recursive --backup  $HOME/dotfiles/includes/fish/ $(fish -c 'echo $__fish_config_dir') \
+        && printf '✅' \
+        || printf '❌'
+    } && echo " Installing Fish custom functions"
 }
 
 scriptDir="$(dirname "$0")"
