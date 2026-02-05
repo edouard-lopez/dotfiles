@@ -1,3 +1,4 @@
+#!/usr/bin/env fish
 function docker-ls
     docker images
     echo ''
@@ -45,7 +46,9 @@ function docker-compose-infinite
         docker-compose up
     end
 end
-alias infinite-docker-compose docker-compose-infinite
+function infinite-docker-compose 
+    docker-compose-infinite
+end
 
 function docker-compose-rebuild
     docker-compose stop $argv;
