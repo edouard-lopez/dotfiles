@@ -3,7 +3,12 @@ function find
 end
 
 function cat
-    batcat --theme="Monokai Extended Light" $argv
+    switch (lsb_release --short -i) # distribution
+    case "Fedora"
+        bat --theme="Monokai Extended Light" $argv
+    case "Ubuntu"
+        batcat --theme="Monokai Extended Light" $argv
+    end
 end
 
 function lechat 
