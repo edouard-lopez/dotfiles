@@ -1,0 +1,14 @@
+[Settings for AlacrittyDrop]
+Description=Settings for AlacrittyDrop
+desktops=\\0
+desktopsrule=2
+fullscreen=true
+fullscreenrule=2
+noborder=true
+noborderrule=3
+skippager=true
+skippagerrule=2
+skipswitcher=true
+skipswitcherrule=2
+wmclass=AlacrittyDrop
+wmclassmatch=1
