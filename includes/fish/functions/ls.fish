@@ -1,5 +1,5 @@
 function ls \
-    --wraps='exa \
+    --wraps='eza \
   --oneline \
   --classify \
   --long \
@@ -14,7 +14,7 @@ function ls \
   --all \
   --group-directories-first'
 
-    exa \
+    eza \
         --oneline \
         --classify \
         --long \
