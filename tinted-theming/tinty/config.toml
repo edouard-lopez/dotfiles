@@ -19,8 +19,7 @@ themes-dir = "colors"
 path = "https://github.com/tinted-theming/tinted-tmux"
 name = "tinted-tmux"
 # Check if tmux is in use and if it is, reload the config file
-#hook = "tmux run 2> /dev/null && tmux source-file %f"
-hooks = ["tmux source-file /home/ed8/.tmux.conf"]
+hook = "tmux run 2> /dev/null && tmux source-file %f"
 themes-dir = "colors"
 
 [[items]]
