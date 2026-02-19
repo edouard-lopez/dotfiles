@@ -19,7 +19,7 @@ launch_alacritty() {
   for _ in {1..40}; do
     wid=$(kdotool search --class "$window_class" 2>/dev/null | head -n1)
     if [[ -n "$wid" ]]; then
-      kdotool windowsize "$wid" 100% y >/dev/null 2>&1
+  #    kdotool windowsize "$wid" 100% y >/dev/null 2>&1
       break
     fi
     sleep 0.05
