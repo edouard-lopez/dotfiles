@@ -76,6 +76,7 @@ function install() {
         [[ "$filename" == ".tmux" ]] && install_tmux "$sourcefile" && continue
         [[ "$filename" == "tinted-theming" ]] && install_tinted && continue
         [[ "$filename" == "includes" ]] && continue
+        [[ "$filename" == "ssh.config" ]] && ln -nfs "$sourcefile" $HOME/.ssh/config && continue
 
         targetfile="$HOME/$filename"
         printf "%s\n" "$sourcefile"

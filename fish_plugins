@@ -4,11 +4,10 @@ decors/fish-colored-man
 jethrokuan/z
 jorgebucaran/fish-getopts
 andreiborisov/sponge
-jorgebucaran/nvm.fish
 edouard-lopez/ayu-theme.fish
 jorgebucaran/autopair.fish
 pure-fish/tapu
 edouard-lopez/the_fuck.fish
-jorgebucaran/fisher
 pure-fish/pure
 edouard-lopez/smart-lock.fish
+danhper/fish-ssh-agent
