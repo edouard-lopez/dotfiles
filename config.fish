@@ -11,26 +11,6 @@ set --universal pure_show_exit_status true
 set --universal pure_convert_exit_status_to_signal true
 set --universal fish_transient_prompt 1
 
-set --global --export VOLTA_HOME $HOME/.volta
-fish_add_path --append $VOLTA_HOME/bin
-
-# pnpm
-set -gx PNPM_HOME /home/ed8/.local/share/pnpm
-fish_add_path --append $PNPM_HOME
-# pnpm end
-source $HOME/.asdf/asdf.fish
-
-# tabtab source for packages
-# uninstall by removing these lines
-[ -f ~/.config/tabtab/fish/__tabtab.fish ]; and . ~/.config/tabtab/fish/__tabtab.fish; or true
-fish_add_path --append $HOME/.krew/bin
-
-set -gx GOPATH $HOME/go; set -gx GOROOT $HOME/.go; set -gx PATH $GOPATH/bin $PATH; # g-install: do NOT edit, see https://github.com/stefanmaric/g
-
-# bun
-set --export BUN_INSTALL "$HOME/.bun"
-set --export PATH $BUN_INSTALL/bin $PATH
-
 if [ -n "$TMUX" ]
     set -x SSH_AUTH_SOCK (tmux show-environment | grep '^SSH_AUTH_SOCK' | cut -d '=' -f2-)
 end

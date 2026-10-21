@@ -10,17 +10,12 @@ set --global --export --append CDPATH \
 set --global --export XDG_DATA_HOME $HOME/.local/share
 set --universal --export XDG_CONFIG_HOME $HOME/.config
 set --global --export GPG_TTY (tty)
-set --global --export JAVA_HOME /usr/lib/jvm/java-8-openjdk-amd64/
-set --global --export VOLTA_HOME $HOME/.volta
-set --global --export PNPM_HOME $HOME/.local/share/pnpm
 
 fish_add_path --append ./node_modules/.bin
 fish_add_path --append ./.venv/bin
-fish_add_path --append $VOLTA_HOME/bin
 fish_add_path --append $HOME/.yarn/bin
 fish_add_path --append $HOME/.local/bin
 fish_add_path --append $HOME/.config/yarn/global/node_modules/.bin
-fish_add_path --append $PNPM_HOME
 fish_add_path --append $HOME/apps
 fish_add_path --append /bin
 fish_add_path --append /snap/bin
