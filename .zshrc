@@ -71,3 +71,7 @@ PROMPT='%(?.%F{magenta}△.%F{red}▲)%f ' # https://github.com/sindresorhus/pur
 # END Added by ansbible `zsh` task
 export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
+
+. "$HOME/.local/bin/env"
+
+. "$HOME/.local/share/../bin/env"
