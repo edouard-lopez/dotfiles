@@ -1,16 +1,15 @@
-set --global --export BROWSER firefox # Default web browser
+# XDG stuff
+set --global --export XDG_DATA_HOME $HOME/.local/share
+set --universal --export XDG_CONFIG_HOME $HOME/.config
+
+# Udate CD pathes
 set --global --export --append CDPATH \
     . \
     $HOME \
     $HOME/projects/* \
     $HOME/projects/*/* 
 
-set --global --export XDG_DATA_HOME $HOME/.local/share
-set --universal --export XDG_CONFIG_HOME $HOME/.config
-
-# GPG Agent and GPG signing
-set --global --export GPG_TTY (tty)
-
+# Udpate PATH
 fish_add_path --append ./node_modules/.bin
 fish_add_path --append ./.venv/bin
 fish_add_path --append $HOME/.yarn/bin
@@ -23,16 +22,11 @@ fish_add_path --append /usr/bin
 fish_add_path --append /usr/local/bin
 fish_add_path --append /usr/local/sbin
 fish_add_path --append /usr/sbim
-
 set --append fish_function_path $HOME/.config/fish/functions/echo-colored/ # https://github.com/PeterDaveHello/ColorEchoForShell/
 
-# THEME PURE #
-set fish_function_path $HOME/.config/fish/functions/theme-pure/functions/ $fish_function_path
-set --global --export PURE_EXECUTABLE_PATH $HOME/.pure/
+# GPG Agent and GPG signing
+set --global --export GPG_TTY (tty)
 
-set --universal pure_show_exit_status true
-set --universal pure_convert_exit_status_to_signal true
-set --universal fish_transient_prompt 1
 
 # TMUX
 if [ -n "$TMUX" ]
@@ -58,4 +52,16 @@ if test -f $HOME/.config/work/config.fish
     source $HOME/.config/work/config.fish
 end
 
+
+# THEME PURE #
+set fish_function_path $HOME/.config/fish/functions/theme-pure/functions/ $fish_function_path
+set --global --export PURE_EXECUTABLE_PATH $HOME/.pure/
+
+set --universal pure_show_exit_status true
+set --universal pure_convert_exit_status_to_signal true
+set --universal fish_transient_prompt 1
+
+# The fuck
 thefuck --alias | source
+
+set --global --export BROWSER firefox # Default web browser
