@@ -1,0 +1,10 @@
+[Unit]
+Description=Smart Lock Toggle Timer
+
+[Timer]
+OnBootSec=1min
+OnUnitActiveSec=1min
+Unit=smart-lock.service
+
+[Install]
+WantedBy=timers.target

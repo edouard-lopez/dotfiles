@@ -1,0 +1,6 @@
+[Unit]
+Description=Smart Lock Toggle Service
+
+[Service]
+Type=oneshot
+ExecStart=/usr/bin/fish -c 'source $__fish_config_dir/functions/smart_lock_toggle.fish && smart_lock_toggle'
