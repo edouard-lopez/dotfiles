@@ -1,0 +1,6 @@
+[Unit]
+Description=Apply tinty day/night theme
+
+[Service]
+Type=oneshot
+ExecStart=/bin/sh -c 'hour=$(date +%%H); if [ "$hour" -ge 8 ] && [ "$hour" -lt 20 ]; then scheme=base16-ayu-light; else scheme=base16-ayu-mirage; fi; exec %h/apps/tinty apply "$scheme"'

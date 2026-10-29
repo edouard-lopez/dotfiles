@@ -63,6 +63,14 @@ function install_tinted() {
     ln -nfs "$HOME/dotfiles/tinted-theming" "$HOME/.config/tinted-theming"
 }
 
+function install_systemd() {
+    echo "Installing systemd user units"
+    mkdir -p "$HOME/.config/systemd/user"
+    ln -nfs "$HOME"/dotfiles/systemd/* "$HOME/.config/systemd/user/"
+    systemctl --user daemon-reload
+    systemctl --user enable --now tinty-theme.timer
+}
+
 function install() {
     scriptDir="$1"
 
@@ -75,6 +83,7 @@ function install() {
         [[ "$filename" == "fish_plugins" ]] && install_fish "$sourcefile" && continue
         [[ "$filename" == ".tmux" ]] && install_tmux "$sourcefile" && continue
         [[ "$filename" == "tinted-theming" ]] && install_tinted && continue
+        [[ "$filename" == "systemd" ]] && install_systemd && continue
         [[ "$filename" == "includes" ]] && continue
         [[ "$filename" == "ssh.config" ]] && ln -nfs "$sourcefile" $HOME/.ssh/config && continue
 
