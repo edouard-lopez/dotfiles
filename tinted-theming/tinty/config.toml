@@ -1,7 +1,10 @@
 shell = "bash -c '{}'"
 
-#preferred-schemes = ["base16-ayu-light", "base16-ayu-dark"]
-preferred-schemes = ["base16-ayu-light", "base16-ayu-mirage"]
+default-cycle-ring = "default"
+   
+[[rings]]
+name = "default"
+schemes = ["base16-ayu-light", "base16-ayu-mirage"]
 
 [[items]]
 name = "tinted-shell"
