@@ -12,8 +12,10 @@ set --universal pure_convert_exit_status_to_signal true
 set --universal fish_transient_prompt 1
 
 if [ -n "$TMUX" ]
-    set -x SSH_AUTH_SOCK (tmux show-environment | grep '^SSH_AUTH_SOCK' | cut -d '=' -f2-)
+    #    set -x SSH_AUTH_SOCK (tmux show-environment | grep '^SSH_AUTH_SOCK' | cut -d '=' -f2-)
+    keychain -q ~/.ssh/id_rsa
 end
+source ~/.keychain/$(hostname)-sh 2> /dev/null
 
 for file in $HOME/dotfiles/includes/fish/functions/*.fish
     source $file
