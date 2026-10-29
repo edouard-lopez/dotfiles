@@ -42,16 +42,9 @@ end
 source $HOME/.keychain/$(hostname)-sh 2> /dev/null
 
 
-function include_shell_specific
-    if test -n $FISH_VERSION
-        function refresh
-            source "$HOME"/.config/fish/config.fish
-        end
-    end
-end
-
 # icons-in-terminal integration: https://github.com/sebastiencs/icons-in-terminal
 source ~/.local/share/icons-in-terminal/icons.fish
+
 
 # Override functions
 for file in $HOME/dotfiles/includes/fish/*.fish
@@ -59,10 +52,10 @@ for file in $HOME/dotfiles/includes/fish/*.fish
     source $file
 end
 
+
 # Load work config
 if test -f $HOME/.config/work/config.fish
     source $HOME/.config/work/config.fish
 end
 
 thefuck --alias | source
-
