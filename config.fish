@@ -22,7 +22,6 @@ fish_add_path --append /usr/bin
 fish_add_path --append /usr/local/bin
 fish_add_path --append /usr/local/sbin
 fish_add_path --append /usr/sbim
-set --append fish_function_path $HOME/.config/fish/functions/echo-colored/ # https://github.com/PeterDaveHello/ColorEchoForShell/
 
 # GPG Agent and GPG signing
 set --global --export GPG_TTY (tty)
