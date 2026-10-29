@@ -1,7 +1,7 @@
 [user]
 	name = Édouard Lopez
 	email = contact@edouard-lopez.com
-	signingkey = /home/ed8/.ssh/id_ed25519.pub
+	signingkey = 443A387613A634F6
 
 [credential]
 	helper = cache --timeout=3600
@@ -134,7 +134,7 @@
 	noconsole = yes
 	needsfile = yes
 [commit]
-	gpgsign = false
+	gpgsign = true
 [gitreview]
 	username = edouard-lopez
 [credential "https://github.com"]
@@ -151,7 +151,6 @@
 	autoStash = true
 [gpg]
 	program = gpg
-	format = ssh
 # BEGIN Added by ansbible `delta` task
 [core]
 	pager = delta
@@ -214,4 +213,4 @@
 [includeIf "gitdir:~/projects/work/"]
 	path = "~/dotfiles/.git-work.gitconfig"
 [tag]
-	gpgSign = false
+	gpgSign = true
