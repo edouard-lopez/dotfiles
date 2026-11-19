@@ -3,6 +3,8 @@ set --global --export XDG_DATA_HOME $HOME/.local/share
 set --universal --export XDG_CONFIG_HOME $HOME/.config
 set --global --export BROWSER firefox # Default web browser
 set --global --export PROJECTS $HOME/projets # prevent data stealing of projects/
+set KEYCHAIN_KEYS \
+    ~/.ssh/id_ed25519
 
 # Udate CD pathes
 set --global --export --append CDPATH \
@@ -29,12 +31,12 @@ fish_add_path --append /usr/sbim
 set --global --export GPG_TTY (tty)
 
 
-# TMUX
-if [ -n "$TMUX" ]
-    #    set -x SSH_AUTH_SOCK (tmux show-environment | grep '^SSH_AUTH_SOCK' | cut -d '=' -f2-)
-    keychain -q $HOME/.ssh/id_rsa
-end
-source $HOME/.keychain/$(hostname)-sh 2> /dev/null
+# # TMUX
+# if [ -n "$TMUX" ]
+#     #    set -x SSH_AUTH_SOCK (tmux show-environment | grep '^SSH_AUTH_SOCK' | cut -d '=' -f2-)
+#     keychain -q $HOME/.ssh/id_rsa
+# end
+# source $HOME/.keychain/$(hostname)-sh 2> /dev/null
 
 
 # icons-in-terminal integration: https://github.com/sebastiencs/icons-in-terminal
