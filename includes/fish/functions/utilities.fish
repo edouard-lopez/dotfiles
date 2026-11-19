@@ -89,7 +89,7 @@ function meteo
 end
 
 function pdf2djvu-ocr
-   $HOME/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh $argv;
+   $PROJECTS/ed8/pdf2djvu-ocr/pdf2djvu-ocr.sh $argv;
 end
 
 function tree

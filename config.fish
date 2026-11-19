@@ -2,6 +2,7 @@
 set --global --export XDG_DATA_HOME $HOME/.local/share
 set --universal --export XDG_CONFIG_HOME $HOME/.config
 set --global --export BROWSER firefox # Default web browser
+set --global --export PROJECTS $HOME/projets # prevent data stealing of projects/
 
 # Udate CD pathes
 set --global --export --append CDPATH \

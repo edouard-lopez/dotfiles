@@ -203,9 +203,6 @@
 [branch]
 	sort = -committerdate
 [maintenance]
-	repo = /home/edouard/projects/contributions/terminal-screenshot
-	repo = /home/edouard/projects/support/iac-lib
-	repo = /home/edouard/projects/contributions/pure
 	repo = /data/projects/pure/pure
 
 [includeIf "gitdir:~/projects/oss/"]

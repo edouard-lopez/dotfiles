@@ -2,7 +2,7 @@
 
 export MY_SERVER="srv-sys"
 export BROWSER="brave-browser"  # Default web browser
-export CDPATH="$CDPATH:$HOME/projects:$HOME/projects/*"
+export CDPATH="$CDPATH:$PROJECTS:$PROJECTS/*"
 GPG_TTY="$(tty)"; export GPG_TTY
 JAVA_HOME="/usr/lib/jvm/java-8-openjdk-amd64/"; export JAVA_HOME
 pathes=(

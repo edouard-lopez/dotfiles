@@ -76,7 +76,7 @@ function configure() {
 
 	function meteo() { curl wttr.in/"$@"; }
 
-    function pdf2djvu-ocr() { "$HOME"/projects/pdf2djvu-ocr/pdf2djvu-ocr.sh "$@"; }
+    function pdf2djvu-ocr() { "$PROJECTS/pdf2djvu-ocr/pdf2djvu-ocr.sh "$@"; }
 
     function tree() { command tree --charset utf-8 "$@"; }
 
