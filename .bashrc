@@ -31,6 +31,3 @@ export VOLTA_HOME="$HOME/.volta"
 export PATH="$VOLTA_HOME/bin:$PATH"
 
 PATH=~/.console-ninja/.bin:$PATH
-. "$HOME/.local/bin/env"
-
-. "$HOME/.local/share/../bin/env"

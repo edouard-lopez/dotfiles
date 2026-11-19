@@ -1,7 +1,9 @@
 shell = "bash -c '{}'"
 
+hooks = ["echo \"The current scheme is: $(tinty current) [$TINTY_SCHEME_ID]\""]
+
 default-cycle-ring = "default"
-   
+
 [[rings]]
 name = "default"
 schemes = ["base16-ayu-light", "base16-ayu-mirage"]
@@ -22,7 +24,7 @@ themes-dir = "colors"
 path = "https://github.com/tinted-theming/tinted-tmux"
 name = "tinted-tmux"
 # Check if tmux is in use and if it is, reload the config file
-hook = "tmux run 2> /dev/null && tmux source-file %f"
+hook = "tmux run 2> /dev/null && tmux source-file %f; echo THEME: $TINTY_THEME_FILE_PATH"
 themes-dir = "colors"
 
 [[items]]
@@ -34,8 +36,8 @@ supported-systems = ["base16", "base24"]
 [[items]]
 path = "https://github.com/tinted-theming/tinted-terminal"
 name = "tinted-terminal"
-themes-dir = "themes/alacritty"
-hook = "cp -f %f ~/.config/alacritty/colors.toml && touch ~/.config/alacritty/alacritty.toml"
+themes-dir = "themes/konsole"
+hook = "cp -f \"$TINTY_THEME_FILE_PATH\" ~/.local/share/konsole/$TINTY_SCHEME_ID.colorscheme && \"$TINTY_REPO_PATH/scripts/konsoleprofile.sh\" ColorScheme=$TINTY_SCHEME_ID"
 supported-systems = ["base16", "base24"]
 
-hooks = ["echo \"The current scheme is: $(tinty current)\""]
+

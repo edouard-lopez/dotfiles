@@ -1,13 +1,14 @@
 # XDG stuff
 set --global --export XDG_DATA_HOME $HOME/.local/share
 set --universal --export XDG_CONFIG_HOME $HOME/.config
+set --global --export BROWSER firefox # Default web browser
 
 # Udate CD pathes
 set --global --export --append CDPATH \
     . \
     $HOME \
-    $HOME/projects/* \
-    $HOME/projects/*/* 
+    $HOME/projets/* \
+    $HOME/projets/*/* 
 
 # Udpate PATH
 fish_add_path --append ./node_modules/.bin
@@ -60,7 +61,31 @@ set --universal pure_show_exit_status true
 set --universal pure_convert_exit_status_to_signal true
 set --universal fish_transient_prompt 1
 
-# The fuck
+source $HOME/.asdf/asdf.fish
+
+if [ -n "$TMUX" ]
+    set -x SSH_AUTH_SOCK (tmux show-environment | grep '^SSH_AUTH_SOCK' | cut -d '=' -f2-)
+end
+
+for file in $HOME/dotfiles/includes/fish/functions/*.fish
+    source $file
+end
+
 thefuck --alias | source
 
-set --global --export BROWSER firefox # Default web browser
+set --universal SMART_LOCK_BSSIDS
+set --universal --export --append SMART_LOCK_BSSIDS "02:B2:8C:55:EA:8F" # Home 5G
+set --universal --export --append SMART_LOCK_BSSIDS "02:B2:8C:55:EA:8B" # Home
+set --universal --export --append SMART_LOCK_BSSIDS "4A:E9:18:CD:45:91" # 
+set --universal --export --append SMART_LOCK_BSSIDS "00:24:D4:95:69:FE" # Payotte & Mayotte
+set --universal --export --append SMART_LOCK_BSSIDS "52:43:F0:8D:7A:0F" # Phone
+set --universal SMART_LOCK_DEVICES_MACS
+set --universal --export --append SMART_LOCK_DEVICES_MACS "D0:49:7C:1F:6E:DC" # Phone 9 Pro
+set --universal --export --append SMART_LOCK_DEVICES_MACS "10:94:97:37:2B:E4" # Speaker EVERBOOM
+set --universal --export --append SMART_LOCK_DEVICES_MACS "D1:F5:11:70:E0:FB" # Mouse LIFT (left)
+set --universal --export --append SMART_LOCK_DEVICES_MACS "60:AB:D2:3C:E6:18" # Éd - Bose QC35 II
+set --universal --export --append SMART_LOCK_DEVICES_MACS "20:74:CF:AB:A9:05" # OpenRun by Shokz
+set --universal --export --append SMART_LOCK_DEVICES_MACS "D3:A3:DB:AB:32:64" # Mouse MX Vertical (right)
+
+
+abbr -a -- compose-kbd 'setxkbmap -option compose:caps'
