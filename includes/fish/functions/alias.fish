@@ -1,5 +1,10 @@
 function find
-    fdfind $argv
+    switch (lsb_release --short -i) # distribution
+    case "Fedora"
+        fd $argv
+    case "Ubuntu"
+        fdfind $argv
+    end
 end
 
 function cat
