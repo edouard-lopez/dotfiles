@@ -92,5 +92,3 @@ set --universal --export --append SMART_LOCK_DEVICES_MACS "60:AB:D2:3C:E6:18" # 
 set --universal --export --append SMART_LOCK_DEVICES_MACS "20:74:CF:AB:A9:05" # OpenRun by Shokz
 set --universal --export --append SMART_LOCK_DEVICES_MACS "D3:A3:DB:AB:32:64" # Mouse MX Vertical (right)
 
-
-abbr -a -- compose-kbd 'setxkbmap -option compose:caps'
