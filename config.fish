@@ -26,6 +26,8 @@ fish_add_path --append /usr/bin
 fish_add_path --append /usr/local/bin
 fish_add_path --append /usr/local/sbin
 fish_add_path --append /usr/sbim
+fish_add_path --append $GOPATH/bin
+fish_add_path --append $GOBIN/bin
 
 # GPG Agent and GPG signing
 set --global --export GPG_TTY (tty)
