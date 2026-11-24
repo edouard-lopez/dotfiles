@@ -54,9 +54,10 @@ set gdefault " Search all occurrences by default
 " Plugin settings
 source ~/.vim/filetype.vim
 source ~/.vim/plugins.vim
+source ~/.vim/tinted.vim
 
 " BEGIN Added by ansbible `vim` task
 set termguicolors  " Only needed for terminal vim"
 let tinted_colorspace=256
-colorscheme base16-ayu-light " Set to same theme as your"
+"colorscheme base16-ayu-light " Set to same theme as your"
 " END Added by ansbible `vim` task
