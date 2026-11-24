@@ -142,4 +142,4 @@
 [tag]
 	gpgSign = true
 [remote]
-	pushDefault = current
+	pushDefault = origin
